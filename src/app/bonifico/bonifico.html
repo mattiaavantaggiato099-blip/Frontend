@@ -1,0 +1,321 @@
+<div class="app-layout">
+
+  <!-- SIDEBAR -->
+  <!-- SIDEBAR -->
+<aside class="sidebar">
+
+  <!-- LOGO -->
+  <div class="logo">
+    <div class="logo-icon">
+      <i class="fa-solid fa-building-columns"></i>
+    </div>
+
+    <div class="logo-text">
+      <h2>Gestione Conti</h2>
+      <span>LA TUA BANCA, SEMPRE CON TE</span>
+    </div>
+  </div>
+
+  <!-- MENU -->
+  <nav class="sidebar-menu">
+
+    <a
+      routerLink="/home"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="menu-item"
+    >
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+
+    <a
+      routerLink="/movimenti"
+      routerLinkActive="active"
+      class="menu-item"
+    >
+      <i class="fa-solid fa-receipt"></i>
+      <span>Movimenti</span>
+    </a>
+
+    <a
+      routerLink="/bonifico"
+      routerLinkActive="active"
+      class="menu-item"
+    >
+      <i class="fa-solid fa-right-left"></i>
+      <span>Bonifico</span>
+    </a>
+
+    <a
+      routerLink="/ricarica"
+      routerLinkActive="active"
+      class="menu-item"
+    >
+      <i class="fa-solid fa-mobile-screen-button"></i>
+      <span>Ricarica cellulare</span>
+    </a>
+
+    <a
+      routerLink="/ricerca-categoria"
+      routerLinkActive="active"
+      class="menu-item"
+    >
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <span>Ricerca per categoria</span>
+    </a>
+
+    <a
+      routerLink="/ricerca-date"
+      routerLinkActive="active"
+      class="menu-item"
+    >
+      <i class="fa-regular fa-calendar"></i>
+      <span>Ricerca per date</span>
+    </a>
+
+    <div class="separator"></div>
+
+    <a
+      routerLink="/profilo"
+      routerLinkActive="active"
+      class="menu-item"
+    >
+      <i class="fa-regular fa-user"></i>
+      <span>Profilo</span>
+    </a>
+
+    <a
+      routerLink="/modifica-password"
+      routerLinkActive="active"
+      class="menu-item"
+    >
+      <i class="fa-solid fa-lock"></i>
+      <span>Modifica password</span>
+    </a>
+
+    <div class="separator"></div>
+
+    <a
+      routerLink="/conto"
+      routerLinkActive="active"
+      class="menu-item"
+    >
+      <i class="fa-regular fa-credit-card"></i>
+      <span>Conto e tariffe</span>
+    </a>
+
+    <div class="separator"></div>
+
+    <a
+      routerLink="/login"
+      class="menu-item logout"
+    >
+      <i class="fa-solid fa-right-from-bracket"></i>
+      <span>Logout</span>
+    </a>
+
+    <!-- UTENTE -->
+    <a
+      routerLink="/profilo"
+      class="user-profile-link"
+      title="Vai al profilo"
+    >
+
+      <div class="user-avatar">
+        <i class="fa-solid fa-user"></i>
+      </div>
+
+      <strong>Francesco Pasetto</strong>
+
+      <i class="fa-solid fa-chevron-down arrow"></i>
+
+    </a>
+
+  </nav>
+
+</aside>
+
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <header class="topbar">
+
+      <div>
+
+        <span class="topbar-category">
+          OPERAZIONI
+        </span>
+
+        <h1>Bonifico</h1>
+
+      </div>
+
+
+      <div class="balance-mini">
+
+        <span>Saldo disponibile </span>
+
+        <strong> € 1.245,80</strong>
+
+      </div>
+
+    </header>
+
+
+    <section class="content-grid">
+
+      <!-- FORM -->
+      <div class="card transfer-card">
+
+        <div class="card-header">
+
+          <div>
+
+            <h2>Nuovo bonifico</h2>
+
+            <p>
+              Invia denaro a un conto corrente.
+            </p>
+
+          </div>
+
+          <div class="card-icon">
+            →
+          </div>
+
+        </div>
+
+
+        <form>
+
+          <div class="form-group">
+
+            <label for="iban">
+              IBAN destinatario
+            </label>
+
+            <input
+              type="text"
+              id="iban"
+              placeholder="IT00 X000 0000 0000 0000 0000 000"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="importo">
+              Importo
+            </label>
+
+            <div class="amount-input">
+
+              <span>€</span>
+
+              <input
+                type="number"
+                id="importo"
+                placeholder="0,00"
+                min="0"
+                step="0.01"
+              >
+
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="descrizione">
+              Descrizione
+            </label>
+
+            <textarea
+              id="descrizione"
+              rows="4"
+              placeholder="Inserisci una descrizione..."
+            ></textarea>
+
+          </div>
+
+
+          <button type="submit" class="primary-button">
+            Effettua bonifico
+          </button>
+
+        </form>
+
+      </div>
+
+
+      <!-- RIEPILOGO -->
+      <div class="card summary-card">
+
+        <div class="summary-header">
+
+          <h2>Riepilogo</h2>
+
+        </div>
+
+
+        <div class="summary-row">
+
+          <span>Beneficiario</span>
+
+          <strong>—</strong>
+
+        </div>
+
+
+        <div class="summary-row">
+
+          <span>IBAN</span>
+
+          <strong>—</strong>
+
+        </div>
+
+
+        <div class="summary-row">
+
+          <span>Importo</span>
+
+          <strong>€ 0,00</strong>
+
+        </div>
+
+
+        <div class="summary-divider"></div>
+
+
+        <div class="summary-total">
+
+          <span>Totale</span>
+
+          <strong>€ 0,00</strong>
+
+        </div>
+
+
+        <div class="info-box">
+
+          <span>ⓘ</span>
+
+          <p>
+            Il bonifico verrà effettuato solo se l'IBAN
+            è valido e il saldo disponibile è sufficiente.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>

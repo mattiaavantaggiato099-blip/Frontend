@@ -1,0 +1,672 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:host {
+  display: block;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+
+/* =========================
+   CONTENITORE
+========================= */
+
+.bank-app {
+  min-height: 100vh;
+
+  display: flex;
+
+  background: #f4f7fb;
+
+  color: #152d4b;
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  width: 235px;
+
+  background: linear-gradient(
+    180deg,
+    #0d315b 0%,
+    #071e3b 100%
+  );
+
+  color: white;
+
+  z-index: 100;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+  height: 85px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 18px 20px;
+}
+
+.logo-icon {
+  font-size: 31px;
+}
+
+.logo-text h2 {
+  margin: 0;
+
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.logo-text span {
+  display: block;
+
+  margin-top: 3px;
+
+  font-size: 8px;
+
+  letter-spacing: .7px;
+
+  opacity: .75;
+}
+
+
+/* =========================
+   MENU
+========================= */
+
+.sidebar-menu {
+  margin-top: 15px;
+}
+
+.menu-item {
+  height: 53px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 17px;
+
+  padding: 0 24px;
+
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  transition: .2s;
+}
+
+.menu-item i {
+  width: 20px;
+
+  text-align: center;
+
+  font-size: 17px;
+}
+
+.menu-item:hover {
+  background: rgba(255,255,255,.08);
+}
+
+.menu-item.active {
+  background: #1465a6;
+
+  border-left: 4px solid #52b8ff;
+
+  padding-left: 20px;
+}
+
+.separator {
+  height: 1px;
+
+  background: rgba(255,255,255,.2);
+
+  margin: 13px 22px;
+}
+
+.logout {
+  margin-top: 3px;
+}
+
+
+/* =========================
+   PROFILO UTENTE
+========================= */
+
+.user-profile-link {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin: 12px 20px 0;
+
+  padding: 10px 4px;
+
+  color: white;
+
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.user-profile-link:hover .user-avatar {
+  background: #dcebf8;
+}
+
+.user-profile-link strong {
+  flex: 1;
+
+  font-size: 14px;
+}
+
+.user-profile-link .arrow {
+  font-size: 10px;
+}
+
+.user-profile-link .user-avatar {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #e9f1fa;
+
+  color: #1765a8;
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.main-content {
+  width: calc(100% - 235px);
+
+  margin-left: 235px;
+
+  min-height: 100vh;
+
+  padding: 32px 40px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.page-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 30px;
+}
+
+.page-header h1 {
+  margin-bottom: 8px;
+
+  font-size: 30px;
+
+  color: #152d4b;
+}
+
+.page-header p {
+  color: #718198;
+
+  font-size: 14px;
+}
+
+
+/* =========================
+   SALDO
+========================= */
+
+.current-balance {
+  padding: 15px 20px;
+
+  background: white;
+
+  border: 1px solid #e1e8ef;
+
+  border-radius: 10px;
+
+  box-shadow: 0 3px 12px rgba(20,55,90,.05);
+
+  text-align: right;
+}
+
+.current-balance span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #718198;
+
+  font-size: 12px;
+}
+
+.current-balance strong {
+  font-size: 20px;
+
+  color: #152d4b;
+}
+
+
+/* =========================
+   RICERCA
+========================= */
+
+.search-card {
+  display: flex;
+
+  align-items: flex-end;
+
+  gap: 15px;
+
+  margin-bottom: 35px;
+
+  padding: 25px;
+
+  background: white;
+
+  border: 1px solid #e1e8ef;
+
+  border-radius: 12px;
+
+  box-shadow: 0 3px 15px rgba(20,55,90,.05);
+}
+
+.form-group {
+  flex: 1;
+
+  margin: 0;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #304967;
+
+  font-size: 14px;
+
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+
+  padding: 12px;
+
+  border: 1px solid #d5dfe8;
+
+  border-radius: 7px;
+
+  background: white;
+
+  color: #152d4b;
+
+  font-size: 15px;
+
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: #1769aa;
+
+  box-shadow: 0 0 0 3px rgba(23,105,170,.08);
+}
+
+
+/* =========================
+   BOTTONI
+========================= */
+
+.btn-primary,
+.btn-export {
+  border: none;
+
+  padding: 12px 20px;
+
+  border-radius: 7px;
+
+  font-weight: bold;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition: .2s;
+}
+
+.btn-primary {
+  background: #1769aa;
+
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #125589;
+}
+
+.btn-export {
+  background: #198754;
+
+  color: white;
+}
+
+.btn-export:hover {
+  background: #157347;
+}
+
+
+/* =========================
+   RISULTATI HEADER
+========================= */
+
+.results-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 15px;
+}
+
+.results-header h2 {
+  margin-bottom: 5px;
+
+  color: #152d4b;
+}
+
+.results-header p {
+  color: #718198;
+
+  font-size: 14px;
+}
+
+.result-count {
+  padding: 8px 13px;
+
+  background: #e8f2fb;
+
+  color: #1769aa;
+
+  border-radius: 20px;
+
+  font-size: 13px;
+
+  font-weight: bold;
+}
+
+
+/* =========================
+   TABELLA
+========================= */
+
+.table-card {
+  overflow-x: auto;
+
+  background: white;
+
+  border: 1px solid #e1e8ef;
+
+  border-radius: 12px;
+
+  box-shadow: 0 3px 15px rgba(20,55,90,.05);
+}
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 16px;
+
+  text-align: left;
+
+  border-bottom: 1px solid #edf0f3;
+}
+
+th {
+  background: #f7f9fb;
+
+  color: #555;
+
+  font-size: 13px;
+}
+
+td {
+  color: #304967;
+
+  font-size: 14px;
+}
+
+td small {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #999;
+}
+
+
+/* =========================
+   CATEGORIA
+========================= */
+
+.category {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.category-icon {
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background: #eef1f4;
+
+  font-weight: bold;
+}
+
+.entrata-icon {
+  background: #e8f6ee;
+
+  color: #159447;
+}
+
+.uscita-icon {
+  background: #fcecec;
+
+  color: #d93636;
+}
+
+
+/* =========================
+   IMPORTI
+========================= */
+
+.entrata {
+  color: #159447;
+
+  font-weight: bold;
+}
+
+.uscita {
+  color: #d93636;
+
+  font-weight: bold;
+}
+
+
+/* =========================
+   DETTAGLI
+========================= */
+
+.btn-detail {
+  display: inline-block;
+
+  padding: 8px 12px;
+
+  background: #1769aa;
+
+  color: white;
+
+  border-radius: 6px;
+
+  font-size: 13px;
+
+  text-decoration: none;
+
+  transition: .2s;
+}
+
+.btn-detail:hover {
+  background: #125589;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 950px) {
+
+  .sidebar {
+    width: 220px;
+  }
+
+  .main-content {
+    width: calc(100% - 220px);
+
+    margin-left: 220px;
+
+    padding: 28px;
+  }
+
+}
+
+
+@media (max-width: 800px) {
+
+  .sidebar {
+    width: 70px;
+  }
+
+  .logo-text,
+  .menu-item span {
+    display: none;
+  }
+
+  .logo {
+    justify-content: center;
+
+    padding: 0;
+  }
+
+  .menu-item {
+    justify-content: center;
+
+    padding: 0 !important;
+  }
+
+  .main-content {
+    width: calc(100% - 70px);
+
+    margin-left: 70px;
+
+    padding: 20px;
+  }
+
+  .user-profile-link {
+    display: none;
+  }
+
+  .page-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 15px;
+  }
+
+  .current-balance {
+    text-align: left;
+  }
+
+  .search-card {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .search-card button {
+    width: 100%;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .results-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 10px;
+  }
+
+}

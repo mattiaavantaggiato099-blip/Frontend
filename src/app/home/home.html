@@ -1,0 +1,465 @@
+<div class="bank-app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- LOGO -->
+    <div class="logo">
+      <div class="logo-icon">
+        <i class="fa-solid fa-building-columns"></i>
+      </div>
+
+      <div class="logo-text">
+        <h2>Banca Delle Canarie</h2>
+        <span>LA TUA BANCA, SEMPRE CON TE</span>
+      </div>
+    </div>
+
+    <!-- MENU -->
+    <nav class="sidebar-menu">
+
+      <a class="menu-item active">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+
+      <a routerLink="/movimenti" routerLinkActive="active" class="menu-item">
+        <i class="fa-solid fa-receipt"></i>
+        <span>Movimenti</span>
+      </a>
+
+      <a routerLink="/bonifico" routerLinkActive="active" class="menu-item">
+        <i class="fa-solid fa-right-left"></i>
+        <span>Bonifico</span>
+      </a>
+
+      <a routerLink="/ricarica" routerLinkActive="active" class="menu-item">
+        <i class="fa-solid fa-mobile-screen-button"></i>
+        <span>Ricarica cellulare</span>
+      </a>
+
+      <a routerLink="/ricercaCategoria" routerLinkActive="active" class="menu-item">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span>Ricerca per categoria</span>
+      </a>
+
+      <a routerLink="/ricercaDate" routerLinkActive="active" class="menu-item">
+        <i class="fa-regular fa-calendar"></i>
+        <span>Ricerca per date</span>
+      </a>
+
+      <div class="separator"></div>
+
+      <a
+         class="menu-item"
+         routerLink="/profilo"
+        routerLinkActive="active"
+            >
+     <i class="fa-regular fa-user"></i>
+    <span>Profilo</span>
+        </a>
+      
+    <a routerLink="/modifica-password" routerLinkActive="active" class="menu-item">
+        <i class="fa-solid fa-lock"></i>
+        <span>Modifica password</span>
+    </a>
+
+      <div class="separator"></div>
+
+      <a routerLink="/conto-tariffe" routerLinkActive="active" class="menu-item">
+        <i class="fa-regular fa-credit-card"></i>
+        <span>Conto e tariffe</span>
+      </a>
+
+      <div class="separator"></div>
+
+      <a routerLink="/logout" routerLinkActive="active" class="menu-item">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+
+    </nav>
+
+  </aside>
+
+
+  <!-- CONTENUTO PRINCIPALE -->
+  <main class="main-content">
+
+    <!-- HEADER -->
+    <header class="topbar">
+
+      <div></div>
+
+      <div class="user-area">
+
+        <div class="notification">
+          <i class="fa-regular fa-bell"></i>
+          <span class="notification-dot"></span>
+        </div>
+
+        <div class="user-avatar">
+          <i class="fa-solid fa-user"></i>
+        </div>
+
+        <strong>Francesco Pasetto</strong>
+
+        <i class="fa-solid fa-chevron-down arrow"></i>
+
+      </div>
+
+    </header>
+
+
+    <!-- DASHBOARD -->
+    <section class="dashboard">
+
+      <!-- BENVENUTO -->
+      <div class="welcome">
+
+        <div>
+          <h1>Ciao Francesco,</h1>
+          <p>Benvenuto nella tua area personale</p>
+        </div>
+
+        <div class="current-date">
+          <span>Lunedì 21 Settembre 2026</span>
+          <i class="fa-regular fa-calendar"></i>
+        </div>
+
+      </div>
+
+
+      <!-- SALDO + AZIONI -->
+      <div class="first-row">
+
+        <!-- SALDO -->
+        <div class="balance-card">
+
+          <div class="balance-icon">
+            <i class="fa-regular fa-credit-card"></i>
+          </div>
+
+          <div class="balance-content">
+
+            <span class="balance-label">
+              Saldo disponibile
+            </span>
+
+            <h2>€ 2.487,32</h2>
+
+            <p>
+              Conto corrente n. 1234567890
+              <i class="fa-solid fa-circle-info"></i>
+            </p>
+
+          </div>
+
+          <i class="fa-solid fa-chevron-right balance-arrow"></i>
+
+        </div>
+
+
+        <!-- AZIONI RAPIDE -->
+        <div class="quick-card">
+
+          <h2>Azioni rapide</h2>
+
+          <div class="quick-grid">
+
+            <div class="quick-item">
+              <i class="fa-solid fa-right-left"></i>
+              <span>Bonifico</span>
+            </div>
+
+            <div class="quick-item">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+              <span>Ricarica cellulare</span>
+            </div>
+
+            <div class="quick-item">
+              <i class="fa-solid fa-list"></i>
+              <span>Movimenti</span>
+            </div>
+
+            <div class="quick-item">
+              <i class="fa-solid fa-tag"></i>
+              <span>Ricerca per categoria</span>
+            </div>
+
+            <div class="quick-item">
+              <i class="fa-regular fa-calendar"></i>
+              <span>Ricerca per date</span>
+            </div>
+
+            <div class="quick-item">
+              <i class="fa-solid fa-lock"></i>
+              <span>Modifica password</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- MOVIMENTI + CONTO -->
+      <div class="second-row">
+
+        <!-- MOVIMENTI -->
+        <div class="card movements-card">
+
+          <div class="card-header">
+
+            <h2>Movimenti recenti</h2>
+
+            <a>
+              Vedi tutti
+              <i class="fa-solid fa-chevron-right"></i>
+            </a>
+
+          </div>
+
+
+          <!-- STIPENDIO -->
+          <div class="movement">
+
+            <div class="movement-icon income">
+              <i class="fa-solid fa-arrow-up"></i>
+            </div>
+
+            <div class="movement-info">
+              <strong>Stipendio</strong>
+              <span>20/09/2026</span>
+            </div>
+
+            <strong class="amount income-text">
+              + € 1.250,00
+            </strong>
+
+          </div>
+
+
+          <!-- ESSELUNGA -->
+          <div class="movement">
+
+            <div class="movement-icon expense">
+              <i class="fa-solid fa-arrow-down"></i>
+            </div>
+
+            <div class="movement-info">
+              <strong>Esselunga</strong>
+              <span>18/09/2026</span>
+            </div>
+
+            <strong class="amount expense-text">
+              - € 48,76
+            </strong>
+
+          </div>
+
+
+          <!-- ENI -->
+          <div class="movement">
+
+            <div class="movement-icon expense">
+              <i class="fa-solid fa-arrow-down"></i>
+            </div>
+
+            <div class="movement-info">
+              <strong>Eni</strong>
+              <span>16/09/2026</span>
+            </div>
+
+            <strong class="amount expense-text">
+              - € 60,00
+            </strong>
+
+          </div>
+
+
+          <!-- AMAZON -->
+          <div class="movement">
+
+            <div class="movement-icon expense">
+              <i class="fa-solid fa-arrow-down"></i>
+            </div>
+
+            <div class="movement-info">
+              <strong>Amazon</strong>
+              <span>14/09/2026</span>
+            </div>
+
+            <strong class="amount expense-text">
+              - € 34,99
+            </strong>
+
+          </div>
+
+
+          <!-- RICARICA -->
+          <div class="movement">
+
+            <div class="movement-icon income">
+              <i class="fa-solid fa-arrow-up"></i>
+            </div>
+
+            <div class="movement-info">
+              <strong>Ricarica cellulare</strong>
+              <span>12/09/2026</span>
+            </div>
+
+            <strong class="amount income-text">
+              + € 10,00
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <!-- COLONNA DESTRA -->
+        <div class="right-column">
+
+          <!-- CONTO -->
+          <div class="card account-card">
+
+            <div class="card-title">
+              <i class="fa-regular fa-credit-card"></i>
+              <h2>Il tuo conto</h2>
+            </div>
+
+            <div class="account-data">
+
+              <span>Numero conto</span>
+              <strong>1234567890</strong>
+
+              <span>Intestatario</span>
+              <strong>Francesco Pasetto</strong>
+
+              <span>IBAN</span>
+              <strong>IT12X020081234567890123456789</strong>
+
+            </div>
+
+            <button>
+              Visualizza dettagli conto
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+          </div>
+
+
+          <!-- TARIFFE -->
+          <div class="card fees-card">
+
+            <div class="card-title">
+              <i class="fa-regular fa-file-lines"></i>
+              <h2>Tariffe e condizioni</h2>
+            </div>
+
+            <p>
+              Consulta le condizioni del tuo conto corrente,
+              le commissioni e le tariffe applicate.
+            </p>
+
+            <button>
+              Scopri le tariffe
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- BONIFICO + RICARICA -->
+      <div class="services-row">
+
+        <!-- BONIFICO -->
+        <div class="service-card transfer-card">
+
+          <div class="service-main-icon">
+            <i class="fa-solid fa-right-left"></i>
+          </div>
+
+          <div class="service-content">
+
+            <h2>Effettua un bonifico</h2>
+
+            <p>
+              Invia denaro in modo semplice e sicuro,
+              anche a banche diverse.
+            </p>
+
+            <button>
+              Nuovo bonifico
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+          </div>
+
+          <div class="service-decoration">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+            <i class="fa-regular fa-credit-card"></i>
+          </div>
+
+        </div>
+
+
+        <!-- RICARICA -->
+        <div class="service-card recharge-card">
+
+          <div class="service-main-icon">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+          </div>
+
+          <div class="service-content">
+
+            <h2>Ricarica il tuo cellulare</h2>
+
+            <p>
+              Ricarica in pochi secondi il tuo numero
+              o quello di un tuo contatto.
+            </p>
+
+            <button>
+              Ricarica ora
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+          </div>
+
+          <div class="phone-decoration">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+      <span>
+        <strong>BancaTerreVenete</strong>
+        · La tua banca, sempre con te
+      </span>
+
+      <div>
+        <a>Privacy</a>
+        <a>Sicurezza</a>
+        <a>Contatti</a>
+      </div>
+
+    </footer>
+
+  </main>
+
+</div>

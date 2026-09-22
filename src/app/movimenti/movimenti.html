@@ -1,0 +1,457 @@
+<div class="bank-app">
+
+  <!-- =========================
+       SIDEBAR
+  ========================== -->
+
+  <aside class="sidebar">
+
+    <!-- LOGO -->
+    <div class="logo">
+      <div class="logo-icon">
+        <i class="fa-solid fa-building-columns"></i>
+      </div>
+
+      <div class="logo-text">
+        <h2>Gestione Conti</h2>
+        <span>LA TUA BANCA, SEMPRE CON TE</span>
+      </div>
+    </div>
+
+    <!-- MENU -->
+    <nav class="sidebar-menu">
+
+      <a
+        routerLink="/home"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="menu-item"
+      >
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+
+      <a
+        routerLink="/movimenti"
+        routerLinkActive="active"
+        class="menu-item"
+      >
+        <i class="fa-solid fa-receipt"></i>
+        <span>Movimenti</span>
+      </a>
+
+      <a
+        routerLink="/bonifico"
+        routerLinkActive="active"
+        class="menu-item"
+      >
+        <i class="fa-solid fa-right-left"></i>
+        <span>Bonifico</span>
+      </a>
+
+      <a
+        routerLink="/ricarica"
+        routerLinkActive="active"
+        class="menu-item"
+      >
+        <i class="fa-solid fa-mobile-screen-button"></i>
+        <span>Ricarica cellulare</span>
+      </a>
+
+      <a
+        routerLink="/ricerca-categoria"
+        routerLinkActive="active"
+        class="menu-item"
+      >
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span>Ricerca per categoria</span>
+      </a>
+
+      <a
+        routerLink="/ricerca-date"
+        routerLinkActive="active"
+        class="menu-item"
+      >
+        <i class="fa-regular fa-calendar"></i>
+        <span>Ricerca per date</span>
+      </a>
+
+      <div class="separator"></div>
+
+      <a
+        routerLink="/profilo"
+        routerLinkActive="active"
+        class="menu-item"
+      >
+        <i class="fa-regular fa-user"></i>
+        <span>Profilo</span>
+      </a>
+
+      <a
+        routerLink="/modifica-password"
+        routerLinkActive="active"
+        class="menu-item"
+      >
+        <i class="fa-solid fa-lock"></i>
+        <span>Modifica password</span>
+      </a>
+
+      <div class="separator"></div>
+
+      <a
+        routerLink="/conto"
+        routerLinkActive="active"
+        class="menu-item"
+      >
+        <i class="fa-regular fa-credit-card"></i>
+        <span>Conto e tariffe</span>
+      </a>
+
+      <div class="separator"></div>
+
+      <!-- LOGOUT -->
+      <a
+        routerLink="/login"
+        class="menu-item logout"
+      >
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+
+      <!-- UTENTE -->
+      <a
+        routerLink="/profilo"
+        class="user-profile-link"
+        title="Vai al profilo"
+      >
+        <div class="user-avatar">
+          <i class="fa-solid fa-user"></i>
+        </div>
+
+        <strong>Francesco Pasetto</strong>
+
+        <i class="fa-solid fa-chevron-down arrow"></i>
+      </a>
+
+    </nav>
+
+  </aside>
+
+
+  <!-- =========================
+       CONTENUTO PRINCIPALE
+  ========================== -->
+
+  <main class="main-content">
+
+    <div class="page-header">
+
+      <div>
+        <h1>Movimenti</h1>
+
+        <p>
+          Visualizza gli ultimi movimenti del tuo conto corrente.
+        </p>
+      </div>
+
+      <div class="current-balance">
+
+        <span>Saldo attuale</span>
+
+        <strong>
+          € 2.450,75
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         RICERCA
+    ========================== -->
+
+    <div class="search-card">
+
+      <div class="form-group">
+
+        <label for="numero">
+          Numero di movimenti
+        </label>
+
+        <input
+          id="numero"
+          type="number"
+          min="1"
+          placeholder="Es. 10"
+        >
+
+      </div>
+
+      <button class="btn-primary">
+        Cerca
+      </button>
+
+      <button class="btn-export">
+        ↓ Esporta CSV
+      </button>
+
+    </div>
+
+
+    <!-- =========================
+         RISULTATI
+    ========================== -->
+
+    <div class="results-header">
+
+      <div>
+        <h2>Risultati</h2>
+
+        <p>
+          Ultimi movimenti ordinati dal più recente.
+        </p>
+      </div>
+
+      <span class="result-count">
+        5 movimenti
+      </span>
+
+    </div>
+
+
+    <!-- =========================
+         TABELLA
+    ========================== -->
+
+    <div class="table-card">
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>Data</th>
+            <th>Categoria</th>
+            <th>Importo</th>
+            <th>Saldo</th>
+            <th>Dettaglio</th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          <tr>
+
+            <td>
+              <strong>20/09/2026</strong>
+              <small>14:32</small>
+            </td>
+
+            <td>
+              <div class="category">
+
+                <div class="category-icon entrata-icon">
+                  ↑
+                </div>
+
+                <span>
+                  Bonifico Entrata
+                </span>
+
+              </div>
+            </td>
+
+            <td class="entrata">
+              + € 500,00
+            </td>
+
+            <td>
+              € 2.450,75
+            </td>
+
+            <td>
+              <a
+                routerLink="/movimento/1"
+                class="btn-detail"
+              >
+                Dettagli
+              </a>
+            </td>
+
+          </tr>
+
+
+          <tr>
+
+            <td>
+              <strong>18/09/2026</strong>
+              <small>10:15</small>
+            </td>
+
+            <td>
+              <div class="category">
+
+                <div class="category-icon uscita-icon">
+                  ↓
+                </div>
+
+                <span>
+                  Ricarica
+                </span>
+
+              </div>
+            </td>
+
+            <td class="uscita">
+              - € 20,00
+            </td>
+
+            <td>
+              € 1.950,75
+            </td>
+
+            <td>
+              <a
+                routerLink="/movimento/2"
+                class="btn-detail"
+              >
+                Dettagli
+              </a>
+            </td>
+
+          </tr>
+
+
+          <tr>
+
+            <td>
+              <strong>15/09/2026</strong>
+              <small>17:20</small>
+            </td>
+
+            <td>
+              <div class="category">
+
+                <div class="category-icon uscita-icon">
+                  ↓
+                </div>
+
+                <span>
+                  Pagamento Utenze
+                </span>
+
+              </div>
+            </td>
+
+            <td class="uscita">
+              - € 80,00
+            </td>
+
+            <td>
+              € 1.970,75
+            </td>
+
+            <td>
+              <a
+                routerLink="/movimento/3"
+                class="btn-detail"
+              >
+                Dettagli
+              </a>
+            </td>
+
+          </tr>
+
+
+          <tr>
+
+            <td>
+              <strong>12/09/2026</strong>
+              <small>11:45</small>
+            </td>
+
+            <td>
+              <div class="category">
+
+                <div class="category-icon entrata-icon">
+                  ↑
+                </div>
+
+                <span>
+                  Versamento Bancomat
+                </span>
+
+              </div>
+            </td>
+
+            <td class="entrata">
+              + € 300,00
+            </td>
+
+            <td>
+              € 2.050,75
+            </td>
+
+            <td>
+              <a
+                routerLink="/movimento/4"
+                class="btn-detail"
+              >
+                Dettagli
+              </a>
+            </td>
+
+          </tr>
+
+
+          <tr>
+
+            <td>
+              <strong>10/09/2026</strong>
+              <small>09:00</small>
+            </td>
+
+            <td>
+              <div class="category">
+
+                <div class="category-icon">
+                  €
+                </div>
+
+                <span>
+                  Apertura Conto
+                </span>
+
+              </div>
+            </td>
+
+            <td>
+              € 0,00
+            </td>
+
+            <td>
+              € 1.750,75
+            </td>
+
+            <td>
+              <a
+                routerLink="/movimento/5"
+                class="btn-detail"
+              >
+                Dettagli
+              </a>
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </main>
+
+</div>
