@@ -1,0 +1,310 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #1f2937;
+}
+
+
+/* =========================
+   NAVBAR
+   ========================= */
+
+.navbar {
+    height: 70px;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 45px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #1d4ed8;
+}
+
+.nav-links {
+    display: flex;
+    gap: 35px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #374151;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: #1d4ed8;
+}
+
+.logout {
+    border: none;
+    background: #ef4444;
+    color: white;
+
+    padding: 10px 20px;
+    border-radius: 8px;
+
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.logout:hover {
+    background: #dc2626;
+}
+
+
+/* =========================
+   CONTAINER
+   ========================= */
+
+.container {
+    max-width: 1050px;
+    margin: 45px auto;
+    padding: 0 25px;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+.page-header {
+    margin-bottom: 30px;
+}
+
+.page-header h1 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.page-header p {
+    color: #6b7280;
+    font-size: 15px;
+}
+
+
+/* =========================
+   MOVEMENT CARD
+   ========================= */
+
+.movement-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+
+    border: 1px solid #e5e7eb;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+
+/* TOP */
+
+.movement-top {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.movement-icon {
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eff6ff;
+    color: #2563eb;
+
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.movement-title {
+    flex: 1;
+}
+
+.movement-title h2 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.movement-title span {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.amount {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.amount.negative {
+    color: #dc2626;
+}
+
+.amount.positive {
+    color: #16a34a;
+}
+
+
+/* SEPARATOR */
+
+.separator {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 30px 0;
+}
+
+
+/* =========================
+   DETAILS
+   ========================= */
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px 40px;
+}
+
+.detail {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.label {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.value {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+}
+
+
+/* =========================
+   STATUS
+   ========================= */
+
+.status {
+    width: fit-content;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.status.completed {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+
+/* =========================
+   BUTTONS
+   ========================= */
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 30px;
+}
+
+.btn {
+    border: none;
+    border-radius: 9px;
+
+    padding: 13px 22px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.btn.primary {
+    background: #1d4ed8;
+    color: white;
+}
+
+.btn.primary:hover {
+    background: #1e40af;
+}
+
+.btn.secondary {
+    background: white;
+    color: #374151;
+
+    border: 1px solid #d1d5db;
+}
+
+.btn.secondary:hover {
+    background: #f3f4f6;
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .container {
+        margin: 30px auto;
+    }
+
+    .movement-top {
+        flex-wrap: wrap;
+    }
+
+    .amount {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+

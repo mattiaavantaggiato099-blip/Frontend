@@ -1,0 +1,1315 @@
+<div class="bank-layout">
+
+  <!-- =====================================================
+       SIDEBAR
+  ====================================================== -->
+
+  <aside class="sidebar">
+
+    <!-- LOGO -->
+    <div class="logo-area">
+
+      <div class="logo-icon">
+        <i class="fa-solid fa-building-columns"></i>
+      </div>
+
+      <div class="logo-text">
+
+        <strong>BancaTerreVenete</strong>
+
+        <span>
+          LA TUA BANCA, SEMPRE CON TE
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- MENU -->
+    <nav class="sidebar-menu">
+
+      <!-- HOME -->
+      <a
+        routerLink="/home"
+        class="menu-item"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+
+        <i class="fa-solid fa-house"></i>
+
+        <span>Home</span>
+
+      </a>
+
+
+      <!-- MOVIMENTI -->
+      <a
+        routerLink="/movimenti"
+        class="menu-item"
+        routerLinkActive="active"
+      >
+
+        <i class="fa-solid fa-receipt"></i>
+
+        <span>Movimenti</span>
+
+      </a>
+
+
+      <!-- BONIFICO -->
+      <a
+        routerLink="/bonifico"
+        class="menu-item"
+        routerLinkActive="active"
+      >
+
+        <i class="fa-solid fa-right-left"></i>
+
+        <span>Bonifico</span>
+
+      </a>
+
+
+      <!-- RICARICA -->
+      <a
+        routerLink="/ricarica"
+        class="menu-item"
+        routerLinkActive="active"
+      >
+
+        <i class="fa-solid fa-mobile-screen-button"></i>
+
+        <span>Ricarica cellulare</span>
+
+      </a>
+
+
+      <!-- RICERCA CATEGORIA -->
+      <a
+        routerLink="/ricerca-categoria"
+        class="menu-item"
+        routerLinkActive="active"
+      >
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <span>Ricerca per categoria</span>
+
+      </a>
+
+
+      <!-- RICERCA DATA -->
+      <a
+        routerLink="/ricerca-data"
+        class="menu-item"
+        routerLinkActive="active"
+      >
+
+        <i class="fa-regular fa-calendar"></i>
+
+        <span>Ricerca per date</span>
+
+      </a>
+
+
+      <div class="menu-separator"></div>
+
+
+      <!-- PROFILO -->
+      <a
+        routerLink="/profilo"
+        class="menu-item"
+        routerLinkActive="active"
+      >
+
+        <i class="fa-regular fa-user"></i>
+
+        <span>Profilo</span>
+
+      </a>
+
+
+      <!-- PASSWORD -->
+      <a
+        routerLink="/modifica-password"
+        class="menu-item"
+        routerLinkActive="active"
+      >
+
+        <i class="fa-solid fa-lock"></i>
+
+        <span>Modifica password</span>
+
+      </a>
+
+
+      <div class="menu-separator"></div>
+
+
+      <!-- CONTO -->
+      <a
+        routerLink="/conto-tariffe"
+        class="menu-item"
+        routerLinkActive="active"
+      >
+
+        <i class="fa-regular fa-credit-card"></i>
+
+        <span>Conto e tariffe</span>
+
+      </a>
+
+
+      <div class="menu-separator"></div>
+
+
+      <!-- LOGOUT -->
+      <a
+        routerLink="/login"
+        class="menu-item logout"
+      >
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        <span>Logout</span>
+
+      </a>
+
+    </nav>
+
+
+    <!-- UTENTE -->
+    <a
+      routerLink="/profilo"
+      class="sidebar-user"
+    >
+
+      <div class="user-avatar">
+
+        <i class="fa-solid fa-user"></i>
+
+      </div>
+
+      <div class="user-name">
+
+        <strong>Francesco Pasetto</strong>
+
+        <span>Visualizza profilo</span>
+
+      </div>
+
+      <i class="fa-solid fa-chevron-down"></i>
+
+    </a>
+
+  </aside>
+
+
+
+  <!-- =====================================================
+       PAGINA PRINCIPALE
+  ====================================================== -->
+
+  <main class="main-content">
+
+
+    <!-- =================================================
+         HEADER
+    ================================================== -->
+
+    <header class="page-header">
+
+      <div>
+
+        <h1>Movimenti</h1>
+
+        <p>
+          Consulta e gestisci i movimenti del tuo conto corrente
+        </p>
+
+      </div>
+
+
+      <div class="date-header">
+
+        <span>
+          Lunedì 21 Settembre 2026
+        </span>
+
+        <i class="fa-regular fa-calendar"></i>
+
+      </div>
+
+    </header>
+
+
+
+    <!-- =================================================
+         TOP CARDS
+    ================================================== -->
+
+    <section class="top-cards">
+
+
+      <!-- SALDO -->
+
+      <div class="balance-card">
+
+        <div class="balance-icon">
+
+          <i class="fa-regular fa-credit-card"></i>
+
+        </div>
+
+
+        <div class="balance-content">
+
+          <span class="balance-label">
+            Saldo disponibile
+          </span>
+
+          <strong>
+            € {{ saldo }}
+          </strong>
+
+          <small>
+            Conto corrente n. 1234567890
+            <i class="fa-solid fa-circle-info"></i>
+          </small>
+
+        </div>
+
+
+        <i class="fa-solid fa-chevron-right balance-arrow"></i>
+
+      </div>
+
+
+
+      <!-- GRAFICO -->
+
+      <div class="chart-card">
+
+        <div class="card-heading">
+
+          <div>
+
+            <h2>
+              <i class="fa-solid fa-right-left"></i>
+              Andamento del conto
+            </h2>
+
+          </div>
+
+          <div class="positive-change">
+
+            <strong>
+              + 1.248,76 €
+            </strong>
+
+            <span>
+              rispetto a 7 giorni fa
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- GRAFICO SVG -->
+
+        <div class="line-chart">
+
+          <div class="y-label y1">4.000 €</div>
+          <div class="y-label y2">3.000 €</div>
+          <div class="y-label y3">2.000 €</div>
+          <div class="y-label y4">1.000 €</div>
+          <div class="y-label y5">0 €</div>
+
+
+          <svg
+            viewBox="0 0 600 190"
+            preserveAspectRatio="none"
+          >
+
+            <!-- griglia -->
+
+            <line
+              x1="50"
+              y1="25"
+              x2="590"
+              y2="25"
+              class="grid-line"
+            />
+
+            <line
+              x1="50"
+              y1="60"
+              x2="590"
+              y2="60"
+              class="grid-line"
+            />
+
+            <line
+              x1="50"
+              y1="95"
+              x2="590"
+              y2="95"
+              class="grid-line"
+            />
+
+            <line
+              x1="50"
+              y1="130"
+              x2="590"
+              y2="130"
+              class="grid-line"
+            />
+
+            <line
+              x1="50"
+              y1="165"
+              x2="590"
+              y2="165"
+              class="grid-line"
+            />
+
+
+            <!-- area -->
+
+            <polygon
+              points="
+                50,105
+                125,120
+                200,88
+                275,85
+                350,108
+                425,98
+                500,72
+                575,82
+                575,165
+                50,165
+              "
+              class="chart-area"
+            />
+
+
+            <!-- linea -->
+
+            <polyline
+              points="
+                50,105
+                125,120
+                200,88
+                275,85
+                350,108
+                425,98
+                500,72
+                575,82
+              "
+              class="chart-line"
+            />
+
+
+            <!-- punti -->
+
+            <circle cx="50" cy="105" r="4"></circle>
+
+            <circle cx="125" cy="120" r="4"></circle>
+
+            <circle cx="200" cy="88" r="4"></circle>
+
+            <circle cx="275" cy="85" r="4"></circle>
+
+            <circle cx="350" cy="108" r="4"></circle>
+
+            <circle cx="425" cy="98" r="4"></circle>
+
+            <circle cx="500" cy="72" r="4"></circle>
+
+            <circle cx="575" cy="82" r="4"></circle>
+
+          </svg>
+
+
+          <div class="chart-dates">
+
+            <span>15 Set</span>
+            <span>16 Set</span>
+            <span>17 Set</span>
+            <span>18 Set</span>
+            <span>19 Set</span>
+            <span>20 Set</span>
+            <span>21 Set</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- CATEGORIE -->
+
+      <div class="categories-card">
+
+        <h2>
+          <i class="fa-solid fa-chart-pie"></i>
+          Categorie di spesa
+        </h2>
+
+
+        <div class="category-content">
+
+
+          <!-- DONUT -->
+
+          <div class="donut-chart">
+
+            <div class="donut-center">
+
+              <span>
+                Totale uscite
+              </span>
+
+              <strong>
+                1.245,32 €
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <!-- LEGENDA -->
+
+          <div class="category-list">
+
+
+            <div class="category-item">
+
+              <span class="category-dot blue"></span>
+
+              <span>Utenze</span>
+
+              <strong>32,4%</strong>
+
+              <small>403,20 €</small>
+
+            </div>
+
+
+            <div class="category-item">
+
+              <span class="category-dot green"></span>
+
+              <span>Alimentari</span>
+
+              <strong>18,7%</strong>
+
+              <small>232,50 €</small>
+
+            </div>
+
+
+            <div class="category-item">
+
+              <span class="category-dot orange"></span>
+
+              <span>Trasporti</span>
+
+              <strong>14,2%</strong>
+
+              <small>176,80 €</small>
+
+            </div>
+
+
+            <div class="category-item">
+
+              <span class="category-dot purple"></span>
+
+              <span>Intrattenimento</span>
+
+              <strong>12,6%</strong>
+
+              <small>157,00 €</small>
+
+            </div>
+
+
+            <div class="category-item">
+
+              <span class="category-dot grey"></span>
+
+              <span>Altro</span>
+
+              <strong>22,1%</strong>
+
+              <small>275,82 €</small>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         FILTRI
+    ================================================== -->
+
+    <section class="filters-card">
+
+
+      <div class="filter-group">
+
+        <label>
+          Numero di movimenti
+        </label>
+
+        <select>
+
+          <option>Ultimi 20</option>
+
+          <option>Ultimi 10</option>
+
+          <option>Ultimi 30</option>
+
+          <option>Ultimi 50</option>
+
+        </select>
+
+      </div>
+
+
+      <div class="filter-group">
+
+        <label>
+          Categoria
+        </label>
+
+        <select>
+
+          <option>Tutte le categorie</option>
+
+          <option>Bonifico Entrata</option>
+
+          <option>Bonifico Uscita</option>
+
+          <option>Stipendio</option>
+
+          <option>Pagamento Utenze</option>
+
+          <option>Ricarica</option>
+
+          <option>Prelievo contanti</option>
+
+          <option>Shopping</option>
+
+          <option>Versamento</option>
+
+        </select>
+
+      </div>
+
+
+      <div class="filter-group">
+
+        <label>
+          Data inizio
+        </label>
+
+        <div class="date-input">
+
+          <input
+            type="date"
+            value="2026-09-01"
+          />
+
+          <i class="fa-regular fa-calendar"></i>
+
+        </div>
+
+      </div>
+
+
+      <div class="filter-group">
+
+        <label>
+          Data fine
+        </label>
+
+        <div class="date-input">
+
+          <input
+            type="date"
+            value="2026-09-21"
+          />
+
+          <i class="fa-regular fa-calendar"></i>
+
+        </div>
+
+      </div>
+
+
+      <button class="search-button">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        Cerca movimenti
+
+      </button>
+
+
+      <button class="export-button">
+
+        <i class="fa-solid fa-download"></i>
+
+        Esporta in CSV
+
+      </button>
+
+    </section>
+
+
+
+    <!-- =================================================
+         TABELLA MOVIMENTI
+    ================================================== -->
+
+    <section class="movements-card">
+
+
+      <div class="movements-header">
+
+        <div>
+
+          <h2>
+
+            <i class="fa-regular fa-file-lines"></i>
+
+            Elenco movimenti
+
+          </h2>
+
+        </div>
+
+
+        <span>
+          20 movimenti trovati
+        </span>
+
+      </div>
+
+
+
+      <div class="table-wrapper">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>
+                Data
+                <i class="fa-solid fa-sort"></i>
+              </th>
+
+              <th>
+                Descrizione
+                <i class="fa-solid fa-sort"></i>
+              </th>
+
+              <th>
+                Categoria
+                <i class="fa-solid fa-sort"></i>
+              </th>
+
+              <th>
+                Tipo
+                <i class="fa-solid fa-sort"></i>
+              </th>
+
+              <th>
+                Importo
+                <i class="fa-solid fa-sort"></i>
+              </th>
+
+              <th>
+                Saldo
+                <i class="fa-solid fa-sort"></i>
+              </th>
+
+              <th>
+                Azioni
+              </th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody>
+
+
+            <!-- MOVIMENTO 1 -->
+
+            <tr>
+
+              <td>
+                <strong>21/09/2026</strong>
+                <small>10:24</small>
+              </td>
+
+              <td>
+                Bonifico disposto a favore di Marco Bianchi
+              </td>
+
+              <td>
+
+                <span class="category-badge transfer">
+
+                  <i class="fa-solid fa-right-left"></i>
+
+                  Bonifico Uscita
+
+                </span>
+
+              </td>
+
+              <td>
+
+                <span class="type-badge outgoing">
+                  Uscita
+                </span>
+
+              </td>
+
+              <td class="amount negative">
+                - € 150,00
+              </td>
+
+              <td>
+                € 2.487,32
+              </td>
+
+              <td>
+
+                <a
+                  routerLink="/dettaglio-movimento"
+                  class="detail-button"
+                >
+
+                  <i class="fa-regular fa-eye"></i>
+
+                  Dettagli
+
+                </a>
+
+              </td>
+
+            </tr>
+
+
+
+            <!-- MOVIMENTO 2 -->
+
+            <tr>
+
+              <td>
+                <strong>20/09/2026</strong>
+                <small>15:32</small>
+              </td>
+
+              <td>
+                Stipendio
+              </td>
+
+              <td>
+
+                <span class="category-badge salary">
+
+                  <i class="fa-solid fa-arrow-down"></i>
+
+                  Stipendio
+
+                </span>
+
+              </td>
+
+              <td>
+
+                <span class="type-badge incoming">
+                  Entrata
+                </span>
+
+              </td>
+
+              <td class="amount positive">
+                + € 1.250,00
+              </td>
+
+              <td>
+                € 2.637,32
+              </td>
+
+              <td>
+
+                <a
+                  routerLink="/dettaglio-movimento"
+                  class="detail-button"
+                >
+
+                  <i class="fa-regular fa-eye"></i>
+
+                  Dettagli
+
+                </a>
+
+              </td>
+
+            </tr>
+
+
+
+            <!-- MOVIMENTO 3 -->
+
+            <tr>
+
+              <td>
+                <strong>19/09/2026</strong>
+                <small>09:17</small>
+              </td>
+
+              <td>
+                Pagamento bolletta luce
+              </td>
+
+              <td>
+
+                <span class="category-badge bills">
+
+                  <i class="fa-solid fa-lightbulb"></i>
+
+                  Pagamento Utenze
+
+                </span>
+
+              </td>
+
+              <td>
+
+                <span class="type-badge outgoing">
+                  Uscita
+                </span>
+
+              </td>
+
+              <td class="amount negative">
+                - € 78,50
+              </td>
+
+              <td>
+                € 1.387,32
+              </td>
+
+              <td>
+
+                <a
+                  routerLink="/dettaglio-movimento"
+                  class="detail-button"
+                >
+
+                  <i class="fa-regular fa-eye"></i>
+
+                  Dettagli
+
+                </a>
+
+              </td>
+
+            </tr>
+
+
+
+            <!-- MOVIMENTO 4 -->
+
+            <tr>
+
+              <td>
+                <strong>18/09/2026</strong>
+                <small>18:44</small>
+              </td>
+
+              <td>
+                Ricarica cellulare 3471234567 (TIM)
+              </td>
+
+              <td>
+
+                <span class="category-badge phone">
+
+                  <i class="fa-solid fa-mobile-screen"></i>
+
+                  Ricarica
+
+                </span>
+
+              </td>
+
+              <td>
+
+                <span class="type-badge outgoing">
+                  Uscita
+                </span>
+
+              </td>
+
+              <td class="amount negative">
+                - € 10,00
+              </td>
+
+              <td>
+                € 1.465,82
+              </td>
+
+              <td>
+
+                <a
+                  routerLink="/dettaglio-movimento"
+                  class="detail-button"
+                >
+
+                  <i class="fa-regular fa-eye"></i>
+
+                  Dettagli
+
+                </a>
+
+              </td>
+
+            </tr>
+
+
+
+            <!-- MOVIMENTO 5 -->
+
+            <tr>
+
+              <td>
+                <strong>17/09/2026</strong>
+                <small>12:03</small>
+              </td>
+
+              <td>
+                Prelievo contanti ATM
+              </td>
+
+              <td>
+
+                <span class="category-badge cash">
+
+                  <i class="fa-solid fa-money-bill"></i>
+
+                  Prelievo contanti
+
+                </span>
+
+              </td>
+
+              <td>
+
+                <span class="type-badge outgoing">
+                  Uscita
+                </span>
+
+              </td>
+
+              <td class="amount negative">
+                - € 100,00
+              </td>
+
+              <td>
+                € 1.475,82
+              </td>
+
+              <td>
+
+                <a 
+                  [routerLink]="['/dettaglio-movimento', 1]" 
+               class="detail-button" 
+                        >
+               <i class="fa-regular fa-eye"></i>
+              Dettagli
+              </a>
+
+              </td>
+
+            </tr>
+
+
+
+            <!-- MOVIMENTO 6 -->
+
+            <tr>
+
+              <td>
+                <strong>16/09/2026</strong>
+                <small>14:27</small>
+              </td>
+
+              <td>
+                Bonifico ricevuto da Laura Verdi
+              </td>
+
+              <td>
+
+                <span class="category-badge transfer">
+
+                  <i class="fa-solid fa-right-left"></i>
+
+                  Bonifico Entrata
+
+                </span>
+
+              </td>
+
+              <td>
+
+                <span class="type-badge incoming">
+                  Entrata
+                </span>
+
+              </td>
+
+              <td class="amount positive">
+                + € 300,00
+              </td>
+
+              <td>
+                € 1.575,82
+              </td>
+
+              <td>
+
+                <a
+                  routerLink="/dettaglio-movimento"
+                  class="detail-button"
+                >
+
+                  <i class="fa-regular fa-eye"></i>
+
+                  Dettagli
+
+                </a>
+
+              </td>
+
+            </tr>
+
+
+
+            <!-- MOVIMENTO 7 -->
+
+            <tr>
+
+              <td>
+                <strong>15/09/2026</strong>
+                <small>11:09</small>
+              </td>
+
+              <td>
+                Pagamento Amazon
+              </td>
+
+              <td>
+
+                <span class="category-badge shopping">
+
+                  <i class="fa-solid fa-cart-shopping"></i>
+
+                  Shopping
+
+                </span>
+
+              </td>
+
+              <td>
+
+                <span class="type-badge outgoing">
+                  Uscita
+                </span>
+
+              </td>
+
+              <td class="amount negative">
+                - € 59,90
+              </td>
+
+              <td>
+                € 1.275,82
+              </td>
+
+              <td>
+
+                <a
+                  routerLink="/dettaglio-movimento"
+                  class="detail-button"
+                >
+
+                  <i class="fa-regular fa-eye"></i>
+
+                  Dettagli
+
+                </a>
+
+              </td>
+
+            </tr>
+
+
+
+            <!-- MOVIMENTO 8 -->
+
+            <tr>
+
+              <td>
+                <strong>14/09/2026</strong>
+                <small>16:45</small>
+              </td>
+
+              <td>
+                Versamento bancomat
+              </td>
+
+              <td>
+
+                <span class="category-badge deposit">
+
+                  <i class="fa-solid fa-circle-plus"></i>
+
+                  Versamento
+
+                </span>
+
+              </td>
+
+              <td>
+
+                <span class="type-badge incoming">
+                  Entrata
+                </span>
+
+              </td>
+
+              <td class="amount positive">
+                + € 200,00
+              </td>
+
+              <td>
+                € 1.335,72
+              </td>
+
+              <td>
+
+                <a
+                  routerLink="/dettaglio-movimento"
+                  class="detail-button"
+                >
+
+                  <i class="fa-regular fa-eye"></i>
+
+                  Dettagli
+
+                </a>
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+
+      <!-- PAGINAZIONE -->
+
+      <div class="pagination">
+
+        <span>
+          Visualizzati 1-8 di 20 movimenti
+        </span>
+
+        <div class="pagination-buttons">
+
+          <button disabled>
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+
+          <button class="selected">
+            1
+          </button>
+
+          <button>
+            2
+          </button>
+
+          <button>
+            3
+          </button>
+
+          <button>
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         FOOTER
+    ================================================== -->
+
+    <footer>
+
+      <span>
+
+        <strong>BancaTerreVenete</strong>
+
+        · La tua banca, sempre con te
+
+      </span>
+
+
+      <div>
+
+        <a>Privacy</a>
+
+        <a>Sicurezza</a>
+
+        <a>Contatti</a>
+
+      </div>
+
+    </footer>
+
+  </main>
+
+</div>

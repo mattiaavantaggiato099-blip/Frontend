@@ -1,0 +1,387 @@
+<div class="bank-app">
+
+  <!-- =========================
+       SIDEBAR
+  ========================== -->
+
+  <aside class="sidebar">
+
+    <!-- LOGO -->
+    <div class="logo">
+      <div class="logo-icon">
+        <i class="fa-solid fa-building-columns"></i>
+      </div>
+
+      <div class="logo-text">
+        <h2>Gestione Conti</h2>
+        <span>LA TUA BANCA, SEMPRE CON TE</span>
+      </div>
+    </div>
+
+    <!-- MENU -->
+    <nav class="sidebar-menu">
+
+      <a
+        routerLink="/home"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="menu-item"
+      >
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+
+      <a
+        routerLink="/movimenti"
+        routerLinkActive="active"
+        class="menu-item"
+      >
+        <i class="fa-solid fa-receipt"></i>
+        <span>Movimenti</span>
+      </a>
+
+      <a
+        routerLink="/bonifico"
+        routerLinkActive="active"
+        class="menu-item"
+      >
+        <i class="fa-solid fa-right-left"></i>
+        <span>Bonifico</span>
+      </a>
+
+      <a
+        routerLink="/ricarica"
+        routerLinkActive="active"
+        class="menu-item"
+      >
+        <i class="fa-solid fa-mobile-screen-button"></i>
+        <span>Ricarica cellulare</span>
+      </a>
+
+      <a
+        routerLink="/ricerca-categoria"
+        routerLinkActive="active"
+        class="menu-item"
+      >
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span>Ricerca per categoria</span>
+      </a>
+
+      <a
+        routerLink="/ricerca-date"
+        routerLinkActive="active"
+        class="menu-item"
+      >
+        <i class="fa-regular fa-calendar"></i>
+        <span>Ricerca per date</span>
+      </a>
+
+      <div class="separator"></div>
+
+      <a
+        routerLink="/profilo"
+        routerLinkActive="active"
+        class="menu-item"
+      >
+        <i class="fa-regular fa-user"></i>
+        <span>Profilo</span>
+      </a>
+
+      <a
+        routerLink="/modifica-password"
+        routerLinkActive="active"
+        class="menu-item"
+      >
+        <i class="fa-solid fa-lock"></i>
+        <span>Modifica password</span>
+      </a>
+
+      <div class="separator"></div>
+
+      <a
+        routerLink="/conto"
+        routerLinkActive="active"
+        class="menu-item"
+      >
+        <i class="fa-regular fa-credit-card"></i>
+        <span>Conto e tariffe</span>
+      </a>
+
+      <div class="separator"></div>
+
+      <a
+        routerLink="/login"
+        class="menu-item logout"
+      >
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+
+      <!-- UTENTE -->
+      <a
+        routerLink="/profilo"
+        class="user-profile-link"
+        title="Vai al profilo"
+      >
+        <div class="user-avatar">
+          <i class="fa-solid fa-user"></i>
+        </div>
+
+        <strong>Francesco Pasetto</strong>
+
+        <i class="fa-solid fa-chevron-down arrow"></i>
+      </a>
+
+    </nav>
+
+  </aside>
+
+
+  <!-- =========================
+       CONTENUTO PRINCIPALE
+  ========================== -->
+
+  <main class="main-content">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+
+      <div>
+        <span class="topbar-category">OPERAZIONI</span>
+        <h1>Ricarica telefonica</h1>
+      </div>
+
+      <div class="balance-mini">
+        <span>Saldo disponibile</span>
+        <strong>€ 1.245,80</strong>
+      </div>
+
+    </header>
+
+
+    <!-- CONTENUTO -->
+    <section class="content-grid">
+
+      <!-- =========================
+           NUOVA RICARICA
+      ========================== -->
+
+      <div class="card recharge-card">
+
+        <div class="card-header">
+
+          <div>
+            <h2>Nuova ricarica</h2>
+            <p>Ricarica il tuo numero telefonico.</p>
+          </div>
+
+        </div>
+
+
+        <form>
+
+          <!-- NUMERO TELEFONO -->
+          <div class="form-group">
+
+            <label for="phone">
+              Numero di telefono
+            </label>
+
+            <input
+              type="tel"
+              id="phone"
+              placeholder="+39 333 1234567"
+            >
+
+          </div>
+
+
+          <!-- OPERATORE -->
+          <div class="form-group">
+
+            <label for="operator">
+              Operatore
+            </label>
+
+            <select id="operator">
+
+              <option value="">
+                Seleziona operatore
+              </option>
+
+              <option value="iliad">
+                Iliad
+              </option>
+
+              <option value="tim">
+                TIM
+              </option>
+
+              <option value="vodafone">
+                Vodafone
+              </option>
+
+              <option value="windtre">
+                WindTre
+              </option>
+
+              <option value="ho">
+                ho.
+              </option>
+
+              <option value="fastweb">
+                Fastweb
+              </option>
+
+              <option value="very">
+                Very Mobile
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <!-- IMPORTO -->
+          <div class="form-group">
+
+            <label>
+              Importo
+            </label>
+
+            <div class="amount-options">
+
+              <label class="amount-option">
+                <input
+                  type="radio"
+                  name="amount"
+                  value="5"
+                >
+                <span>€ 5</span>
+              </label>
+
+              <label class="amount-option">
+                <input
+                  type="radio"
+                  name="amount"
+                  value="10"
+                >
+                <span>€ 10</span>
+              </label>
+
+              <label class="amount-option">
+                <input
+                  type="radio"
+                  name="amount"
+                  value="20"
+                >
+                <span>€ 20</span>
+              </label>
+
+              <label class="amount-option">
+                <input
+                  type="radio"
+                  name="amount"
+                  value="30"
+                >
+                <span>€ 30</span>
+              </label>
+
+              <label class="amount-option">
+                <input
+                  type="radio"
+                  name="amount"
+                  value="50"
+                >
+                <span>€ 50</span>
+              </label>
+
+            </div>
+
+          </div>
+
+
+          <!-- BOTTONE -->
+          <button
+            type="submit"
+            class="primary-button"
+          >
+            Effettua ricarica
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+
+        </form>
+
+      </div>
+
+
+      <!-- =========================
+           RIEPILOGO
+      ========================== -->
+
+      <div class="card summary-card">
+
+        <div class="summary-header">
+          <h2>Riepilogo</h2>
+        </div>
+
+
+        <div class="summary-row">
+
+          <span>Numero</span>
+
+          <strong>—</strong>
+
+        </div>
+
+
+        <div class="summary-row">
+
+          <span>Operatore</span>
+
+          <strong>—</strong>
+
+        </div>
+
+
+        <div class="summary-row">
+
+          <span>Importo</span>
+
+          <strong>€ 0,00</strong>
+
+        </div>
+
+
+        <div class="summary-divider"></div>
+
+
+        <div class="summary-total">
+
+          <span>Totale</span>
+
+          <strong>€ 0,00</strong>
+
+        </div>
+
+
+        <div class="info-box">
+
+          <span>
+            <i class="fa-solid fa-circle-info"></i>
+          </span>
+
+          <p>
+            La ricarica verrà effettuata solo se
+            il saldo disponibile è sufficiente.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
