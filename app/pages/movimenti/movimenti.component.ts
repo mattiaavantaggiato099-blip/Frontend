@@ -1,17 +1,18 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { NavbarComponent } from '../../shared/navbar/navbar.component';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-movimenti',
   standalone: true,
   imports: [
-    NavbarComponent,
-    RouterLink
+    RouterLink,
+    RouterLinkActive
   ],
   templateUrl: './movimenti.component.html',
   styleUrl: './movimenti.component.css'
 })
 export class MovimentiComponent {
+
+  saldo = '2.487,32';
 
 }

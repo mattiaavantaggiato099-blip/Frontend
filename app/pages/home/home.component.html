@@ -23,10 +23,10 @@
         <span>Home</span>
       </a>
 
-      <a class="menu-item">
-        <i class="fa-solid fa-receipt"></i>
-        <span>Movimenti</span>
-      </a>
+      <a class="menu-item" routerLink="/movimenti">
+    <i class="fa-solid fa-list"></i>
+    <span>Movimenti</span>
+    </a>
 
       <a class="menu-item">
         <i class="fa-solid fa-right-left"></i>
@@ -55,7 +55,7 @@
          routerLink="/profilo"
         routerLinkActive="active"
             >
-     <i class="fa-regular fa-user"></i>
+     <i class="fa-regular fa-user" routerLink="/profilo"></i>
     <span>Profilo</span>
         </a>
       <a class="menu-item">
@@ -90,6 +90,20 @@
 
   <i class="fa-solid fa-chevron-down arrow"></i>
 
+</a>
+<a
+  routerLink="/movimenti"
+  class="menu-item"
+>
+  <i class="fa-solid fa-receipt"></i>
+  <span>Movimenti</span>
+</a>
+<a
+  routerLink="/movimenti"
+  class="view-all"
+>
+  Vedi tutti
+  <i class="fa-solid fa-chevron-right"></i>
 </a>
 
     </nav>

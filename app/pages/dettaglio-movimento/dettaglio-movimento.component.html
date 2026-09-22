@@ -1,143 +1,172 @@
-<div class="page">
 
-  <app-navbar></app-navbar>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dettaglio Movimento</title>
+    <link rel="stylesheet" href="dettaglio-movimento.component.css">
+</head>
 
-  <main class="content">
+<body>
 
-    <div class="page-header">
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">MyBank</div>
 
-      <div>
-        <h1>Dettaglio Movimento</h1>
-
-        <p>
-          Visualizzazione completa del movimento.
-        </p>
-      </div>
-
-      <a
-        routerLink="/movimenti"
-        class="back-button">
-
-        ← Torna ai movimenti
-
-      </a>
-
-    </div>
-
-    <div class="detail-card">
-
-      <div class="detail-header">
-
-        <div class="movement-icon">
-          €
+        <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="movimenti.html">Movimenti</a>
+            <a href="bonifico.html">Bonifico</a>
         </div>
 
-        <div>
+        <button class="logout" onclick="logout()">Esci</button>
+    </nav>
 
-          <h2>Bonifico Entrata</h2>
 
-          <span>
-            Movimento #{{ movimentoId }}
-          </span>
+    <!-- CONTENUTO -->
+    <main class="container">
+
+        <div class="page-header">
+            <div>
+                <h1>Dettaglio movimento</h1>
+                <p>Visualizza tutte le informazioni relative al movimento.</p>
+            </div>
+        </div>
+
+
+        <!-- CARD MOVIMENTO -->
+        <section class="movement-card">
+
+            <div class="movement-top">
+
+                <div class="movement-icon">
+                    €
+                </div>
+
+                <div class="movement-title">
+                    <h2>Pagamento</h2>
+                    <span>Movimento #<span id="movement-id">1</span></span>
+                </div>
+
+                <div class="amount negative" id="amount">
+                    - €45,00
+                </div>
+
+            </div>
+
+
+            <div class="separator"></div>
+
+
+            <!-- INFORMAZIONI -->
+            <div class="details-grid">
+
+                <div class="detail">
+                    <span class="label">Data</span>
+                    <span class="value" id="date">22/09/2026</span>
+                </div>
+
+                <div class="detail">
+                    <span class="label">Ora</span>
+                    <span class="value" id="time">10:25</span>
+                </div>
+
+                <div class="detail">
+                    <span class="label">Causale</span>
+                    <span class="value" id="description">
+                        Acquisto supermercato
+                    </span>
+                </div>
+
+                <div class="detail">
+                    <span class="label">Categoria</span>
+                    <span class="value" id="category">
+                        Spese quotidiane
+                    </span>
+                </div>
+
+                <div class="detail">
+                    <span class="label">Conto</span>
+                    <span class="value" id="account">
+                        Conto corrente principale
+                    </span>
+                </div>
+
+                <div class="detail">
+                    <span class="label">Tipo movimento</span>
+                    <span class="value" id="type">
+                        Uscita
+                    </span>
+                </div>
+
+                <div class="detail">
+                    <span class="label">Stato</span>
+                    <span class="status completed" id="status">
+                        Completato
+                    </span>
+                </div>
+
+                <div class="detail">
+                    <span class="label">ID movimento</span>
+                    <span class="value" id="movement-code">
+                        MOV-00001
+                    </span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PULSANTI -->
+        <div class="buttons">
+
+            <button class="btn secondary" onclick="tornaAiMovimenti()">
+                ← Torna ai movimenti
+            </button>
+
+            <button class="btn primary" onclick="vaiAllaHome()">
+                Torna alla Home
+            </button>
 
         </div>
 
-        <div class="amount entrata">
-          + € 500,00
-        </div>
+    </main>
 
-      </div>
 
-      <div class="details-grid">
+    <script>
 
-        <div class="detail-item">
+        // Recupera l'ID del movimento dall'URL
+        const params = new URLSearchParams(window.location.search);
+        const idMovimento = params.get("id");
 
-          <span class="label">
-            Movimento ID
-          </span>
+        if (idMovimento) {
+            document.getElementById("movement-id").textContent = idMovimento;
+            document.getElementById("movement-code").textContent =
+                "MOV-" + String(idMovimento).padStart(5, "0");
+        }
 
-          <strong>
-            {{ movimentoId }}
-          </strong>
 
-        </div>
+        // Torna alla pagina dei movimenti
+        function tornaAiMovimenti() {
+            window.location.href = "movimenti.html";
+        }
 
-        <div class="detail-item">
 
-          <span class="label">
-            Conto Corrente ID
-          </span>
+        // Torna alla Home
+        function vaiAllaHome() {
+            window.location.href = "home.html";
+        }
 
-          <strong>
-            1001
-          </strong>
 
-        </div>
+        // Logout
+        function logout() {
+            localStorage.removeItem("token");
+            window.location.href = "login.html";
+        }
 
-        <div class="detail-item">
+    </script>
 
-          <span class="label">
-            Data
-          </span>
-
-          <strong>
-            20/09/2026
-          </strong>
-
-        </div>
-
-        <div class="detail-item">
-
-          <span class="label">
-            Importo
-          </span>
-
-          <strong class="entrata">
-            + € 500,00
-          </strong>
-
-        </div>
-
-        <div class="detail-item">
-
-          <span class="label">
-            Saldo dopo il movimento
-          </span>
-
-          <strong>
-            € 2.450,75
-          </strong>
-
-        </div>
-
-        <div class="detail-item">
-
-          <span class="label">
-            Categoria Movimento
-          </span>
-
-          <strong>
-            Bonifico Entrata
-          </strong>
-
-        </div>
-
-      </div>
-
-      <div class="description">
-
-        <span class="label">
-          Descrizione Estesa
-        </span>
-
-        <p>
-          Bonifico disposto da Mario Bianchi.
-        </p>
-
-      </div>
-
-    </div>
-
-  </main>
-
-</div>
+</body>
+</html>

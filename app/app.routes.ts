@@ -6,6 +6,9 @@ import { DettaglioMovimentoComponent } from './pages/dettaglio-movimento/dettagl
 import { BonificoComponent } from './pages/bonifico/bonifico.component';
 import { ModificaPasswordComponent } from './pages/modifica-password/modifica-password.component';
 import { ProfiloComponent } from './pages/profilo/profilo.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+
+
 
 export const routes: Routes = [
   {
@@ -51,5 +54,6 @@ export const routes: Routes = [
   {
     path: 'profilo',
     component: ProfiloComponent
-  }
+  },
+ 
 ];
