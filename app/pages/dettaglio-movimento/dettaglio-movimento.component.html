@@ -1,0 +1,143 @@
+<div class="page">
+
+  <app-navbar></app-navbar>
+
+  <main class="content">
+
+    <div class="page-header">
+
+      <div>
+        <h1>Dettaglio Movimento</h1>
+
+        <p>
+          Visualizzazione completa del movimento.
+        </p>
+      </div>
+
+      <a
+        routerLink="/movimenti"
+        class="back-button">
+
+        ← Torna ai movimenti
+
+      </a>
+
+    </div>
+
+    <div class="detail-card">
+
+      <div class="detail-header">
+
+        <div class="movement-icon">
+          €
+        </div>
+
+        <div>
+
+          <h2>Bonifico Entrata</h2>
+
+          <span>
+            Movimento #{{ movimentoId }}
+          </span>
+
+        </div>
+
+        <div class="amount entrata">
+          + € 500,00
+        </div>
+
+      </div>
+
+      <div class="details-grid">
+
+        <div class="detail-item">
+
+          <span class="label">
+            Movimento ID
+          </span>
+
+          <strong>
+            {{ movimentoId }}
+          </strong>
+
+        </div>
+
+        <div class="detail-item">
+
+          <span class="label">
+            Conto Corrente ID
+          </span>
+
+          <strong>
+            1001
+          </strong>
+
+        </div>
+
+        <div class="detail-item">
+
+          <span class="label">
+            Data
+          </span>
+
+          <strong>
+            20/09/2026
+          </strong>
+
+        </div>
+
+        <div class="detail-item">
+
+          <span class="label">
+            Importo
+          </span>
+
+          <strong class="entrata">
+            + € 500,00
+          </strong>
+
+        </div>
+
+        <div class="detail-item">
+
+          <span class="label">
+            Saldo dopo il movimento
+          </span>
+
+          <strong>
+            € 2.450,75
+          </strong>
+
+        </div>
+
+        <div class="detail-item">
+
+          <span class="label">
+            Categoria Movimento
+          </span>
+
+          <strong>
+            Bonifico Entrata
+          </strong>
+
+        </div>
+
+      </div>
+
+      <div class="description">
+
+        <span class="label">
+          Descrizione Estesa
+        </span>
+
+        <p>
+          Bonifico disposto da Mario Bianchi.
+        </p>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>

@@ -1,0 +1,188 @@
+.login-page {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(
+    135deg,
+    #eef4f9,
+    #dceaf5
+  );
+
+  padding: 30px;
+}
+
+.login-container {
+  width: 420px;
+}
+
+.brand {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.brand-icon {
+  width: 60px;
+  height: 60px;
+
+  margin: 0 auto 12px;
+
+  border-radius: 16px;
+
+  background: #1769aa;
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 25px;
+  font-weight: bold;
+
+  box-shadow: 0 8px 20px rgba(23, 105, 170, 0.25);
+}
+
+.brand h1 {
+  color: #1769aa;
+  font-size: 32px;
+}
+
+.brand p {
+  color: #777;
+  margin-top: 5px;
+}
+
+.login-card {
+  background: white;
+
+  padding: 40px;
+
+  border-radius: 16px;
+
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.login-card h2 {
+  margin-bottom: 8px;
+}
+
+.login-description {
+  color: #777;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+
+  border: 1px solid #d5d9dd;
+
+  border-radius: 8px;
+
+  padding: 0 12px;
+
+  transition: 0.2s;
+}
+
+.input-container:focus-within {
+  border-color: #1769aa;
+  box-shadow: 0 0 0 3px rgba(23, 105, 170, 0.1);
+}
+
+.input-container span {
+  color: #888;
+  margin-right: 10px;
+}
+
+.input-container input {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  padding: 13px 0;
+
+  font-size: 15px;
+}
+
+.login-button {
+  width: 100%;
+
+  border: none;
+
+  padding: 14px;
+
+  border-radius: 8px;
+
+  background: #1769aa;
+  color: white;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  margin-top: 5px;
+
+  transition: 0.2s;
+}
+
+.login-button:hover {
+  background: #125589;
+}
+
+.register-section {
+  text-align: center;
+
+  margin-top: 25px;
+  padding-top: 25px;
+
+  border-top: 1px solid #eee;
+
+  font-size: 14px;
+}
+
+.register-section span {
+  color: #777;
+}
+
+.register-section a {
+  color: #1769aa;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.login-footer {
+  display: flex;
+  justify-content: space-between;
+
+  color: #999;
+
+  font-size: 11px;
+
+  margin-top: 20px;
+}
+
+@media (max-width: 500px) {
+
+  .login-container {
+    width: 100%;
+  }
+
+  .login-card {
+    padding: 30px 25px;
+  }
+
+}
