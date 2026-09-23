@@ -38,16 +38,6 @@
         <span>Ricarica cellulare</span>
       </a>
 
-      <a routerLink="/ricercaCategoria" routerLinkActive="active" class="menu-item">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <span>Ricerca per categoria</span>
-      </a>
-
-      <a routerLink="/ricercaDate" routerLinkActive="active" class="menu-item">
-        <i class="fa-regular fa-calendar"></i>
-        <span>Ricerca per date</span>
-      </a>
-
       <div class="separator"></div>
 
       <a
@@ -163,43 +153,49 @@
         <!-- AZIONI RAPIDE -->
         <div class="quick-card">
 
-          <h2>Azioni rapide</h2>
+  <h2>Azioni rapide</h2>
 
-          <div class="quick-grid">
+  <div class="quick-grid">
 
-            <div class="quick-item">
-              <i class="fa-solid fa-right-left"></i>
-              <span>Bonifico</span>
-            </div>
+    <!-- BONIFICO -->
+    <a
+      routerLink="/bonifico"
+      class="quick-item"
+    >
+      <i class="fa-solid fa-right-left"></i>
+      <span>Bonifico</span>
+    </a>
 
-            <div class="quick-item">
-              <i class="fa-solid fa-mobile-screen-button"></i>
-              <span>Ricarica cellulare</span>
-            </div>
+    <!-- RICARICA -->
+    <a
+      routerLink="/ricarica"
+      class="quick-item"
+    >
+      <i class="fa-solid fa-mobile-screen-button"></i>
+      <span>Ricarica cellulare</span>
+    </a>
 
-            <div class="quick-item">
-              <i class="fa-solid fa-list"></i>
-              <span>Movimenti</span>
-            </div>
+    <!-- MOVIMENTI -->
+    <a
+      routerLink="/movimenti"
+      class="quick-item"
+    >
+      <i class="fa-solid fa-list"></i>
+      <span>Movimenti</span>
+    </a>
 
-            <div class="quick-item">
-              <i class="fa-solid fa-tag"></i>
-              <span>Ricerca per categoria</span>
-            </div>
+    <!-- MODIFICA PASSWORD -->
+    <a
+      routerLink="/modifica-password"
+      class="quick-item"
+    >
+      <i class="fa-solid fa-lock"></i>
+      <span>Modifica password</span>
+    </a>
 
-            <div class="quick-item">
-              <i class="fa-regular fa-calendar"></i>
-              <span>Ricerca per date</span>
-            </div>
+  </div>
 
-            <div class="quick-item">
-              <i class="fa-solid fa-lock"></i>
-              <span>Modifica password</span>
-            </div>
-
-          </div>
-
-        </div>
+</div>
 
       </div>
 
@@ -395,10 +391,12 @@
               anche a banche diverse.
             </p>
 
-            <button>
-              Nuovo bonifico
-              <i class="fa-solid fa-arrow-right"></i>
-            </button>
+            <a routerLink="/bonifico" routerLinkActive="active">
+              <button>
+                Nuovo bonifico
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </a>
 
           </div>
 
@@ -426,10 +424,13 @@
               o quello di un tuo contatto.
             </p>
 
-            <button>
-              Ricarica ora
-              <i class="fa-solid fa-arrow-right"></i>
-            </button>
+
+            <a routerLink="/movimenti" routerLinkActive="active" class="menu-item">
+              <button>
+                Ricarica ora
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </a>  
 
           </div>
 

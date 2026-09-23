@@ -396,29 +396,36 @@ body {
   margin: 0 0 14px;
 
   font-size: 18px;
+
+  color: #152d4b;
 }
+
+
+/* GRIGLIA 2x2 */
 
 .quick-grid {
   display: grid;
 
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
 
   gap: 12px;
 }
 
+
+/* SINGOLA AZIONE */
+
 .quick-item {
-  min-height: 62px;
+  min-height: 100px;
 
   display: flex;
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
 
-  gap: 6px;
+  gap: 7px;
 
-  padding: 5px;
-
-  text-align: center;
+  padding: 10px;
 
   background: #f0f6fc;
 
@@ -426,24 +433,70 @@ body {
 
   color: #183d65;
 
-  font-size: 10px;
+  text-decoration: none;
+
+  font-size: 11px;
+
   font-weight: bold;
 
   cursor: pointer;
 
-  transition: .2s;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
+
+
+/* ICONA */
+
+.quick-item i {
+  color: #0868b4;
+
+  font-size: 21px;
+}
+
+
+/* TESTO */
+
+.quick-item span {
+  color: #183d65;
+
+  font-size: 11px;
+
+  font-weight: bold;
+
+  text-align: center;
+}
+
+
+/* HOVER */
 
 .quick-item:hover {
   background: #e2eef9;
 
   transform: translateY(-2px);
+
+  text-decoration: none;
 }
 
-.quick-item i {
-  color: #0868b4;
 
-  font-size: 20px;
+/* ICONA QUANDO HOVER */
+
+.quick-item:hover i {
+  color: #075fa6;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 550px) {
+
+  .quick-grid {
+    grid-template-columns: 1fr;
+  }
+
 }
 
 

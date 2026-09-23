@@ -6,7 +6,7 @@ import { HomeComponent } from './home/home';
 import { RicaricaComponent } from './ricarica/ricarica';
 import { RegisterComponent } from './register/register';
 import { MovimentiComponent } from './movimenti/movimenti';
-
+import { ProfiloComponent } from './profilo/profilo';
 
 export const routes: Routes = [
   {
@@ -38,6 +38,10 @@ export const routes: Routes = [
   {
     path: 'movimenti',
     component: MovimentiComponent
+  },
+  {
+    path: 'profilo',
+    component: ProfiloComponent
   },
   {
     path: 'home',

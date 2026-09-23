@@ -1,9 +1,6 @@
 <div class="bank-app">
 
-  <!-- =========================
-       SIDEBAR
-  ========================== -->
-
+  <!-- SIDEBAR -->
   <aside class="sidebar">
 
     <!-- LOGO -->
@@ -13,7 +10,7 @@
       </div>
 
       <div class="logo-text">
-        <h2>Gestione Conti</h2>
+        <h2>Banca Delle Canarie</h2>
         <span>LA TUA BANCA, SEMPRE CON TE</span>
       </div>
     </div>
@@ -21,115 +18,54 @@
     <!-- MENU -->
     <nav class="sidebar-menu">
 
-      <a
-        routerLink="/home"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        class="menu-item"
-      >
+      <a class="menu-item active">
         <i class="fa-solid fa-house"></i>
         <span>Home</span>
       </a>
 
-      <a
-        routerLink="/movimenti"
-        routerLinkActive="active"
-        class="menu-item"
-      >
+      <a routerLink="/movimenti" routerLinkActive="active" class="menu-item">
         <i class="fa-solid fa-receipt"></i>
         <span>Movimenti</span>
       </a>
 
-      <a
-        routerLink="/bonifico"
-        routerLinkActive="active"
-        class="menu-item"
-      >
+      <a routerLink="/bonifico" routerLinkActive="active" class="menu-item">
         <i class="fa-solid fa-right-left"></i>
         <span>Bonifico</span>
       </a>
 
-      <a
-        routerLink="/ricarica"
-        routerLinkActive="active"
-        class="menu-item"
-      >
+      <a routerLink="/ricarica" routerLinkActive="active" class="menu-item">
         <i class="fa-solid fa-mobile-screen-button"></i>
         <span>Ricarica cellulare</span>
       </a>
 
-      <a
-        routerLink="/ricerca-categoria"
-        routerLinkActive="active"
-        class="menu-item"
-      >
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <span>Ricerca per categoria</span>
-      </a>
-
-      <a
-        routerLink="/ricerca-date"
-        routerLinkActive="active"
-        class="menu-item"
-      >
-        <i class="fa-regular fa-calendar"></i>
-        <span>Ricerca per date</span>
-      </a>
-
       <div class="separator"></div>
 
       <a
-        routerLink="/profilo"
+         class="menu-item"
+         routerLink="/profilo"
         routerLinkActive="active"
-        class="menu-item"
-      >
-        <i class="fa-regular fa-user"></i>
-        <span>Profilo</span>
-      </a>
-
-      <a
-        routerLink="/modifica-password"
-        routerLinkActive="active"
-        class="menu-item"
-      >
+            >
+     <i class="fa-regular fa-user"></i>
+    <span>Profilo</span>
+        </a>
+      
+    <a routerLink="/modifica-password" routerLinkActive="active" class="menu-item">
         <i class="fa-solid fa-lock"></i>
         <span>Modifica password</span>
-      </a>
+    </a>
 
       <div class="separator"></div>
 
-      <a
-        routerLink="/conto"
-        routerLinkActive="active"
-        class="menu-item"
-      >
+      <a routerLink="/conto-tariffe" routerLinkActive="active" class="menu-item">
         <i class="fa-regular fa-credit-card"></i>
         <span>Conto e tariffe</span>
       </a>
 
       <div class="separator"></div>
 
-      <a
-        routerLink="/login"
-        class="menu-item logout"
-      >
+      <a routerLink="/logout" routerLinkActive="active" class="menu-item">
         <i class="fa-solid fa-right-from-bracket"></i>
         <span>Logout</span>
-      </a>
-
-      <!-- UTENTE -->
-      <a
-        routerLink="/profilo"
-        class="user-profile-link"
-        title="Vai al profilo"
-      >
-        <div class="user-avatar">
-          <i class="fa-solid fa-user"></i>
-        </div>
-
-        <strong>Francesco Pasetto</strong>
-
-        <i class="fa-solid fa-chevron-down arrow"></i>
       </a>
 
     </nav>
