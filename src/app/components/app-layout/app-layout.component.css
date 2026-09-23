@@ -1,0 +1,10 @@
+.main-content {
+  margin-left: var(--sidebar-width);
+  margin-top: var(--navbar-height);
+
+  min-height: calc(100vh - var(--navbar-height));
+
+  padding: 24px;
+
+  transition: margin-left .2s;
+}

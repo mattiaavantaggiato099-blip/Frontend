@@ -1,51 +1,9 @@
-import { Component, DestroyRef, inject, signal } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
-import { catchError, of, Subject, throwError } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, RouterModule],
+  imports: [],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
-export class LoginComponent {
-  protected fb = inject(FormBuilder);
-  protected authSrv = inject(AuthService);
-  private destroyRef = inject(DestroyRef);
-  private router = inject(Router);
-  private activatedRoute = inject(ActivatedRoute);
-
-  loginForm = this.fb.group({
-    email: ['', { validators: [Validators.required] }],
-    password: ['', { validators: [Validators.required] }]
-  });
-
-  errorMessage = signal<string | null>(null);
-
-  ngOnInit() {
-    this.loginForm.valueChanges
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(() => this.errorMessage.set(null))
-  }
-
-  login() {
-    if (this.loginForm.valid) {
-      const { email, password } = this.loginForm.value;
-      this.authSrv.login(email!, password!)
-        .pipe(
-          catchError(response => {
-            const message = response.error.message;
-            this.errorMessage.set(message);
-            return throwError(() => response);
-          })
-        )
-        .subscribe(() => {
-          const dest = this.activatedRoute.snapshot.queryParams['dest'] || '/home';
-          this.router.navigate([dest]);
-        });
-    }
-  }
-}
+export class LoginComponent {}

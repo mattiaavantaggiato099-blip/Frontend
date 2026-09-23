@@ -1,0 +1,41 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 235px;
+  right: 0;
+
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  background: #ffffff;
+  border-bottom: 1px solid rgba(13, 49, 91, .1);
+
+  padding: 0 30px;
+
+  z-index: 99;
+}
+
+.navbar-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #0d315b;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: .2s;
+}
+
+.navbar-user i {
+  font-size: 16px;
+}
+
+.navbar-user:hover {
+  opacity: .75;
+}

@@ -1,0 +1,239 @@
+<div class="app-shell">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <i class="fa-solid fa-building-columns"></i>
+      <span>Gestione Conti Correnti</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" routerLink="/home">
+        <i class="fa-solid fa-house"></i> Home
+      </a>
+      <a class="sidebar-nav-item active" routerLink="/movimenti">
+        <i class="fa-solid fa-receipt"></i> Movimenti
+      </a>
+      <a class="sidebar-nav-item" routerLink="/bonifico">
+        <i class="fa-solid fa-right-left"></i> Bonifico
+      </a>
+      <a class="sidebar-nav-item" routerLink="/ricarica-cellulare">
+        <i class="fa-solid fa-mobile-screen-button"></i> Ricarica cellulare
+      </a>
+
+      <div class="sidebar-divider"></div>
+
+      <a class="sidebar-nav-item" routerLink="/profilo">
+        <i class="fa-solid fa-user"></i> Profilo
+      </a>
+      <a class="sidebar-nav-item" routerLink="/modifica-password">
+        <i class="fa-solid fa-lock"></i> Modifica password
+      </a>
+      <a class="sidebar-nav-item" routerLink="/conto-tariffe">
+        <i class="fa-solid fa-credit-card"></i> Conto e tariffe
+      </a>
+    </nav>
+
+    <button class="sidebar-logout" (click)="logout()">
+      <i class="fa-solid fa-right-from-bracket"></i> Logout
+    </button>
+  </aside>
+
+  <!-- Colonna destra: topbar + contenuto pagina -->
+  <div class="main-column">
+
+    <header class="topbar">
+      <div class="topbar-title">Movimenti</div>
+      <div class="topbar-user">
+        <i class="fa-regular fa-bell"></i>
+        <div class="topbar-avatar">{{ inizialiUtente }}</div>
+        <span>{{ nomeUtente }}</span>
+        <i class="fa-solid fa-chevron-down" style="font-size:11px;"></i>
+      </div>
+    </header>
+
+    <div class="page">
+      <div class="container">
+
+        <div class="page-title">
+          <h1>Movimenti</h1>
+          <p class="text-muted">Consulta e gestisci i movimenti del tuo conto corrente</p>
+        </div>
+
+        <!-- Riepilogo: saldo, andamento conto, categorie di spesa -->
+        <div class="grid-summary mb-3">
+
+          <div class="card balance-card">
+            <div class="balance-card-icon"><i class="fa-solid fa-credit-card"></i></div>
+            <div>
+              <div class="text-muted" style="font-size:13px;">Saldo disponibile</div>
+              <div class="balance-amount">&euro; {{ saldoDisponibile | number:'1.2-2' }}</div>
+              <div class="text-muted" style="font-size:12px;">Conto corrente n. {{ numeroConto }}</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="d-flex justify-between align-center mb-1">
+              <div class="card-title" style="margin-bottom:0;font-size:16px;">
+                <i class="fa-solid fa-right-left"></i> Andamento del conto
+              </div>
+              <div class="text-right">
+                <div class="amount-positive" style="font-size:14px;">
+                  {{ variazione7gg >= 0 ? '+' : '' }} &euro; {{ variazione7gg | number:'1.2-2' }}
+                </div>
+                <div class="text-muted" style="font-size:11px;">rispetto a 7 giorni fa</div>
+              </div>
+            </div>
+            <svg viewBox="0 0 320 110" class="trend-chart" role="img" aria-label="Andamento del saldo negli ultimi 7 giorni">
+              <polyline [attr.points]="trendPoints" fill="none" stroke="#2563eb" stroke-width="2.5" />
+              <circle *ngFor="let p of trendCirclePoints" [attr.cx]="p.x" [attr.cy]="p.y" r="3" fill="#2563eb" />
+            </svg>
+            <div class="d-flex justify-between text-muted" style="font-size:11px;">
+              <span *ngFor="let g of trendGiorni">{{ g }}</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title" style="margin-bottom:12px;font-size:16px;">
+              <i class="fa-solid fa-chart-pie"></i> Categorie di spesa
+            </div>
+            <div class="d-flex align-center gap-2">
+              <svg viewBox="0 0 42 42" class="donut-chart" role="img" aria-label="Distribuzione delle uscite per categoria">
+                <circle *ngFor="let s of donutSegments"
+                  cx="21" cy="21" r="15.9"
+                  fill="transparent"
+                  [attr.stroke]="s.colore"
+                  stroke-width="6"
+                  [attr.stroke-dasharray]="s.dasharray"
+                  [attr.stroke-dashoffset]="s.dashoffset" />
+              </svg>
+              <div style="flex:1;min-width:0;">
+                <div class="donut-legend-row" *ngFor="let c of categorieSpesa">
+                  <span class="donut-dot" [style.background]="c.colore"></span>
+                  <span style="flex:1;">{{ c.nome }}</span>
+                  <span class="text-muted" style="width:44px;text-align:right;">{{ c.percentuale }}%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Filtri -->
+        <form class="filters" (ngSubmit)="cercaMovimenti()">
+
+          <div class="form-group">
+            <label for="n">Numero di movimenti</label>
+            <select id="n" class="form-control" [(ngModel)]="filtro.n" name="n">
+              <option [ngValue]="10">Ultimi 10</option>
+              <option [ngValue]="20">Ultimi 20</option>
+              <option [ngValue]="50">Ultimi 50</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="categoria">Categoria</label>
+            <select id="categoria" class="form-control" name="categoria"
+              [(ngModel)]="filtro.categoriaId"
+              [disabled]="modoFiltro === 'date'"
+              (ngModelChange)="filtro.categoriaId ? impostaModoFiltro('categoria') : impostaModoFiltro('nessuno')">
+              <option [ngValue]="null">Tutte le categorie</option>
+              <option *ngFor="let c of categorie" [ngValue]="c.id">{{ c.nome }}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="dataDa">Data inizio</label>
+            <input id="dataDa" type="date" class="form-control" name="dataDa"
+              [(ngModel)]="filtro.dataDa"
+              [disabled]="modoFiltro === 'categoria'"
+              (ngModelChange)="filtro.dataDa || filtro.dataA ? impostaModoFiltro('date') : impostaModoFiltro('nessuno')">
+          </div>
+
+          <div class="form-group">
+            <label for="dataA">Data fine</label>
+            <input id="dataA" type="date" class="form-control" name="dataA"
+              [(ngModel)]="filtro.dataA"
+              [disabled]="modoFiltro === 'categoria'"
+              (ngModelChange)="filtro.dataDa || filtro.dataA ? impostaModoFiltro('date') : impostaModoFiltro('nessuno')">
+          </div>
+
+          <button type="submit" class="btn btn-primary">
+            <i class="fa-solid fa-magnifying-glass"></i> Cerca movimenti
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="esportaCsv()" [disabled]="movimenti.length === 0">
+            <i class="fa-solid fa-download"></i> Esporta in CSV
+          </button>
+
+        </form>
+
+        <!-- Tabella movimenti -->
+        <div class="table-container">
+
+          <div class="d-flex justify-between align-center" style="padding:20px 20px 0;">
+            <div class="card-title" style="margin-bottom:0;">
+              <i class="fa-solid fa-file-lines"></i> Elenco movimenti
+            </div>
+          </div>
+
+          <table class="table" *ngIf="!caricamento && movimenti.length > 0">
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Descrizione</th>
+                <th>Categoria</th>
+                <th>Tipo</th>
+                <th class="text-right">Importo</th>
+                <th class="text-right" *ngIf="modoFiltro === 'nessuno'">Saldo</th>
+                <th class="text-right">Azioni</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let m of movimenti">
+                <td>{{ m.data | date:'dd/MM/yyyy HH:mm' }}</td>
+                <td>{{ m.descrizioneEstesa }}</td>
+                <td>
+                  <div class="categoria-cell">
+                    <span class="categoria-icon"
+                      [style.background]="iconaCategoria(m.nomeCategoria).colore + '1a'"
+                      [style.color]="iconaCategoria(m.nomeCategoria).colore">
+                      <i class="fa-solid" [ngClass]="iconaCategoria(m.nomeCategoria).icona"></i>
+                    </span>
+                    {{ m.nomeCategoria }}
+                  </div>
+                </td>
+                <td>
+                  <span class="badge" [class.badge-success]="m.tipologia === 'Entrata'" [class.badge-danger]="m.tipologia === 'Uscita'">
+                    {{ m.tipologia }}
+                  </span>
+                </td>
+                <td class="text-right" [class.amount-positive]="m.importo >= 0" [class.amount-negative]="m.importo < 0">
+                  {{ m.importo >= 0 ? '+' : '' }} &euro; {{ m.importo | number:'1.2-2' }}
+                </td>
+                <td class="text-right" *ngIf="modoFiltro === 'nessuno'">&euro; {{ m.saldo | number:'1.2-2' }}</td>
+                <td class="text-right">
+                  <button class="btn btn-primary" style="padding:6px 12px;font-size:13px;" (click)="vaiADettaglio(m)">
+                    <i class="fa-solid fa-eye"></i> Dettagli
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="empty-state" *ngIf="!caricamento && movimenti.length === 0">
+            <h3>Nessun movimento trovato</h3>
+            <p>Prova a modificare i filtri di ricerca.</p>
+          </div>
+
+          <div class="loading" *ngIf="caricamento">
+            Caricamento movimenti...
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

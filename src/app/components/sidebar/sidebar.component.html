@@ -1,1 +1,64 @@
-<p>sidebar works!</p>
+<!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- LOGO -->
+    <div class="logo">
+      <div class="logo-icon">
+        <i class="fa-solid fa-building-columns"></i>
+      </div>
+
+      <div class="logo-text">
+        <h2>Banca Delle Canarie</h2>
+        <span>LA TUA BANCA, SEMPRE CON TE</span>
+      </div>
+    </div>
+
+    <!-- MENU -->
+    <nav class="sidebar-menu">
+
+      <a class="menu-item active">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+
+      <a routerLink="/movimenti" routerLinkActive="active" class="menu-item">
+        <i class="fa-solid fa-receipt"></i>
+        <span>Movimenti</span>
+      </a>
+
+      <a routerLink="/bonifico" routerLinkActive="active" class="menu-item">
+        <i class="fa-solid fa-right-left"></i>
+        <span>Bonifico</span>
+      </a>
+
+      <a routerLink="/ricarica" routerLinkActive="active" class="menu-item">
+        <i class="fa-solid fa-mobile-screen-button"></i>
+        <span>Ricarica cellulare</span>
+      </a>
+
+      <div class="separator"></div>
+
+      <a
+         class="menu-item"
+         routerLink="/profilo"
+        routerLinkActive="active"
+            >
+     <i class="fa-regular fa-user"></i>
+    <span>Profilo</span>
+        </a>
+      
+    <a routerLink="/modifica-password" routerLinkActive="active" class="menu-item">
+        <i class="fa-solid fa-lock"></i>
+        <span>Modifica password</span>
+    </a>
+
+      <div class="separator"></div>
+
+      <a routerLink="/logout" routerLinkActive="active" class="menu-item">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+
+    </nav>
+
+  </aside>

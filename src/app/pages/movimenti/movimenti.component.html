@@ -1,1 +1,69 @@
-<p>movimenti works!</p>
+<h1>Movimenti</h1>
+
+<section class="filtri">
+  <label>
+    Ultimi
+    <input type="number" [(ngModel)]="n" min="1" />
+    movimenti
+  </label>
+
+  <div class="modalita">
+    <button [class.active]="modalita === 'nessuno'" (click)="cambiaModalita('nessuno')">Nessun filtro</button>
+    <button [class.active]="modalita === 'categoria'" (click)="cambiaModalita('categoria')">Per categoria</button>
+    <button [class.active]="modalita === 'date'" (click)="cambiaModalita('date')">Per intervallo date</button>
+  </div>
+
+  @if (modalita === 'categoria') {
+    <select [(ngModel)]="categoriaId">
+      <option value="" disabled selected>Seleziona categoria</option>
+      @for (cat of categorie(); track cat.id) {
+        <option [value]="cat.id">{{ cat.nome }}</option>
+      }
+    </select>
+  }
+
+  @if (modalita === 'date') {
+    <label>
+      Da
+      <input type="date" [(ngModel)]="dataDa" />
+    </label>
+    <label>
+      A
+      <input type="date" [(ngModel)]="dataA" />
+    </label>
+  }
+
+  <button class="cerca" (click)="cerca()">Cerca</button>
+  <button class="export" (click)="esportaCsv()" [disabled]="movimenti().length === 0">Esporta CSV</button>
+</section>
+
+@if (errore()) {
+  <p class="errore">{{ errore() }}</p>
+}
+
+@if (saldo() !== null) {
+  <p class="saldo">Saldo finale: {{ saldo() | number:'1.2-2' }} €</p>
+}
+
+@if (caricamento()) {
+  <p>Caricamento...</p>
+} @else {
+  <table>
+    <thead>
+      <tr>
+        <th>Data</th>
+        <th>Importo</th>
+        <th>Categoria</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (m of movimentiOrdinati(); track m.movimentoId) {
+        <tr>
+          <td>{{ m.data | date:'dd/MM/yyyy' }}</td>
+          <td [class.negativo]="m.importo < 0">{{ m.importo | number:'1.2-2' }} €</td>
+          <td>{{ m.nomeCategoria }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}
