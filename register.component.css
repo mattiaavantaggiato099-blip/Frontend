@@ -1,0 +1,282 @@
+* {
+  box-sizing: border-box;
+}
+
+.register-page {
+  min-height: 100vh;
+  display: flex;
+
+  background: #f5f7fb;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================
+   SINISTRA
+   ========================= */
+
+.register-left {
+  width: 48%;
+  min-height: 100vh;
+
+  padding: 50px 60px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background: #172a46;
+  color: white;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.brand-icon {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: #2f80ed;
+
+  font-size: 21px;
+}
+
+.register-intro {
+  max-width: 540px;
+  margin-top: -40px;
+}
+
+.eyebrow {
+  margin-bottom: 18px;
+
+  color: #5ca4ff;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.register-intro h1 {
+  margin: 0;
+
+  font-size: 50px;
+  line-height: 1.08;
+}
+
+.register-intro h1 span {
+  display: block;
+  color: #5ca4ff;
+}
+
+.register-intro p:last-child {
+  max-width: 470px;
+
+  margin-top: 25px;
+
+  color: #b9c6d8;
+
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.register-footer {
+  color: #8192aa;
+  font-size: 13px;
+}
+
+
+/* =========================
+   DESTRA
+   ========================= */
+
+.register-right {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px 50px;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 500px;
+}
+
+.register-header {
+  margin-bottom: 28px;
+}
+
+.register-header > span {
+  color: #2f80ed;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+}
+
+.register-header h2 {
+  margin: 10px 0 8px;
+
+  color: #172a46;
+
+  font-size: 34px;
+}
+
+.register-header p {
+  margin: 0;
+
+  color: #718096;
+
+  font-size: 15px;
+}
+
+
+/* =========================
+   FORM
+   ========================= */
+
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #26364d;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-group input {
+  width: 100%;
+
+  padding: 14px 15px;
+
+  border: 1px solid #d7deea;
+  border-radius: 9px;
+
+  outline: none;
+
+  background: white;
+
+  color: #172a46;
+
+  font-size: 15px;
+}
+
+.form-group input:focus {
+  border-color: #2f80ed;
+
+  box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.1);
+}
+
+.form-group small {
+  display: block;
+
+  margin-top: 7px;
+
+  color: #8a97a8;
+
+  font-size: 12px;
+}
+
+
+/* Button */
+
+.primary-button {
+  width: 100%;
+
+  margin-top: 5px;
+
+  padding: 15px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: #2f80ed;
+
+  color: white;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.primary-button:hover {
+  background: #216dcc;
+}
+
+
+/* Login link */
+
+.login-link {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+
+  margin-top: 24px;
+
+  color: #718096;
+
+  font-size: 14px;
+}
+
+.login-link a {
+  color: #2f80ed;
+
+  font-weight: 600;
+
+  text-decoration: none;
+}
+
+
+/* Responsive */
+
+@media (max-width: 900px) {
+
+  .register-left {
+    display: none;
+  }
+
+  .register-right {
+    min-height: 100vh;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+}
