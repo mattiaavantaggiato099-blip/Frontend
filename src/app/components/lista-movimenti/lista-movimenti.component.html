@@ -1,1 +1,38 @@
-<p>lista-movimenti works!</p>
+@if (errore()) {
+  <div style="padding: 12px; background: #f8d7da; color: #721c24; border-radius: 8px; margin-bottom: 15px;">
+    {{ errore() }}
+  </div>
+}
+
+@if (saldo() !== null) {
+  <p>Saldo: {{ saldo() | number:'1.2-2' }} €</p>
+}
+
+@if (movimenti().length === 0 && !errore()) {
+  <p>Nessun movimento trovato</p>
+} @else {
+  <table>
+    <thead>
+      <tr>
+        <th>Data</th>
+        <th>Descrizione</th>
+        <th>Categoria</th>
+        <th>Tipo</th>
+        <th>Importo</th>
+        <th>Saldo</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (m of movimenti(); track m.movimentoId) {
+        <tr>
+          <td>{{ m.data | date:'dd/MM/yyyy' }}</td>
+          <td>{{ m.descrizioneEstesa }}</td>
+          <td>{{ m.nomeCategoria }}</td>
+          <td>{{ m.tipologia }}</td>
+          <td>{{ m.importo | number:'1.2-2' }} €</td>
+          <td>{{ m.saldo | number:'1.2-2' }} €</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}

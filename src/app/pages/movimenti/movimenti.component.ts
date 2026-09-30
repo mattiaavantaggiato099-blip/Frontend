@@ -1,128 +1,66 @@
-import { Component, DestroyRef, inject, signal } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Component, inject, signal, viewChild } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe, DecimalPipe } from '@angular/common';
-import { MovimentiService } from '../../services/movimenti.service';
+import { ListaMovimentiComponent } from '../../components/lista-movimenti/lista-movimenti.component';
+import { Categoria } from '../../services/movimenti.service';
 
-export interface Movimento {
-  data: string | Date;
-  importo: number;
-  nomeCategoria: string;
-  descrizioneEstesa: string;
-}
-
-export interface MovimentoRicercaResult {
-  movimenti: Movimento[];
-  saldo?: number;
-}
-
-export interface Categoria {
-  categoriaMovimentoId: string;
-  nomeCategoria: string;
-  tipologia: string;
-}
-
-type Modalita = 'nessuno' | 'categoria' | 'date';
+export type Modalita = 'nessuno' | 'categoria' | 'date';
 
 @Component({
   selector: 'app-movimenti',
-  imports: [ReactiveFormsModule, DecimalPipe, DatePipe],
+  imports: [ReactiveFormsModule, ListaMovimentiComponent],
   templateUrl: './movimenti.component.html',
   styleUrl: './movimenti.component.css',
 })
 export class MovimentiComponent {
   private fb = inject(FormBuilder);
-  private destroyRef = inject(DestroyRef);
-  private movSrv = inject(MovimentiService);
+  listaMov = viewChild<ListaMovimentiComponent>(ListaMovimentiComponent);
 
-  movimenti = signal<Movimento[]>([]);
-  saldo = signal<number | null>(null);
-  categorie = signal<Categoria[]>([]);
-  errore = signal<string | null>(null);
   modalita: Modalita = 'nessuno';
 
   movimentiForm = this.fb.group({
     numMov: [5],
     categoria: [''],
-    dataDa: [''],
-    dataA: [''],
+    dataDa: [null as Date | null],
+    dataA: [null as Date | null],
   });
+
+  categorie = signal<Categoria[]>([]);
+
+  get numMov() {
+    return this.movimentiForm.get('numMov')?.value ?? 5;
+  }
+
+  get categoria() {
+    return this.movimentiForm.get('categoria')?.value ?? '';
+  }
+
+  get dataDa() {
+    const val = this.movimentiForm.get('dataDa')?.value as Date | null;
+    return val ?? undefined;
+  }
+
+  get dataA() {
+    const val = this.movimentiForm.get('dataA')?.value as Date | null;
+    return val ?? undefined;
+  }
 
   cambiaModalita(m: Modalita) {
     this.modalita = m;
 
     this.movimentiForm.patchValue({
-      categoria: '',
-      dataDa: '',
-      dataA: '',
+      numMov: m === 'nessuno' ? 5 : this.movimentiForm.get('numMov')?.value,
+      categoria: m === 'categoria' ? this.movimentiForm.get('categoria')?.value : '',
+      dataDa: m === 'date' ? this.movimentiForm.get('dataDa')?.value : null,
+      dataA: m === 'date' ? this.movimentiForm.get('dataA')?.value : null,
     });
   }
 
   cerca() {
-    const { numMov, categoria, dataDa, dataA } =
-      this.movimentiForm.getRawValue();
-
-    this.errore.set(null);
-
-    this.movSrv
-      .cerca(
-        numMov ?? 5,
-        this.modalita === 'date' ? dataDa || undefined : undefined,
-        this.modalita === 'date' ? dataA || undefined : undefined,
-        this.modalita === 'categoria' ? categoria || undefined : undefined
-      )
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe({
-        next: (res) => {
-          this.movimenti.set(res.movimenti);
-
-          this.saldo.set(
-            this.modalita === 'nessuno' ? (res.saldo ?? 0) : null
-          );
-        },
-        error: (err) => {
-          this.errore.set(
-            err?.error?.message ?? 'Errore nella ricerca'
-          );
-          this.movimenti.set([]);
-          this.saldo.set(null);
-        },
-      });
+    this.listaMov()?.cerca();
   }
 
   esportaCsv() {
-    const righe = this.movimenti().map((m) => {
-      const data = new Date(m.data).toLocaleDateString('it-IT');
-
-      return `${data};${m.importo};${m.nomeCategoria}`;
-    });
-
-    const csv = ['Data;Importo;Categoria', ...righe].join('\n');
-
-    const blob = new Blob([csv], {
-      type: 'text/csv;charset=utf-8;',
-    });
-
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-
-    a.href = url;
-    a.download = 'movimenti.csv';
-    a.click();
-
-    URL.revokeObjectURL(url);
-  }
-
-  ngOnInit() {
-    this.movSrv
-      .cercaNomeCat()
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe({
-        next: (cat) => this.categorie.set(cat),
-        error: () =>
-          this.errore.set('Impossibile caricare le categorie'),
-      });
-
-    this.cerca();
+    this.listaMov()?.esportaCsv();
   }
 }

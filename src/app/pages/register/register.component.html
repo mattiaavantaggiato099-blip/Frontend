@@ -1,68 +1,101 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="col col-lg-4"></div>
+<div class="page">
+  <div class="card register-card">
+    <h1>Crea il tuo account</h1>
 
-    <div class="col col-lg-4 col-md-12 border rounded p-4">
-      <form [formGroup]="registerForm" (ngSubmit)="register()">
-        
-        <div class="form-outline mb-4">
-          <label class="form-label">Nome</label>
-          <input
-            class="form-control"
-            type="text"
-            formControlName="nome"
-            >
-        </div>
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="register()"
+    >
+      <div class="form-group">
+        <label for="nome">
+          Nome
+        </label>
 
-        <div class="form-outline mb-4">
-          <label class="form-label">Cognome</label>
-          <input
-            class="form-control"
-            type="text"
-            formControlName="cognome"
-            >
-        </div>
+        <input
+          id="nome"
+          type="text"
+          formControlName="nome"
+          placeholder="Inserisci il tuo nome"
+          autocomplete="given-name"
+        />
+      </div>
 
-        <div class="form-outline mb-4">
-          <label class="form-label">Email</label>
-          <input
-            class="form-control"
-            type="email"
-            formControlName="email"
-            >
-        </div>
+      <div class="form-group">
+        <label for="cognome">
+          Cognome
+        </label>
 
-        <div class="form-outline mb-4">
-          <label class="form-label">Password</label>
-          <input
-            class="form-control"
-            type="password"
-            formControlName="password"
-            autocomplete="current-password"
-            >
-        </div>
+        <input
+          id="cognome"
+          type="text"
+          formControlName="cognome"
+          placeholder="Inserisci il tuo cognome"
+          autocomplete="family-name"
+        />
+      </div>
 
-        <div class="form-outline mb-4">
-          <label class="form-label">Conferma Password</label>
-          <input
-            class="form-control"
-            type="password"
-            formControlName="confermaPassword"
-            autocomplete="current-password"
-            >
-        </div>
+      <div class="form-group">
+        <label for="email">
+          Email
+        </label>
 
-        <div class="text-danger">
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="Inserisci la tua email"
+          autocomplete="email"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">
+          Password
+        </label>
+
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          placeholder="Inserisci una password"
+          autocomplete="new-password"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="confermaPassword">
+          Conferma password
+        </label>
+
+        <input
+          id="confermaPassword"
+          type="password"
+          formControlName="confermaPassword"
+          placeholder="Ripeti la password"
+          autocomplete="new-password"
+        />
+      </div>
+
+      @if (errorMessage()) {
+        <div class="alert error">
           {{ errorMessage() }}
         </div>
+      }
 
-        <div class="text-center">
-          <button
-            type="submit"
-            class="btn btn-primary btn-block mb-4">Registrati</button>
-        </div>
-      </form>
+      <button
+        type="submit"
+        [disabled]="registerForm.invalid"
+      >
+        Registrati
+      </button>
+    </form>
+
+    <div class="login-link">
+      <span>Hai già un account?</span>
+
+      <a routerLink="/login">
+        Accedi
+      </a>
     </div>
   </div>
-
 </div>

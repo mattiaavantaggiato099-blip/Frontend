@@ -1,38 +1,77 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="col col-lg-4"></div>
+<div class="page">
+  <div class="card">
+    <h1>Accedi</h1>
 
-    <div class="col col-lg-4 col-md-12 border rounded p-4">
-      <form [formGroup]="loginForm" (ngSubmit)="login()">
-        <div class="form-outline mb-4">
-          <label class="form-label">Email Address</label>
-          <input
-            class="form-control"
-            type="email"
-            formControlName="email"
-            >
-        </div>
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="login()"
+    >
+      <div class="form-group">
+        <label for="email">
+          Indirizzo email
+        </label>
 
-        <div class="form-outline mb-4">
-          <label class="form-label">Password</label>
-          <input
-            class="form-control"
-            type="password"
-            formControlName="password"
-            >
-        </div>
-        <div class="text-danger">
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="Inserisci la tua email"
+          autocomplete="email"
+        />
+
+        @if (
+          loginForm.get('email')?.touched &&
+          loginForm.get('email')?.invalid
+        ) {
+          <small class="field-error">
+            Inserisci un indirizzo email valido.
+          </small>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="password">
+          Password
+        </label>
+
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          placeholder="Inserisci la tua password"
+          autocomplete="current-password"
+        />
+
+        @if (
+          loginForm.get('password')?.touched &&
+          loginForm.get('password')?.invalid
+        ) {
+          <small class="field-error">
+            La password è obbligatoria.
+          </small>
+        }
+      </div>
+
+      @if (errorMessage()) {
+        <div class="alert error">
           {{ errorMessage() }}
         </div>
+      }
 
-        <div class="text-center">
-          <button
-            [disabled]="loginForm.invalid"
-            type="submit"
-            class="btn btn-primary btn-block mb-4">Login</button>
-        </div>
-      </form>
+      <button
+        type="submit"
+        [disabled]="loginForm.invalid"
+      >
+        Accedi
+      </button>
+    </form>
+
+    <div class="register-link">
+      <span>Non sei ancora registrato?</span>
+
+      <a routerLink="/registrazione">
+        Registrati
+      </a>
     </div>
   </div>
-
 </div>

@@ -1,9 +1,50 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { DatePipe,DecimalPipe } from '@angular/common';
+import { ListaMovimentiComponent } from '../../components/lista-movimenti/lista-movimenti.component';
+
+
+interface Movimento {
+  movimentoID: string;
+  data: string;
+  importo: number;
+  descrizioneEstesa: string;
+  categoriaMovimentoID?: string;
+}
+
+interface HomeData {
+  nomeTitolare: string;
+  cognomeTitolare: string;
+  IBAN: string;
+  saldo: number;
+  contoCorrenteId: string;
+  movimenti: Movimento[];
+}
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive, DatePipe, DecimalPipe, ListaMovimentiComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+  styleUrl: './home.component.css'
 })
-export class HomeComponent {}
+export class HomeComponent implements OnInit {
+  today: Date = new Date();
+  private http = inject(HttpClient);
+
+  homeData = signal<HomeData | null>(null);
+
+  ngOnInit() {
+    this.caricaHome();
+  }
+
+  caricaHome() {
+    this.http.get<HomeData>('/api/conto-corrente/user').subscribe({
+      next: (data) => {
+        this.homeData.set(data);
+      },
+      error: (err) => console.error('Errore caricamento home:', err),
+    });
+  }
+}

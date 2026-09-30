@@ -35,41 +35,57 @@ export class AuthService {
   });
 
   constructor() {
-    // this.fetchUser().subscribe();
+    // Al caricamento dell'app, prova a decodificare il token e ripristinare l'utente
+    this.restoreSession();
   }
 
-  // fetchUser() {
-  //   return this.http.get<User>('/api/users/me')
-  //     .pipe(
-  //       catchError(() => {
-  //         this.jwtSrv.removeToken();
-  //         return of(null)
-  //       }),
-  //       tap(user => this._currentUser.set(user))
-  //     )
-  // }
-
-    login(email: string, password: string) {
-          console.log('Token:', this.jwtSrv.getToken()); 
-      return this.http.post<{ user: User, token: string }>('/api/login', { email, password })
-        .pipe(
-          tap(res => this.jwtSrv.setToken(res.token)),
-          map(res => res.user),
-          tap(user => this._currentUser.set(user))
-        );
+  /**
+   * Ripristina la sessione se esiste un token valido
+   */
+  restoreSession() {
+    const token = this.jwtSrv.getToken();
+    if (token) {
+      const decoded = this.jwtSrv.decodeToken(token);
+      if (decoded && !this.jwtSrv.isTokenExpired(token)) {
+        // Ricostruisci l'utente dal payload del token
+        this._currentUser.set({
+          contoCorrenteId: decoded.contoCorrenteId,
+          email: decoded.email,
+          password: '', // non salvare mai la password
+          cognomeTitolare: decoded.cognomeTitolare,
+          nomeTitolare: decoded.nomeTitolare,
+          dataApertura: decoded.dataApertura,
+          IBAN: decoded.IBAN,
+        });
+      } else {
+        // Token scaduto o non valido → pulisci
+        this.jwtSrv.removeToken();
+      }
     }
+  }
 
-    register(email: string, password: string, nome: string, cognome: string) {
-      return this.http.post<RegisterResponse>('/api/register', {
-        email,
-        password,
-        nomeTitolare: nome,
-        cognomeTitolare: cognome
-      });
-    }
+  login(email: string, password: string) {
+    return this.http.post<{ user: User; token: string }>('/api/login', { email, password }).pipe(
+      tap(res => {
+        this.jwtSrv.setToken(res.token);
+      }),
+      map(res => res.user),
+      tap(user => this._currentUser.set(user))
+    );
+  }
 
-    logout() {
-      this.jwtSrv.removeToken();
-      this.router.navigate(['/login']);
-    }
+  register(email: string, password: string, nome: string, cognome: string) {
+    return this.http.post<RegisterResponse>('/api/register', {
+      email,
+      password,
+      nomeTitolare: nome,
+      cognomeTitolare: cognome,
+    });
+  }
+
+  logout() {
+    this.jwtSrv.removeToken();
+    this._currentUser.set(null);
+    this.router.navigate(['/login']);
+  }
 }

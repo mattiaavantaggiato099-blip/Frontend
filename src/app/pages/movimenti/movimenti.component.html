@@ -1,5 +1,3 @@
-<h1>Movimenti</h1>
-
 <section class="filtri">
   <form [formGroup]="movimentiForm">
     <label>
@@ -36,7 +34,9 @@
       <select formControlName="categoria">
         <option value="" disabled>Seleziona categoria</option>
         @for (cat of categorie(); track cat.categoriaMovimentoId) {
-          <option [value]="cat.categoriaMovimentoId">{{ cat.nomeCategoria }}</option>
+          <option [value]="cat.categoriaMovimentoId">
+            {{ cat.nomeCategoria }}
+          </option>
         }
       </select>
     }
@@ -57,67 +57,16 @@
       type="button"
       class="export"
       (click)="esportaCsv()"
-      [disabled]="movimenti().length === 0"
+      [disabled]="false"
     >
       Esporta CSV
     </button>
   </form>
 </section>
 
-@if (errore()) {
-  <p class="errore">{{ errore() }}</p>
-}
-
-@if (saldo() !== null) {
-  <p class="saldo">Saldo finale: {{ saldo() | number:'1.2-2' }} €</p>
-}
-
-<section class="tabella-container">
-  <div class="tabella-header">
-    <h2>Lista movimenti</h2>
-
-    <span class="contatore">
-      {{ movimenti().length }} movimenti trovati
-    </span>
-  </div>
-
-  <div class="table-wrapper">
-    <table class="tabella-movimenti">
-      <thead>
-        <tr>
-          <th>Data</th>
-          <th>Descrizione</th>
-          <th class="importo-header">Importo</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        @for (m of movimenti(); track $index) {
-          <tr>
-            <td class="data">
-              {{ m.data | date: 'dd/MM/yyyy' }}
-            </td>
-
-            <td class="descrizione">
-              {{ m.descrizioneEstesa || '-' }}
-            </td>
-
-            <td
-              class="importo"
-              [class.negativo]="m.importo < 0"
-              [class.positivo]="m.importo > 0"
-            >
-              {{ m.importo > 0 ? '+' : '' }}{{ m.importo | number: '1.2-2' }} €
-            </td>
-          </tr>
-        } @empty {
-          <tr>
-            <td colspan="3" class="vuoto">
-              Nessun movimento trovato con i filtri selezionati.
-            </td>
-          </tr>
-        }
-      </tbody>
-    </table>
-  </div>
-</section>
+<app-lista-movimenti
+  [numMov]="numMov"
+  [categoria]="categoria"
+  [dataDa]="dataDa"
+  [dataA]="dataA"
+/>

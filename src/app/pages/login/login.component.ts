@@ -3,11 +3,11 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { catchError, of, Subject, throwError } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, RouterModule],
+  imports: [ReactiveFormsModule, RouterModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
