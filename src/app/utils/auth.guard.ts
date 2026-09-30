@@ -1,17 +1,15 @@
 import { inject } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { CanActivateFn, Router } from '@angular/router';
+import { JwtService } from '../services/jwt.service';
 
-export const authGuard: CanActivateFn = (
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot
-) => {
-  const authSrv = inject(AuthService);
+
+export const authGuard: CanActivateFn = () => {
   const router = inject(Router);
+  const jwtSrv = inject(JwtService);
 
-  if (!authSrv.isAuthenticated()) {
-    return router.createUrlTree(['/login'], { queryParams: { dest: state.url } });
+  if (jwtSrv.hasToken()) {
+    return true;
   }
 
-  return true;
+  return router.createUrlTree(['/login']);
 };

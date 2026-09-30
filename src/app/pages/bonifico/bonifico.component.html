@@ -1,1 +1,117 @@
-<p>bonifico works!</p>
+<div class="app-layout">
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <header class="topbar">
+      <div>
+        <span class="topbar-category">OPERAZIONI</span>
+        <h1>Bonifico</h1>
+      </div>
+        <div class="balance-mini">
+            <span>Saldo disponibile</span>
+            <strong>
+                @if (saldo() !== null) {
+                € {{ saldo() | number:'1.2-2' }}
+                } @else {
+                —
+                }
+            </strong>
+            </div>
+    </header>
+
+    <section class="page-content">
+      <section class="content-grid">
+
+        <!-- FORM -->
+        <div class="card transfer-card">
+          <div class="card-header">
+            <div>
+              <h2>Nuovo bonifico</h2>
+              <p>Invia denaro a un conto corrente.</p>
+            </div>
+          </div>
+
+          <!-- Collegato l'evento ngSubmit -->
+          <form (ngSubmit)="inviaBonifico()">
+
+            <div class="form-group">
+              <label for="iban">IBAN destinatario</label>
+              <input 
+                type="text" 
+                id="iban" 
+                name="iban" 
+                [(ngModel)]="datiBonifico.iban" 
+                placeholder="IT00 X000 0000 0000 0000 0000 000" 
+                required>
+            </div>
+
+            <div class="form-group">
+              <label for="importo">Importo</label>
+              <div class="amount-input">
+                <span>€</span>
+                <input 
+                  type="number" 
+                  id="importo" 
+                  name="importo" 
+                  [(ngModel)]="datiBonifico.importo" 
+                  placeholder="0,00" 
+                  min="0" 
+                  step="0.01" 
+                  required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="descrizione">Descrizione</label>
+              <textarea 
+                id="descrizione" 
+                name="causale" 
+                [(ngModel)]="datiBonifico.causale" 
+                rows="4" 
+                placeholder="Inserisci una descrizione..."></textarea>
+            </div>
+
+            <button type="submit" class="primary-button">Effettua bonifico</button>
+          </form>
+        </div>
+
+        <!-- RIEPILOGO -->
+        <div class="card summary-card">
+          <div class="summary-header">
+            <h2>Riepilogo</h2>
+          </div>
+
+          <div class="summary-row">
+            <span>Beneficiario</span>
+            <strong>—</strong>
+          </div>
+
+          <div class="summary-row">
+            <span>IBAN</span>
+            <strong>{{ datiBonifico.iban || '—' }}</strong>
+          </div>
+
+          <div class="summary-row">
+            <span>Importo</span>
+            <strong>€ {{ datiBonifico.importo || '0,00' }}</strong>
+          </div>
+
+          <div class="summary-divider"></div>
+
+          <div class="summary-total">
+            <span>Totale</span>
+            <strong>€ {{ datiBonifico.importo || '0,00' }}</strong>
+          </div>
+
+          <div class="info-box">
+            <span>ⓘ</span>
+            <p>Il bonifico verrà effettuato solo se l'IBAN è valido e il saldo disponibile è sufficiente.</p>
+          </div>
+        </div>
+
+      </section>
+    </section>
+
+  </main>
+</div>

@@ -1,1 +1,389 @@
-<p>home works!</p>
+@let home = homeData;
+
+<div class="bank-app">
+
+  
+
+
+  <!-- CONTENUTO PRINCIPALE -->
+  <main class="main-content">
+
+
+    <!-- DASHBOARD -->
+    <section class="dashboard">
+
+      <!-- BENVENUTO -->
+      <div class="welcome">
+
+        <div>
+
+          <h1>
+            Ciao {{ home()?.nomeTitolare }},
+          </h1>
+
+          <p>
+            Benvenuto nella tua area personale
+          </p>
+
+        </div>
+
+        <div class="current-date">
+
+          <span>
+            {{ today | date:'EEEE dd MMMM yyyy' }}
+          </span>
+
+          <i class="fa-regular fa-calendar"></i>
+
+        </div>
+
+      </div>
+
+
+      <!-- SALDO + AZIONI -->
+      <div class="first-row">
+
+        <!-- SALDO -->
+        <div class="balance-card">
+
+          <div class="balance-icon">
+            <i class="fa-regular fa-credit-card"></i>
+          </div>
+
+          <div class="balance-content">
+
+            <span class="balance-label">
+              Saldo disponibile
+            </span>
+
+            <h2>
+              € {{ homeData()?.saldo | number:'1.2-2' }}
+            </h2>
+
+          </div>
+
+          
+
+        </div>
+
+
+        <!-- AZIONI RAPIDE -->
+        <div class="quick-card">
+
+          <h2>Azioni rapide</h2>
+
+          <div class="quick-grid">
+
+            <!-- BONIFICO -->
+            <a
+              routerLink="/bonifico"
+              class="quick-item"
+            >
+              <i class="fa-solid fa-right-left"></i>
+              <span>Bonifico</span>
+            </a>
+
+            <!-- RICARICA -->
+            <a
+              routerLink="/ricarica"
+              class="quick-item"
+            >
+              <i class="fa-solid fa-mobile-screen-button"></i>
+              <span>Ricarica cellulare</span>
+            </a>
+
+            <!-- MOVIMENTI -->
+            <a
+              routerLink="/movimenti"
+              class="quick-item"
+            >
+              <i class="fa-solid fa-list"></i>
+              <span>Movimenti</span>
+            </a>
+
+            <!-- MODIFICA PASSWORD -->
+            <a
+              routerLink="/modifica-password"
+              class="quick-item"
+            >
+              <i class="fa-solid fa-lock"></i>
+              <span>Modifica password</span>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- MOVIMENTI + CONTO -->
+      <div class="second-row">
+
+        <!-- MOVIMENTI -->
+        <div class="card movements-card">
+
+          <div class="card-header">
+
+            <h2>
+              Movimenti recenti
+            </h2>
+
+            <a routerLink="/movimenti">
+
+              Vedi tutti
+
+              <i class="fa-solid fa-chevron-right"></i>
+
+            </a>
+
+          </div>
+
+
+          <!-- MOVIMENTI DAL DATABASE -->
+          @for (movimento of home()?.movimenti; track $index) {
+          <div class="movement">
+
+            <div
+              class="movement-icon"
+              [class.income]="movimento.importo >= 0"
+              [class.expense]="movimento.importo < 0"
+            >
+
+              <i
+                class="fa-solid"
+                [class.fa-arrow-up]="movimento.importo >= 0"
+                [class.fa-arrow-down]="movimento.importo < 0"
+              ></i>
+
+            </div>
+
+
+            <div class="movement-info">
+
+              <strong>
+                {{ movimento.descrizioneEstesa }}
+              </strong>
+
+              <span>
+                {{ movimento.data | date:'dd/MM/yyyy' }}
+              </span>
+
+            </div>
+
+
+            <strong
+              class="amount"
+              [class.income-text]="movimento.importo >= 0"
+              [class.expense-text]="movimento.importo < 0"
+            >
+
+              {{ movimento.importo >= 0 ? '+' : '-' }}
+
+              €
+              {{
+                (movimento.importo >= 0
+                  ? movimento.importo
+                  : -movimento.importo)
+                  | number:'1.2-2'
+              }}
+
+            </strong>
+
+          </div>
+          }
+
+
+          <!-- MESSAGGIO SE NON CI SONO MOVIMENTI -->
+          @if (!homeData()?.movimenti?.length) {
+            <div class="movement">
+
+              <div class="movement-info">
+
+                <strong>
+                  Nessun movimento disponibile
+                </strong>
+
+                <span>
+                  Non sono ancora presenti movimenti.
+                </span>
+
+              </div>
+
+            </div>
+          }
+
+        </div>
+
+
+        <!-- COLONNA DESTRA -->
+        <div class="right-column">
+
+          <!-- CONTO -->
+          <div class="card account-card">
+
+            <div class="card-title">
+
+              <i class="fa-regular fa-credit-card"></i>
+
+              <h2>
+                Il tuo conto
+              </h2>
+
+            </div>
+
+
+            <div class="account-data">
+
+              <span>
+                Intestatario
+              </span>
+
+              <strong>
+                {{ homeData()?.nomeTitolare }}
+                {{ homeData()?.cognomeTitolare }}
+              </strong>
+
+
+              <span>
+                IBAN
+              </span>
+
+              <strong>
+                {{ homeData()?.IBAN }}
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- BONIFICO + RICARICA -->
+      <div class="services-row">
+
+        <!-- BONIFICO -->
+        <div class="service-card transfer-card">
+
+          <div class="service-main-icon">
+
+            <i class="fa-solid fa-right-left"></i>
+
+          </div>
+
+
+          <div class="service-content">
+
+            <h2>
+              Effettua un bonifico
+            </h2>
+
+            <p>
+              Invia denaro in modo semplice e sicuro,
+              anche a banche diverse.
+            </p>
+
+
+            <a
+              routerLink="/bonifico"
+              routerLinkActive="active"
+            >
+
+              <button>
+
+                Nuovo bonifico
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+              </button>
+
+            </a>
+
+          </div>
+
+
+          <div class="service-decoration">
+
+            <i class="fa-solid fa-mobile-screen-button"></i>
+
+            <i class="fa-regular fa-credit-card"></i>
+
+          </div>
+
+        </div>
+
+
+        <!-- RICARICA -->
+        <div class="service-card recharge-card">
+
+          <div class="service-main-icon">
+
+            <i class="fa-solid fa-mobile-screen-button"></i>
+
+          </div>
+
+
+          <div class="service-content">
+
+            <h2>
+              Ricarica il tuo cellulare
+            </h2>
+
+            <p>
+              Ricarica in pochi secondi il tuo numero
+              o quello di un tuo contatto.
+            </p>
+
+
+            <a
+              routerLink="/ricarica"
+              routerLinkActive="active"
+            >
+
+              <button>
+
+                Ricarica ora
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+              </button>
+
+            </a>
+
+          </div>
+
+
+          <div class="phone-decoration">
+
+            <i class="fa-solid fa-mobile-screen-button"></i>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+      <span>
+
+        <strong>
+          BancaTerreVenete
+        </strong>
+
+        · La tua banca, sempre con te
+
+      </span>
+
+    </footer>
+
+  </main>
+
+</div>

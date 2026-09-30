@@ -1,1 +1,316 @@
-<p>movimenti-dettaglio works!</p>
+<div class="bank-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- LOGO -->
+    <div class="logo-area">
+
+      <div class="logo-icon">
+        <i class="fa-solid fa-building-columns"></i>
+      </div>
+
+      <div class="logo-text">
+        <h2>Banca Delle Canarie</h2>
+        <span>LA TUA BANCA, SEMPRE CON TE</span>
+      </div>
+
+    </div>
+
+
+    <!-- MENU -->
+    <nav class="menu">
+
+      <a routerLink="/home" class="menu-item">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+
+      <a routerLink="/movimenti" class="menu-item active">
+        <i class="fa-solid fa-money-bill-transfer"></i>
+        <span>Movimenti</span>
+      </a>
+
+      <a routerLink="/bonifico" class="menu-item">
+        <i class="fa-solid fa-right-left"></i>
+        <span>Bonifico</span>
+      </a>
+
+      <a routerLink="/ricarica" class="menu-item">
+        <i class="fa-solid fa-mobile-screen-button"></i>
+        <span>Ricarica</span>
+      </a>
+
+      <a routerLink="/ricerca-categoria" class="menu-item">
+        <i class="fa-solid fa-filter"></i>
+        <span>Ricerca categoria</span>
+      </a>
+
+      <a routerLink="/ricerca-data" class="menu-item">
+        <i class="fa-solid fa-calendar-days"></i>
+        <span>Ricerca per data</span>
+      </a>
+
+      <a routerLink="/profilo" class="menu-item">
+        <i class="fa-solid fa-user"></i>
+        <span>Profilo</span>
+      </a>
+
+      <a routerLink="/modifica-password" class="menu-item">
+        <i class="fa-solid fa-lock"></i>
+        <span>Modifica password</span>
+      </a>
+
+    </nav>
+
+
+    <!-- LOGOUT -->
+    <div class="logout-area">
+
+      <a routerLink="/login" class="menu-item logout">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span>Logout</span>
+      </a>
+
+    </div>
+
+  </aside>
+
+
+  <!-- CONTENUTO PRINCIPALE -->
+  <main class="main-content">
+
+    <!-- HEADER -->
+    <div class="page-header">
+
+      <div>
+        <h1>Dettaglio movimento</h1>
+        <p>Visualizza tutte le informazioni del movimento selezionato</p>
+      </div>
+
+      <button
+        class="back-button"
+        (click)="tornaAiMovimenti()">
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+        Torna ai movimenti
+
+      </button>
+
+    </div>
+
+
+    <!-- LOADING -->
+    <div class="message-card" *ngIf="loading">
+
+      <i class="fa-solid fa-spinner fa-spin"></i>
+
+      <p>Caricamento movimento...</p>
+
+    </div>
+
+
+    <!-- ERRORE -->
+    <div class="message-card error" *ngIf="!loading && errore">
+
+      <i class="fa-solid fa-circle-exclamation"></i>
+
+      <p>{{ errore }}</p>
+
+      <button
+        class="back-button"
+        (click)="tornaAiMovimenti()">
+
+        Torna ai movimenti
+
+      </button>
+
+    </div>
+
+
+    <!-- DETTAGLIO -->
+    <div
+      class="detail-card"
+      *ngIf="!loading && movimento">
+
+
+      <!-- TITOLO CARD -->
+      <div class="card-header">
+
+        <div class="movement-icon">
+
+          <i class="fa-solid fa-money-bill-transfer"></i>
+
+        </div>
+
+        <div>
+
+          <h2>Movimento</h2>
+
+          <span>
+            ID: {{ movimento.movimentoID }}
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- INFORMAZIONI -->
+      <div class="details-grid">
+
+
+        <!-- ID MOVIMENTO -->
+        <div class="detail-item">
+
+          <span class="label">
+            ID Movimento
+          </span>
+
+          <span class="value">
+            {{ movimento.movimentoID }}
+          </span>
+
+        </div>
+
+
+        <!-- CONTO -->
+        <div class="detail-item">
+
+          <span class="label">
+            Conto corrente
+          </span>
+
+          <span class="value">
+            {{ movimento.contoCorrenteID }}
+          </span>
+
+        </div>
+
+
+        <!-- DATA -->
+        <div class="detail-item">
+
+          <span class="label">
+            Data
+          </span>
+
+          <span class="value">
+
+            {{ movimento.data | date:'dd/MM/yyyy HH:mm' }}
+
+          </span>
+
+        </div>
+
+
+        <!-- CATEGORIA -->
+        <div class="detail-item">
+
+          <span class="label">
+            Categoria
+          </span>
+
+          <span class="value">
+
+            {{ movimento.nomeCategoria || movimento.categoriaMovimentoID }}
+
+          </span>
+
+        </div>
+
+
+        <!-- TIPOLOGIA -->
+        <div class="detail-item">
+
+          <span class="label">
+            Tipologia
+          </span>
+
+          <span
+            class="badge"
+            [class.entrata]="movimento.tipologia === 'Entrata'"
+            [class.uscita]="movimento.tipologia === 'Uscita'">
+
+            {{ movimento.tipologia || 'N/D' }}
+
+          </span>
+
+        </div>
+
+
+        <!-- IMPORTO -->
+        <div class="detail-item">
+
+          <span class="label">
+            Importo
+          </span>
+
+          <span
+            class="value amount"
+            [class.positive]="movimento.importo >= 0"
+            [class.negative]="movimento.importo < 0">
+
+            {{ movimento.importo | number:'1.2-2' }} €
+
+          </span>
+
+        </div>
+
+
+        <!-- SALDO -->
+        <div class="detail-item">
+
+          <span class="label">
+            Saldo dopo il movimento
+          </span>
+
+          <span class="value balance">
+
+            {{ movimento.saldo | number:'1.2-2' }} €
+
+          </span>
+
+        </div>
+
+
+        <!-- DESCRIZIONE -->
+        <div class="detail-item full-width">
+
+          <span class="label">
+            Descrizione estesa
+          </span>
+
+          <div class="description">
+
+            {{ movimento.descrizioneEstesa }}
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+      <!-- BOTTONE -->
+      <div class="card-footer">
+
+        <button
+          class="back-button"
+          (click)="tornaAiMovimenti()">
+
+          <i class="fa-solid fa-arrow-left"></i>
+
+          Torna alla lista movimenti
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>

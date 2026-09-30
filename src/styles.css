@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --sidebar-width: 235px;
+  --navbar-height: 70px;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --sidebar-width: 72px; /* sidebar ridotta a sole icone */
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --sidebar-width: 0px; /* sidebar nascosta, es. menu a hamburger */
+  }
+}
