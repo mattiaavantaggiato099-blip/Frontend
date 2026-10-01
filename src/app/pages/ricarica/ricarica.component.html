@@ -1,65 +1,178 @@
-<form [formGroup]="ricaricaForm" (ngSubmit)="inviaRicarica()">
-  @if (messaggioEsito) {
-    <div style="padding: 12px; background: #d4edda; color: #155724; border-radius: 8px; margin-bottom: 15px;">
-      {{ messaggioEsito }}
-    </div>
-  }
-  @if (erroreEsito) {
-    <div style="padding: 12px; background: #f8d7da; color: #721c24; border-radius: 8px; margin-bottom: 15px;">
-      {{ erroreEsito }}
-    </div>
-  }
+<header class="topbar">
+      <div>
+        <span class="topbar-category">OPERAZIONI</span>
+        <h1>Ricarica</h1>
+      </div>
+    </header>
 
-  <div class="form-group">
-    <label for="phone">Numero di telefono</label>
-    <input
-      type="tel"
-      id="phone"
-      formControlName="phone"
-      placeholder="+39 333 1234567"
+<div class="recharge-layout">
+
+  <!-- CARD FORM RICARICA -->
+  <section class="recharge-card">
+    <div class="card-header">
+      <div>
+        <span class="card-category">OPERAZIONI</span>
+        <h1>Ricarica cellulare</h1>
+        <p>Ricarica un numero di telefono in pochi secondi.</p>
+      </div>
+    </div>
+
+    <form
+      [formGroup]="ricaricaForm"
+      (ngSubmit)="inviaRicarica()"
     >
-    @if (ricaricaForm.get('phone')?.invalid && ricaricaForm.get('phone')?.touched) {
-      <small style="color: #721c24;">Inserisci un numero valido</small>
-    }
-  </div>
-
-  <div class="form-group">
-    <label for="operator">Operatore</label>
-    <select id="operator" formControlName="operator">
-      <option value="">Seleziona operatore</option>
-      <option value="iliad">Iliad</option>
-      <option value="tim">TIM</option>
-      <option value="vodafone">Vodafone</option>
-      <option value="windtre">WindTre</option>
-      <option value="fastweb">Fastweb</option>
-    </select>
-    @if (ricaricaForm.get('operator')?.invalid && ricaricaForm.get('operator')?.touched) {
-      <small style="color: #721c24;">Seleziona un operatore</small>
-    }
-  </div>
-
-  <div class="form-group">
-    <label>Importo</label>
-    <div class="amount-options">
-      @for (t of [5, 10, 15, 20, 30]; track t) {
-        <label class="amount-option">
-          <input
-            type="radio"
-            name="amount"
-            [value]="t"
-            formControlName="amount"
-          >
-          <span>€ {{ t }}</span>
-        </label>
+      @if (messaggioEsito) {
+        <div class="alert success">
+          {{ messaggioEsito }}
+        </div>
       }
-    </div>
-    @if (ricaricaForm.get('amount')?.invalid && ricaricaForm.get('amount')?.touched) {
-      <small style="color: #721c24;">Seleziona un importo</small>
-    }
-  </div>
 
-  <button type="submit" class="primary-button" [disabled]="ricaricaForm.invalid">
-    Effettua ricarica
-    <i class="fa-solid fa-arrow-right"></i>
-  </button>
-</form>
+      @if (erroreEsito) {
+        <div class="alert error">
+          {{ erroreEsito }}
+        </div>
+      }
+
+      <!-- Numero -->
+      <div class="form-group">
+        <label for="phone">Numero di telefono</label>
+
+        <input
+          type="tel"
+          id="phone"
+          formControlName="phone"
+          placeholder="+39 333 1234567"
+        >
+
+        @if (
+          ricaricaForm.get('phone')?.invalid &&
+          ricaricaForm.get('phone')?.touched
+        ) {
+          <small class="field-error">
+            Inserisci un numero valido
+          </small>
+        }
+      </div>
+
+      <!-- Operatore -->
+      <div class="form-group">
+        <label for="operator">Operatore</label>
+
+        <select
+          id="operator"
+          formControlName="operator"
+        >
+          <option value="">Seleziona operatore</option>
+          <option value="iliad">Iliad</option>
+          <option value="tim">TIM</option>
+          <option value="vodafone">Vodafone</option>
+          <option value="windtre">WindTre</option>
+          <option value="fastweb">Fastweb</option>
+        </select>
+
+        @if (
+          ricaricaForm.get('operator')?.invalid &&
+          ricaricaForm.get('operator')?.touched
+        ) {
+          <small class="field-error">
+            Seleziona un operatore
+          </small>
+        }
+      </div>
+
+      <!-- Importo -->
+      <div class="form-group">
+        <label>Importo ricarica</label>
+
+        <div class="amount-options">
+          @for (t of [5, 10, 15, 20, 30]; track t) {
+            <label class="amount-option">
+              <input
+                type="radio"
+                name="amount"
+                [value]="t"
+                formControlName="amount"
+              >
+              <span>€ {{ t }}</span>
+            </label>
+          }
+        </div>
+
+        @if (
+          ricaricaForm.get('amount')?.invalid &&
+          ricaricaForm.get('amount')?.touched
+        ) {
+          <small class="field-error">
+            Seleziona un importo
+          </small>
+        }
+      </div>
+
+      <button
+        type="submit"
+        class="primary-button"
+        [disabled]="ricaricaForm.invalid"
+      >
+        Effettua ricarica
+        <i class="las la-arrow-right"></i>
+      </button>
+    </form>
+  </section>
+
+  <!-- CARD RIEPILOGO -->
+  <aside class="summary-card">
+    <div class="summary-header">
+      <div class="summary-title">
+        <h2>Riepilogo</h2>
+      </div>
+    </div>
+
+    <div class="summary-row">
+      <span>Numero di telefono</span>
+      <strong>
+        {{ ricaricaForm.get('phone')?.value || '—' }}
+      </strong>
+    </div>
+
+    <div class="summary-row">
+      <span>Operatore</span>
+      <strong>
+        {{ ricaricaForm.get('operator')?.value || '—' }}
+      </strong>
+    </div>
+
+    <div class="summary-row">
+      <span>Importo</span>
+      <strong>
+        @if (ricaricaForm.get('amount')?.value) {
+          € {{ ricaricaForm.get('amount')?.value }},00
+        } @else {
+          —
+        }
+      </strong>
+    </div>
+
+    <div class="summary-divider"></div>
+
+    <div class="summary-total">
+      <span>Totale</span>
+      <strong>
+        @if (ricaricaForm.get('amount')?.value) {
+          € {{ ricaricaForm.get('amount')?.value }},00
+        } @else {
+          € 0,00
+        }
+      </strong>
+    </div>
+
+    <div class="info-box">
+      <i class="las la-info-circle"></i>
+
+      <p>
+        La ricarica verrà elaborata subito dopo la conferma.
+        Assicurati che il numero di telefono sia corretto.
+      </p>
+    </div>
+  </aside>
+
+</div>

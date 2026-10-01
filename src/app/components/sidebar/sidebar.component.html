@@ -1,64 +1,93 @@
 <!-- SIDEBAR -->
-  <aside class="sidebar">
+<aside class="sidebar">
 
-    <!-- LOGO -->
-    <div class="logo">
-      <div class="logo-icon">
-        <i class="fa-solid fa-building-columns"></i>
-      </div>
-
-      <div class="logo-text">
-        <h2>Banca Delle Canarie</h2>
-        <span>LA TUA BANCA, SEMPRE CON TE</span>
-      </div>
+  <!-- LOGO -->
+  <div class="logo">
+    <div class="logo-icon">
+      <i class="las la-university"></i>
     </div>
 
-    <!-- MENU -->
-    <nav class="sidebar-menu">
+    <div class="logo-text">
+      <h2>Banca Delle Canarie</h2>
+      <span>LA TUA BANCA, SEMPRE CON TE</span>
+    </div>
+  </div>
 
-      <a routerLink="/home" routerLinkActive="active" class="menu-item">
-        <i class="fa-solid fa-house"></i>
-        <span>Home</span>
-      </a>
+  <!-- MENU -->
+  <nav class="sidebar-menu">
 
-      <a routerLink="/movimenti" routerLinkActive="active" class="menu-item">
-        <i class="fa-solid fa-receipt"></i>
-        <span>Movimenti</span>
-      </a>
-
-      <a routerLink="/bonifico" routerLinkActive="active" class="menu-item">
-        <i class="fa-solid fa-right-left"></i>
-        <span>Bonifico</span>
-      </a>
-
-      <a routerLink="/ricarica" routerLinkActive="active" class="menu-item">
-        <i class="fa-solid fa-mobile-screen-button"></i>
-        <span>Ricarica cellulare</span>
-      </a>
-
-      <div class="separator"></div>
-
-      <a
-         class="menu-item"
-         routerLink="/profilo"
-        routerLinkActive="active"
-            >
-     <i class="fa-regular fa-user"></i>
-    <span>Profilo</span>
-        </a>
-      
-    <a routerLink="/modifica-password" routerLinkActive="active" class="menu-item">
-        <i class="fa-solid fa-lock"></i>
-        <span>Modifica password</span>
+    <a
+      routerLink="/home"
+      routerLinkActive="active"
+      class="menu-item"
+      (click)="closeSidebar.emit()"
+    >
+      <i class="las la-home"></i>
+      <span>Home</span>
     </a>
 
-      <div class="separator"></div>
+    <a
+      routerLink="/movimenti"
+      routerLinkActive="active"
+      class="menu-item"
+      (click)="closeSidebar.emit()"
+    >
+      <i class="las la-file-invoice"></i>
+      <span>Movimenti</span>
+    </a>
 
-      <a class="menu-item" (click)="logout()">
-        <i class="fa-solid fa-right-from-bracket"></i>
-        <span>Logout</span>
-      </a>
+    <a
+      routerLink="/bonifico"
+      routerLinkActive="active"
+      class="menu-item"
+      (click)="closeSidebar.emit()"
+    >
+      <i class="las la-exchange-alt"></i>
+      <span>Bonifico</span>
+    </a>
 
-    </nav>
+    <a
+      routerLink="/ricarica"
+      routerLinkActive="active"
+      class="menu-item"
+      (click)="closeSidebar.emit()"
+    >
+      <i class="las la-mobile-alt"></i>
+      <span>Ricarica cellulare</span>
+    </a>
 
-  </aside>
+    <div class="separator"></div>
+
+    <a
+      class="menu-item"
+      routerLink="/profilo"
+      routerLinkActive="active"
+      (click)="closeSidebar.emit()"
+    >
+      <i class="las la-user"></i>
+      <span>Profilo</span>
+    </a>
+
+    <a
+      routerLink="/modifica-password"
+      routerLinkActive="active"
+      class="menu-item"
+      (click)="closeSidebar.emit()"
+    >
+      <i class="las la-lock"></i>
+      <span>Modifica password</span>
+    </a>
+
+    <div class="separator"></div>
+
+    <a
+      class="menu-item"
+      (click)="logout(); closeSidebar.emit()"
+    >
+      <i class="las la-sign-out-alt"></i>
+      <span>Logout</span>
+    </a>
+
+  </nav>
+
+</aside>

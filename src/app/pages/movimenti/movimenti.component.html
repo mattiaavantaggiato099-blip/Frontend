@@ -1,3 +1,10 @@
+<header class="topbar">
+      <div>
+        <span class="topbar-category">IL TUO CONTO</span>
+        <h1>Movimenti</h1>
+      </div>
+    </header>
+
 <section class="filtri">
   <form [formGroup]="movimentiForm">
     <label>
@@ -31,15 +38,15 @@
     </div>
 
     @if (modalita === 'categoria') {
-      <select formControlName="categoria">
-        <option value="" disabled>Seleziona categoria</option>
-        @for (cat of categorie(); track cat.categoriaMovimentoId) {
-          <option [value]="cat.categoriaMovimentoId">
-            {{ cat.nomeCategoria }}
-          </option>
-        }
-      </select>
-    }
+    <select formControlName="categoria">
+      <option value="" disabled>Seleziona categoria</option>
+      @for (cat of categorieFormattate(); track cat.categoriaMovimentoId) {
+        <option [value]="cat.categoriaMovimentoId">
+          {{ cat.nomeCategoria }}
+        </option>
+      }
+    </select>
+  }
 
     @if (modalita === 'date') {
       <label>
@@ -61,6 +68,18 @@
     >
       Esporta CSV
     </button>
+
+    <!-- SALDO A DESTRA DEI FILTRI -->
+    <div class="saldo-filtri">
+      <span class="saldo-label">Saldo</span>
+      <strong class="saldo-valore">
+        @if (saldoConto !== null && saldoConto !== undefined) {
+          € {{ saldoConto | number:'1.2-2' }}
+        } @else {
+          —
+        }
+      </strong>
+    </div>
   </form>
 </section>
 
@@ -69,4 +88,5 @@
   [categoria]="categoria"
   [dataDa]="dataDa"
   [dataA]="dataA"
+  (saldoChange)="saldoConto = $event"
 />

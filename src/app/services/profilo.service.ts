@@ -3,10 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Profilo {
-  NomeTitolare: string;
-  CognomeTitolare: string;
-  Saldo: number;
-  UltimiMovimenti: any[];
+  nomeTitolare: string;
+  cognomeTitolare: string;
+  email: string;
+  IBAN: string;
+  dataApertura: Date;
 }
 
 @Injectable({
@@ -20,7 +21,7 @@ export class ProfiloService {
 
   getProfilo(): Observable<Profilo> {
     return this.http.get<Profilo>(
-      `${this.apiUrl}/home`
+      `${this.apiUrl}/user`
     );
   }
 }

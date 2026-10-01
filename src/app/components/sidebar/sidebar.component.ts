@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, input, output, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
@@ -14,4 +14,8 @@ import { AuthService } from '../../services/auth.service';
   logout() {
     this.auth.logout();
   }
+
+  sidebarOpen = input<boolean>(false);
+  // Output per dire al layout di chiudere la sidebar
+  closeSidebar = output<void>();
 }

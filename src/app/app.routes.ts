@@ -14,6 +14,8 @@ import { MovimentiDettaglioComponent } from "./pages/movimenti-dettaglio/movimen
 import { ProfiloComponent } from "./pages/profilo/profilo.component";
 import { RicaricaComponent } from "./pages/ricarica/ricarica.component";
 import { MovimentiComponent } from "./pages/movimenti/movimenti.component";
+import { EmailVerificataComponent } from "./pages/email-verificata/email-verificata.component";
+import { VerificaEmailComponent } from "./pages/verifica-email/verifica-email.component";
 
 export const routes: Routes = [
   {
@@ -25,7 +27,14 @@ export const routes: Routes = [
     path: "registrazione",
     component: RegisterComponent,
   },
-
+  {
+    path: "verifica-email",
+    component: VerificaEmailComponent,
+  },
+  {
+    path: "email-verificata",
+    component: EmailVerificataComponent,
+  },
   {
     path: "",
     component: AppLayoutComponent,

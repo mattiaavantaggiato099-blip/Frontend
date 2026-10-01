@@ -1,0 +1,26 @@
+<div class="page">
+  <div class="verification-card">
+    <div class="success-icon">
+      <i class="la la-check"></i>
+    </div>
+
+    <h1>Account verificato</h1>
+
+    <p>
+      La tua email è stata verificata correttamente.
+      Ora puoi accedere al tuo conto.
+    </p>
+
+    <button
+      type="button"
+      (click)="goToLogin()"
+    >
+      Vai al login
+      <i class="la la-arrow-right"></i>
+    </button>
+
+    <span class="redirect-message">
+      Verrai reindirizzato al login tra {{ seconds() }} secondi.
+    </span>
+  </div>
+</div>
