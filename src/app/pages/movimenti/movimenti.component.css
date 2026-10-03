@@ -1,69 +1,315 @@
+.topbar {
+  min-height: 92px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 20px 28px;
+
+  border-bottom: 1px solid #e1e8ef;
+}
+
+.topbar-category {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #0870b9;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.9px;
+}
+
+.topbar h1 {
+  margin: 0;
+
+  color: #152d4b;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+
+/* =========================
+   CONTENITORE FILTRI
+========================= */
+
 .filtri {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 50px auto 20px;
+  padding: 20px 24px;
+
+  background: #ffffff;
+  border: 1px solid #e1e8ef;
+  border-radius: 12px;
+  box-shadow: 0 5px 18px rgba(15, 50, 90, 0.08);
+}
+
+/* Il form contiene tutti gli elementi */
+.filtri form {
+  width: 100%;
+
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center; /* centra tutti i filtri */
+
   gap: 12px;
-
-  margin-bottom: 20px;
 }
 
-.modalita button {
-  border: 1px solid #0d315b;
-  background: white;
-  color: #0d315b;
-  padding: 6px 14px;
-  cursor: pointer;
-  transition: .2s;
+/* Label "Ultimi X movimenti" e filtri date */
+.filtri label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  color: #304967;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
-.modalita button.active {
-  background: #0d315b;
-  color: white;
+/* Input e select */
+.filtri input,
+.filtri select {
+  height: 38px;
+  padding: 0 10px;
+
+  border: 1px solid #d5dfe8;
+  border-radius: 7px;
+
+  outline: none;
+  background: #ffffff;
+  color: #152d4b;
+
+  font-family: inherit;
+  font-size: 13px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.cerca, .export {
+.filtri input:focus,
+.filtri select:focus {
+  border-color: #0870b9;
+  box-shadow: 0 0 0 3px rgba(8, 112, 185, 0.12);
+}
+
+/* Input numero movimenti */
+.filtri input[type="number"] {
+  width: 65px;
+}
+
+/* Input date */
+.filtri input[type="date"] {
+  min-width: 145px;
+}
+
+/* Select categoria */
+.filtri select {
+  min-width: 180px;
+}
+
+/* =========================
+   MODALITÀ
+========================= */
+
+.modalita {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 0;
+}
+
+
+
+/* =========================
+   BOTTONI
+========================= */
+
+.cerca, .export, .azzera {
   padding: 8px 16px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+
+  font: inherit;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
-.cerca {
+.azzera {
+  border: 1px solid #0d315b;
+  background: white;
+  color: #0d315b;
+}
+
+.azzera:hover {
   background: #0d315b;
   color: white;
 }
 
+.cerca {
+  background: #0d315b;
+  color: #ffffff;
+}
+
+.cerca:hover {
+  background: #09284a;
+  transform: translateY(-1px);
+}
+
 .export {
-  background: #52b8ff;
+  background: #dceeff;
   color: #0d315b;
+  border: 1px solid #bcdcf5;
+}
+
+.export:hover:not(:disabled) {
+  background: #c9e5fb;
+  transform: translateY(-1px);
 }
 
 .export:disabled {
-  opacity: .5;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
-.saldo {
-  font-size: 18px;
-  font-weight: 700;
+/* =========================
+   SALDO
+========================= */
+
+.saldo-filtri {
+  min-height: 38px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin-left: 8px;
+  padding-left: 16px;
+
+  border-left: 1px solid #dce5ed;
+  white-space: nowrap;
+}
+
+.saldo-label {
+  color: #69798d;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.saldo-valore {
+  margin-top: 2px;
   color: #0d315b;
+  font-size: 16px;
+  font-weight: 800;
 }
 
-.errore {
-  color: #c0392b;
-}
+/* =========================
+   LISTA MOVIMENTI
+========================= */
 
-table {
+/*
+  Il componente Angular viene trattato come blocco:
+  puoi assegnargli una larghezza massima e centrarlo.
+*/
+app-lista-movimenti {
+  display: block;
   width: 100%;
-  border-collapse: collapse;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-th, td {
-  text-align: left;
-  padding: 10px;
-  border-bottom: 1px solid #eee;
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+  .filtri form {
+    justify-content: center;
+  }
+
+  .saldo-filtri {
+    margin-left: 0;
+    padding-left: 0;
+    padding-top: 8px;
+
+    border-top: 1px solid #dce5ed;
+    border-left: none;
+  }
 }
 
-.negativo {
-  color: #c0392b;
+@media (max-width: 650px) {
+  .filtri {
+    padding: 16px;
+  }
+
+  .filtri form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filtri label {
+    justify-content: space-between;
+  }
+
+  .filtri input[type="number"] {
+    width: 80px;
+  }
+
+  .filtri input[type="date"],
+  .filtri select {
+    width: 100%;
+  }
+
+  .modalita {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  
+
+  .cerca,
+  .export {
+    width: 100%;
+  }
+
+  .saldo-filtri {
+    align-items: center;
+    text-align: center;
+  }
+
+  .filtri form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.azzera {
+  padding: 8px 16px;
+  border: 1px solid #0d315b;
+  border-radius: 4px;
+  background: white;
+  color: #0d315b;
+  cursor: pointer;
+}
+
+.avviso {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+
+  color: #a12d2d;
+  font-size: 12px;
+}
 }

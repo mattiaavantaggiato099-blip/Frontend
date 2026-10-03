@@ -1,0 +1,141 @@
+<div class="app-layout">
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <header class="topbar">
+      <div>
+        <span class="topbar-category">OPERAZIONI</span>
+        <h1>Deposito</h1>
+      </div>
+
+      <div class="balance-mini">
+        <span>Saldo disponibile</span>
+        <strong>
+          @if (saldo() !== null) {
+            € {{ saldo() | number:'1.2-2' }}
+          } @else {
+            —
+          }
+        </strong>
+      </div>
+    </header>
+
+    <section class="page-content">
+      <section class="content-grid">
+
+        <!-- FORM -->
+        <div class="card transfer-card">
+          <div class="card-header">
+            <div>
+              <h2>Nuovo deposito</h2>
+              <p>Versa denaro sul tuo conto corrente.</p>
+            </div>
+          </div>
+
+          @if (messaggioEsito()) {
+            <div class="esito esito-ok" role="status">{{ messaggioEsito() }}</div>
+          }
+
+          @if (erroreEsito()) {
+            <div class="esito esito-errore" role="alert">{{ erroreEsito() }}</div>
+          }
+
+          <form [formGroup]="depositoForm" (ngSubmit)="inviaDeposito()">
+            <div class="form-group">
+              <label for="importo">Importo</label>
+
+              <div class="amount-input">
+                <span>€</span>
+
+                <input
+                  type="number"
+                  id="importo"
+                  name="importo"
+                  formControlName="importo"
+                  placeholder="0,00"
+                  min="0"
+                  [max]="importoMax"
+                  step="0.01"
+                />
+              </div>
+
+              @if (depositoForm.controls.importo.touched && depositoForm.controls.importo.invalid) {
+                <small class="campo-errore">
+                  Inserisci un importo tra 0,01 e {{ importoMax | number }} €
+                </small>
+              }
+            </div>
+
+            <div class="form-group">
+              <label for="descrizione">Descrizione (facoltativa)</label>
+
+              <textarea
+                id="descrizione"
+                name="descrizione"
+                formControlName="descrizione"
+                rows="4"
+                maxlength="200"
+                placeholder="Inserisci una descrizione..."
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="primary-button"
+              [disabled]="depositoForm.invalid || inCorso()"
+            >
+              {{ inCorso() ? 'Operazione in corso...' : 'Effettua deposito' }}
+            </button>
+          </form>
+        </div>
+
+        <!-- RIEPILOGO -->
+        <div class="card summary-card">
+          <div class="summary-header">
+            <h2>Riepilogo</h2>
+          </div>
+
+          <div class="summary-row">
+            <span>Saldo attuale</span>
+            <strong>
+              @if (saldo() !== null) {
+                € {{ saldo() | number:'1.2-2' }}
+              } @else {
+                —
+              }
+            </strong>
+          </div>
+
+          <div class="summary-row">
+            <span>Importo da versare</span>
+            <strong>€ {{ importo | number:'1.2-2' }}</strong>
+          </div>
+
+          <div class="summary-divider"></div>
+
+          <div class="summary-total">
+            <span>Saldo dopo il deposito</span>
+            <strong>
+              @if (saldoDopoDeposito !== null) {
+                € {{ saldoDopoDeposito | number:'1.2-2' }}
+              } @else {
+                —
+              }
+            </strong>
+          </div>
+
+          <div class="info-box">
+            <span>ⓘ</span>
+            <p>
+              Il deposito viene accreditato subito. Importo massimo per singola
+              operazione: € {{ importoMax | number }}.
+            </p>
+          </div>
+        </div>
+
+      </section>
+    </section>
+
+  </main>
+</div>

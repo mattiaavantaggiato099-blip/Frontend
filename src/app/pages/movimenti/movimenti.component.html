@@ -6,67 +6,55 @@
       movimenti
     </label>
 
-    <div class="modalita">
-      <button
-        type="button"
-        [class.active]="modalita === 'nessuno'"
-        (click)="cambiaModalita('nessuno')"
-      >
-        Nessun filtro
-      </button>
-      <button
-        type="button"
-        [class.active]="modalita === 'categoria'"
-        (click)="cambiaModalita('categoria')"
-      >
-        Per categoria
-      </button>
-      <button
-        type="button"
-        [class.active]="modalita === 'date'"
-        (click)="cambiaModalita('date')"
-      >
-        Per intervallo date
-      </button>
-    </div>
+    <select formControlName="categoria" aria-label="Categoria">
+      <option value="">Tutte le categorie</option>
+      @for (cat of categorieFormattate(); track cat.categoriaMovimentoId) {
+        <option [value]="cat.categoriaMovimentoId">
+          {{ cat.nomeCategoria }}
+        </option>
+      }
+    </select>
 
-    @if (modalita === 'categoria') {
-      <select formControlName="categoria">
-        <option value="" disabled>Seleziona categoria</option>
-        @for (cat of categorie(); track cat.categoriaMovimentoId) {
-          <option [value]="cat.categoriaMovimentoId">
-            {{ cat.nomeCategoria }}
-          </option>
-        }
-      </select>
-    }
+    <label>
+      Da
+      <input type="date" formControlName="dataDa" />
+    </label>
 
-    @if (modalita === 'date') {
-      <label>
-        Da
-        <input type="date" formControlName="dataDa" />
-      </label>
-      <label>
-        A
-        <input type="date" formControlName="dataA" />
-      </label>
-    }
+    <label>
+      A
+      <input type="date" formControlName="dataA" />
+    </label>
 
-    <button type="button" class="cerca" (click)="cerca()">Cerca</button>
-    <button
-      type="button"
-      class="export"
-      (click)="esportaCsv()"
-      [disabled]="false"
-    >
+    <button type="button" class="azzera" (click)="azzeraFiltri()">
+      Azzera filtri
+    </button>
+
+    <button type="button" class="export" (click)="esportaCsv()">
       Esporta CSV
     </button>
+
+    <!-- SALDO A DESTRA DEI FILTRI -->
+    <div class="saldo-filtri">
+      <span class="saldo-label">Saldo</span>
+      <strong class="saldo-valore">
+        @if (saldoConto !== null && saldoConto !== undefined) {
+          € {{ saldoConto | number:'1.2-2' }}
+        } @else {
+          —
+        }
+      </strong>
+    </div>
   </form>
+
+  @if (avvisoDate()) {
+    <small class="avviso">{{ avvisoDate() }}</small>
+  }
 </section>
 
 <app-lista-movimenti
-  [numMov]="numMov"
-  [categoria]="categoria"
-  [dataDa]="dataDa"
-  [dataA]="dataA"
+  [numMov]="numMov()"
+  [categoria]="categoria()"
+  [dataDa]="dataDa()"
+  [dataA]="dataA()"
+  (saldoChange)="saldoConto = $event"
 />

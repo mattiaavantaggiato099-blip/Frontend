@@ -1,3 +1,7 @@
+:host {
+  display: block;
+}
+
 .navbar {
   position: fixed;
   top: 0;

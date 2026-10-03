@@ -1,174 +1,231 @@
+/* =========================
+   RESET LOCALE
+========================= */
+
 * {
   box-sizing: border-box;
 }
 
 :host {
   display: block;
-  min-height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #152d4b;
-}
+  width: 100%;
+  min-width: 0;
+  min-height: 100%;
 
+  color: #152d4b;
+  background: #f4f7fb;
+}
 
 /* =========================
    PAGINA
 ========================= */
 
 .profile-page {
-  min-height: 100vh;
+  width: 100%;
+  min-width: 0;
+  min-height: 100%;
+
   background: #f4f7fb;
 }
-
 
 /* =========================
    HEADER
 ========================= */
 
 .profile-header {
-  min-height: 110px;
+  min-height: 92px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 20px;
 
-  padding: 25px 45px;
+  padding: 20px 28px;
 
-  background: white;
-
-  border-bottom: 1px solid #e3e8ee;
+  border-bottom: 1px solid #e1e8ef;
 }
 
 .profile-header h1 {
-  margin: 0 0 7px;
+  margin: 0 0 6px;
 
+  color: #152d4b;
   font-size: 28px;
-
-  color: #142f50;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .profile-header p {
   margin: 0;
 
-  color: #6d7d90;
-
+  color: #69798d;
   font-size: 14px;
+  line-height: 1.5;
 }
 
-
-/* =========================
-   BOTTONE HOME
-========================= */
-
+/* Link torna alla home */
 .back-button {
-  display: flex;
+  min-height: 40px;
+
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
+  gap: 8px;
 
-  gap: 9px;
+  padding: 0 14px;
 
-  padding: 11px 17px;
-
-  border: 1px solid #d5e0ea;
-
+  border: 1px solid #d5dfe8;
   border-radius: 8px;
 
-  background: white;
-
+  background: #ffffff;
   color: #0965ad;
 
+  font-size: 13px;
+  font-weight: 700;
   text-decoration: none;
+  white-space: nowrap;
 
-  font-size: 12px;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
 
-  font-weight: bold;
-
-  transition: 0.2s;
+.back-button i {
+  font-size: 15px;
 }
 
 .back-button:hover {
-  background: #edf5fc;
+  border-color: #a9d0ef;
+  background: #edf7ff;
+  color: #07558f;
+  transform: translateX(-2px);
 }
 
+.back-button:focus-visible {
+  outline: 3px solid rgba(8, 112, 185, 0.25);
+  outline-offset: 2px;
+}
 
 /* =========================
    CONTENUTO
 ========================= */
 
 .profile-content {
-  max-width: 1050px;
+  width: 100%;
+  max-width: 980px;
 
-  margin: 30px auto;
-
-  padding: 0 25px;
+  margin: 0 auto;
+  padding: 28px;
 }
 
-
 /* =========================
-   CARD PROFILO
+   CARD PRINCIPALE
 ========================= */
 
 .profile-card {
   overflow: hidden;
 
-  background: white;
-
   border: 1px solid #e1e8ef;
-
   border-radius: 12px;
 
-  box-shadow: 0 4px 18px rgba(20, 55, 90, 0.06);
+  background: #ffffff;
+  box-shadow: 0 5px 18px rgba(15, 50, 90, 0.07);
 }
 
+/*
+  Le card loading/error ricevono padding direttamente.
+  La card completa invece ha contenuti interni.
+*/
+.profile-content > .profile-card > p:first-child:last-child {
+  padding: 28px;
+  color: #60738a;
+  font-size: 14px;
+}
+
+/* Bottone Riprova, usato nello stato di errore */
+.profile-card > button {
+  min-height: 40px;
+
+  margin: 0 28px 28px;
+  padding: 0 16px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #0965ad;
+  color: #ffffff;
+
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.profile-card > button:hover {
+  background: #07558f;
+  transform: translateY(-1px);
+}
 
 /* =========================
-   PARTE SUPERIORE
+   TESTATA PROFILO
 ========================= */
 
 .profile-top {
+  min-height: 146px;
+
   display: flex;
   align-items: center;
-
-  gap: 20px;
+  gap: 18px;
 
   padding: 30px;
 
-  color: white;
-
-  background: linear-gradient(
-    110deg,
-    #0c315c,
-    #166cac
-  );
+  border-bottom: 1px solid #e1e8ef;
+  background: linear-gradient(115deg, #edf7ff, #f8fbff);
 }
 
 .profile-avatar {
-  width: 76px;
-  height: 76px;
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
+  border: 4px solid #ffffff;
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.15);
+  background: #0965ad;
+  color: #ffffff;
 
-  border: 2px solid rgba(255, 255, 255, 0.35);
+  font-size: 37px;
+  box-shadow: 0 4px 12px rgba(9, 101, 173, 0.23);
+}
 
-  font-size: 30px;
+.profile-avatar i {
+  display: block;
+  line-height: 1;
 }
 
 .profile-top h2 {
-  margin: 0 0 7px;
+  margin: 0 0 5px;
 
+  color: #152d4b;
   font-size: 23px;
+  font-weight: 700;
+  line-height: 1.25;
 }
 
 .profile-top span {
-  font-size: 13px;
-
-  opacity: 0.85;
+  color: #60738a;
+  font-size: 14px;
 }
-
 
 /* =========================
    SEZIONI
@@ -177,21 +234,21 @@
 .section {
   padding: 28px 30px;
 
-  border-bottom: 1px solid #e8edf2;
+  border-bottom: 1px solid #e7edf2;
 }
 
 .section-title {
   display: flex;
   align-items: center;
+  gap: 12px;
 
-  gap: 13px;
-
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .section-title > i {
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
 
   display: flex;
   align-items: center;
@@ -199,42 +256,47 @@
 
   border-radius: 9px;
 
-  background: #edf6fd;
-
+  background: #e8f2ff;
   color: #0870b9;
 
-  font-size: 19px;
+  font-size: 21px;
 }
 
 .section-title h3 {
-  margin: 0 0 4px;
+  margin: 0 0 3px;
 
+  color: #152d4b;
   font-size: 17px;
+  font-weight: 700;
 }
 
 .section-title p {
   margin: 0;
 
-  color: #758397;
-
-  font-size: 11px;
+  color: #69798d;
+  font-size: 12px;
+  line-height: 1.5;
 }
 
-
 /* =========================
-   DATI
+   GRIGLIA DATI
 ========================= */
 
 .data-grid {
   display: grid;
-
-  grid-template-columns: 1fr 1fr;
-
-  gap: 22px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
 }
 
 .data-item {
   min-width: 0;
+
+  padding: 14px;
+
+  border: 1px solid #e5edf4;
+  border-radius: 9px;
+
+  background: #fbfdff;
 }
 
 .data-item.full {
@@ -244,216 +306,206 @@
 .data-item label {
   display: block;
 
-  margin-bottom: 7px;
+  margin-bottom: 8px;
 
-  color: #6d7c8e;
-
+  color: #69798d;
   font-size: 11px;
-
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .data-value {
-  min-height: 43px;
+  min-width: 0;
 
   display: flex;
   align-items: center;
+  gap: 9px;
 
-  gap: 12px;
+  color: #152d4b;
+}
 
-  padding: 0 13px;
+.data-value i {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
 
-  border: 1px solid #dfe6ed;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-  border-radius: 8px;
+  border-radius: 7px;
 
-  background: #f9fbfd;
+  background: #edf6fe;
+  color: #0870b9;
 
-  color: #263f5b;
+  font-size: 15px;
+}
 
+.data-value span {
+  min-width: 0;
+
+  color: #152d4b;
+  font-size: 14px;
+  font-weight: 700;
+
+  overflow-wrap: anywhere;
+}
+
+.data-value.iban span {
   font-size: 13px;
+  letter-spacing: 0.25px;
 }
-
-.data-value > i {
-  width: 18px;
-
-  color: #1470b2;
-
-  text-align: center;
-}
-
 
 /* =========================
-   IBAN
-========================= */
-
-.iban span {
-  flex: 1;
-
-  word-break: break-all;
-
-  font-size: 12px;
-
-  font-weight: 600;
-}
-
-.iban button {
-  width: 32px;
-  height: 32px;
-
-  border: none;
-
-  border-radius: 6px;
-
-  background: #e8f2fa;
-
-  color: #0867ad;
-
-  cursor: pointer;
-
-  transition: 0.2s;
-}
-
-.iban button:hover {
-  background: #d8eaf7;
-}
-
-
-/* =========================
-   PASSWORD
+   SICUREZZA / PASSWORD
 ========================= */
 
 .security-box {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-
   gap: 16px;
 
-  margin: 25px 30px;
+  padding: 24px 30px;
 
-  padding: 18px;
-
-  border: 1px solid #dce8f2;
-
-  border-radius: 9px;
-
-  background: #f4f9fd;
+  background: #f8fbfe;
 }
 
 .security-icon {
-  width: 45px;
-  height: 45px;
-
+  width: 44px;
+  height: 44px;
   flex-shrink: 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border-radius: 50%;
+  border-radius: 10px;
 
-  background: #e1eff9;
+  background: #e8f2ff;
+  color: #0870b9;
 
-  color: #0968ad;
-
-  font-size: 18px;
-}
-
-.security-text {
-  flex: 1;
+  font-size: 22px;
 }
 
 .security-text h3 {
-  margin: 0 0 5px;
+  margin: 0 0 4px;
 
-  font-size: 14px;
+  color: #152d4b;
+  font-size: 15px;
+  font-weight: 700;
 }
 
 .security-text p {
   margin: 0;
 
-  color: #6c7c8e;
-
-  font-size: 11px;
-
-  line-height: 1.5;
+  color: #60738a;
+  font-size: 12px;
+  line-height: 1.55;
 }
 
 .password-button {
-  display: flex;
-  align-items: center;
+  min-height: 40px;
 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   gap: 9px;
 
-  padding: 10px 15px;
+  padding: 0 14px;
 
-  border-radius: 7px;
+  border-radius: 8px;
 
   background: #0965ad;
+  color: #ffffff;
 
-  color: white;
-
+  font-size: 12px;
+  font-weight: 700;
   text-decoration: none;
-
-  font-size: 11px;
-
-  font-weight: bold;
-
   white-space: nowrap;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.password-button i {
+  font-size: 14px;
 }
 
 .password-button:hover {
   background: #07558f;
+  transform: translateY(-1px);
 }
 
+.password-button:focus-visible {
+  outline: 3px solid rgba(8, 112, 185, 0.28);
+  outline-offset: 2px;
+}
 
 /* =========================
-   FOOTER
+   RESPONSIVE TABLET
 ========================= */
 
-footer {
-  min-height: 65px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 0 45px;
-
-  color: #66768a;
-
-  font-size: 11px;
-}
-
-footer strong {
-  color: #203e61;
-}
-
-footer div {
-  display: flex;
-
-  gap: 18px;
-}
-
-footer a {
-  cursor: pointer;
-}
-
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 750px) {
-
+@media (max-width: 700px) {
   .profile-header {
     align-items: flex-start;
+    flex-direction: column;
+  }
 
+  .profile-content {
+    max-width: 620px;
+  }
+
+  .security-box {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .password-button {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+}
+
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
+
+@media (max-width: 520px) {
+  .profile-header {
+    padding: 18px 16px;
+  }
+
+  .profile-header h1 {
+    font-size: 24px;
+  }
+
+  .back-button {
+    width: 100%;
+  }
+
+  .profile-content {
+    padding: 16px;
+  }
+
+  .profile-top {
+    align-items: flex-start;
     flex-direction: column;
 
-    gap: 18px;
+    padding: 24px 20px;
+  }
 
-    padding: 25px;
+  .profile-avatar {
+    width: 64px;
+    height: 64px;
+    font-size: 32px;
+  }
+
+  .profile-top h2 {
+    font-size: 20px;
+  }
+
+  .section {
+    padding: 22px 20px;
   }
 
   .data-grid {
@@ -465,25 +517,9 @@ footer a {
   }
 
   .security-box {
-    align-items: flex-start;
+    grid-template-columns: 1fr;
+    gap: 13px;
 
-    flex-direction: column;
+    padding: 22px 20px;
   }
-
-  .password-button {
-    width: 100%;
-
-    justify-content: center;
-  }
-
-  footer {
-    align-items: flex-start;
-
-    flex-direction: column;
-
-    gap: 15px;
-
-    padding: 20px 25px;
-  }
-
 }

@@ -1,0 +1,36 @@
+<div class="page">
+  <div class="verification-card">
+    <div class="email-icon">
+      <i class="la la-envelope"></i>
+    </div>
+
+    <h1>Controlla la tua email</h1>
+
+    <p>
+      Abbiamo inviato un link di verifica al tuo indirizzo email.
+    </p>
+
+    @if (email()) {
+      <div class="email-box">
+        {{ email() }}
+      </div>
+    }
+
+    <p class="details">
+      Apri l'email ricevuta e clicca sul pulsante di verifica
+      per attivare il tuo account.
+    </p>
+
+    <p class="spam-message">
+      Se non trovi l'email, controlla anche nella cartella spam.
+    </p>
+
+    <a
+      class="login-button"
+      routerLink="/login"
+    >
+      Torna al login
+      <i class="la la-arrow-right"></i>
+    </a>
+  </div>
+</div>

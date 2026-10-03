@@ -1,391 +1,447 @@
-/* =========================
-   RESET
-========================= */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:host {
-  display: block;
-  min-height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-body {
-  margin: 0;
-}
-
-
-/* =========================
-   CONTENITORE
-========================= */
-
-.bank-app {
-  min-height: 100vh;
-  display: flex;
-  background: #f4f7fb;
-  color: #152d4b;
-}
-
-
-
-
-/* =========================
-   TOPBAR
-========================= */
-
 .topbar {
-  height: 70px;
+  min-height: 92px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 20px;
 
-  padding: 0 35px;
+  padding: 20px 28px;
 
-  background: white;
-
-  border-bottom: 1px solid #e3e8ee;
+  border-bottom: 1px solid #e1e8ef;
 }
 
 .topbar-category {
   display: block;
 
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 
-  color: #6f8195;
-
-  font-size: 10px;
-
-  font-weight: bold;
-
-  letter-spacing: 1px;
+  color: #0870b9;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.9px;
 }
 
 .topbar h1 {
   margin: 0;
 
-  font-size: 24px;
-
   color: #152d4b;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
 }
-
-
 /* =========================
-   SALDO TOPBAR
+   RESET LOCALE
 ========================= */
 
-.balance-mini {
-  display: flex;
-  flex-direction: column;
-
-  align-items: flex-end;
-
-  gap: 4px;
+* {
+  box-sizing: border-box;
 }
 
-.balance-mini span {
-  color: #718198;
+:host {
+  display: block;
+  width: 100%;
+  min-width: 0;
 
-  font-size: 11px;
-}
-
-.balance-mini strong {
   color: #152d4b;
-
-  font-size: 17px;
+  background: #f4f7fb;
 }
-
 
 /* =========================
-   AREA CONTENUTO
+   LAYOUT
 ========================= */
 
-.content-grid {
+.recharge-layout {
+  width: 100%;
+  max-width: 900px;
+
   display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(270px, 340px);
+  gap: 20px;
 
-  grid-template-columns:
-    minmax(0, 1.5fr)
-    minmax(300px, .8fr);
-
-  gap: 24px;
-
+  margin: 0 auto;
+  padding: 28px;
   align-items: start;
-
-  padding: 32px 40px;
 }
-
 
 /* =========================
    CARD
 ========================= */
 
-.card {
-  background: white;
+.recharge-card,
+.summary-card {
+  min-width: 0;
+
+  padding: 26px;
 
   border: 1px solid #e1e8ef;
+  border-radius: 12px;
 
-  border-radius: 11px;
-
-  box-shadow: 0 3px 12px rgba(20,55,90,.04);
+  background: #ffffff;
+  box-shadow: 0 5px 18px rgba(15, 50, 90, 0.07);
 }
 
-
 /* =========================
-   CARD HEADER
+   HEADER CARD FORM
 ========================= */
 
 .card-header {
-  min-height: 82px;
-
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  gap: 16px;
 
-  padding: 20px 24px;
-
-  border-bottom: 1px solid #e7edf2;
+  margin-bottom: 24px;
 }
 
-.card-header h2 {
-  margin: 0 0 5px;
+.card-category {
+  display: block;
 
-  font-size: 19px;
+  margin-bottom: 5px;
+
+  color: #0870b9;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.9px;
+}
+
+.card-header h1 {
+  margin: 0 0 6px;
 
   color: #152d4b;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.25;
 }
 
 .card-header p {
   margin: 0;
 
-  color: #718198;
-
-  font-size: 12px;
+  color: #69798d;
+  font-size: 13px;
+  line-height: 1.5;
 }
-
 
 /* =========================
-   FORM
+   FORM COMPATTO
 ========================= */
 
-.recharge-card form {
-  padding: 25px;
+form {
+  width: 100%;
+  max-width: 430px;
 }
+
+/* =========================
+   GRUPPI FORM
+========================= */
 
 .form-group {
-  margin-bottom: 22px;
+  margin-bottom: 14px;
 }
 
-.form-group label {
+.form-group > label {
   display: block;
 
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 
   color: #304967;
-
-  font-size: 13px;
-
-  font-weight: bold;
+  font-size: 12px;
+  font-weight: 700;
 }
 
-.form-group input,
+/* =========================
+   INPUT E SELECT
+========================= */
+
+.form-group input[type="tel"],
 .form-group select {
   width: 100%;
+  height: 38px;
 
-  height: 45px;
-
-  padding: 0 13px;
+  padding: 0 10px;
 
   border: 1px solid #d5dfe8;
+  border-radius: 7px;
+
+  outline: none;
+  background: #ffffff;
+  color: #152d4b;
+
+  font: inherit;
+  font-size: 13px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form-group select {
+  cursor: pointer;
+}
+
+.form-group input[type="tel"]::placeholder {
+  color: #9aaaba;
+}
+
+.form-group input[type="tel"]:focus,
+.form-group select:focus {
+  border-color: #0870b9;
+  box-shadow: 0 0 0 3px rgba(8, 112, 185, 0.12);
+}
+
+.form-group input.ng-invalid.ng-touched,
+.form-group select.ng-invalid.ng-touched {
+  border-color: #d63030;
+}
+
+.form-group input.ng-invalid.ng-touched:focus,
+.form-group select.ng-invalid.ng-touched:focus {
+  box-shadow: 0 0 0 3px rgba(214, 48, 48, 0.12);
+}
+
+/* =========================
+   MESSAGGI
+========================= */
+
+.alert {
+  margin-bottom: 16px;
+  padding: 10px 12px;
 
   border-radius: 7px;
 
-  background: white;
-
-  color: #203e61;
-
-  font-family: Arial, Helvetica, sans-serif;
-
-  font-size: 13px;
-
-  outline: none;
-
-  transition: .2s;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.45;
 }
 
-.form-group input::placeholder {
-  color: #9aa8b7;
+.alert.success {
+  border: 1px solid #b9ead4;
+  background: #e6f8ef;
+  color: #008d71;
 }
 
-.form-group input:focus,
-.form-group select:focus {
-  border-color: #2184c7;
-
-  box-shadow: 0 0 0 3px rgba(33,132,199,.10);
+.alert.error {
+  border: 1px solid #ffc5c5;
+  background: #ffe8e8;
+  color: #d63030;
 }
 
+.field-error {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #d63030;
+  font-size: 11px;
+  font-weight: 600;
+}
 
 /* =========================
-   IMPORTI
+   OPZIONI IMPORTO
 ========================= */
 
 .amount-options {
-  display: flex;
-
-  gap: 10px;
-
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 7px;
 }
 
 .amount-option {
   position: relative;
 
-  cursor: pointer;
-}
-
-.amount-option input {
-  position: absolute;
-
-  opacity: 0;
-
-  pointer-events: none;
-}
-
-.amount-option span {
-  min-width: 72px;
-  height: 42px;
+  min-height: 38px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  padding: 0 15px;
+  margin: 0 !important;
+
+  cursor: pointer;
+}
+
+.amount-option input[type="radio"] {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  overflow: hidden;
+
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+
+  white-space: nowrap;
+  opacity: 0;
+}
+
+.amount-option span {
+  width: 100%;
+  min-height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 5px;
 
   border: 1px solid #d5dfe8;
-
   border-radius: 7px;
 
-  background: white;
-
+  background: #ffffff;
   color: #304967;
 
-  font-size: 13px;
+  font-size: 12px;
+  font-weight: 700;
 
-  font-weight: bold;
-
-  transition: .2s;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
-.amount-option span:hover {
-  border-color: #2184c7;
-
-  background: #f4f9fd;
+.amount-option:hover span {
+  border-color: #87bfe6;
+  background: #f2f8fd;
+  color: #0870b9;
+  transform: translateY(-1px);
 }
 
-.amount-option input:checked + span {
-  border-color: #0870b9;
-
-  background: #0870b9;
-
-  color: white;
+.amount-option input[type="radio"]:checked + span {
+  border-color: #0965ad;
+  background: #0965ad;
+  color: #ffffff;
+  box-shadow: 0 3px 8px rgba(9, 101, 173, 0.18);
 }
 
+.amount-option input[type="radio"]:focus-visible + span {
+  outline: 3px solid rgba(8, 112, 185, 0.28);
+  outline-offset: 2px;
+}
 
 /* =========================
-   BOTTONE RICARICA
+   BOTTONE
 ========================= */
 
 .primary-button {
   width: 100%;
+  min-height: 40px;
 
-  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 
-  margin-top: 5px;
+  margin-top: 3px;
 
   border: none;
-
   border-radius: 7px;
 
   background: #0965ad;
+  color: #ffffff;
 
-  color: white;
-
+  font: inherit;
   font-size: 13px;
-
-  font-weight: bold;
+  font-weight: 700;
 
   cursor: pointer;
 
-  transition: .2s;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
-.primary-button:hover {
-  background: #075895;
-
+.primary-button:hover:not(:disabled) {
+  background: #07558f;
   transform: translateY(-1px);
 }
 
+.primary-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.primary-button i {
+  font-size: 12px;
+}
 
 /* =========================
    RIEPILOGO
 ========================= */
 
-.summary-card {
-  padding-bottom: 20px;
-}
-
 .summary-header {
-  height: 62px;
-
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 
-  padding: 0 20px;
+  margin-bottom: 15px;
+  padding-bottom: 14px;
 
   border-bottom: 1px solid #e7edf2;
 }
 
-.summary-header h2 {
+.summary-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.summary-title i {
+  color: #0870b9;
+  font-size: 20px;
+}
+
+.summary-title h2 {
   margin: 0;
 
-  font-size: 18px;
-
   color: #152d4b;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.summary-status {
+  padding: 5px 8px;
+
+  border-radius: 999px;
+
+  background: #f0f6fc;
+  color: #60738a;
+
+  font-size: 10px;
+  font-weight: 700;
 }
 
 .summary-row {
-  min-height: 52px;
-
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 4px;
 
-  padding: 0 20px;
+  padding: 12px 0;
 
   border-bottom: 1px solid #edf0f3;
 }
 
 .summary-row span {
-  color: #718198;
-
-  font-size: 12px;
+  color: #69798d;
+  font-size: 11px;
+  font-weight: 600;
 }
 
 .summary-row strong {
-  color: #203e61;
-
-  font-size: 12px;
+  color: #152d4b;
+  font-size: 13px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 .summary-divider {
   height: 1px;
-
-  margin: 8px 20px;
-
-  background: #dce4eb;
+  margin: 8px 0;
+  background: #dce5ed;
 }
 
 .summary-total {
@@ -393,141 +449,87 @@ body {
   align-items: center;
   justify-content: space-between;
 
-  padding: 8px 20px;
+  padding: 12px 0;
+
+  font-size: 15px;
+  font-weight: 700;
 }
 
 .summary-total span {
-  color: #304967;
-
-  font-size: 14px;
-
-  font-weight: bold;
+  color: #152d4b;
 }
 
 .summary-total strong {
-  color: #0965ad;
-
-  font-size: 20px;
+  color: #0870b9;
+  font-size: 18px;
+  font-weight: 800;
 }
 
-
 /* =========================
-   INFO BOX
+   BOX INFORMATIVO
 ========================= */
 
 .info-box {
   display: flex;
   align-items: flex-start;
+  gap: 9px;
 
-  gap: 10px;
+  margin-top: 14px;
+  padding: 11px;
 
-  margin: 18px 20px 0;
-
-  padding: 13px;
-
+  border: 1px solid #cfe4f7;
   border-radius: 8px;
 
-  background: #f0f6fc;
-
-  color: #315574;
+  background: #edf7ff;
 }
 
-.info-box span {
+.info-box i {
+  flex-shrink: 0;
+
   color: #0870b9;
-
   font-size: 16px;
-
-  line-height: 1;
+  line-height: 1.4;
 }
 
 .info-box p {
   margin: 0;
 
+  color: #42617d;
   font-size: 11px;
-
-  line-height: 1.5;
+  line-height: 1.55;
 }
-
 
 /* =========================
    RESPONSIVE
 ========================= */
 
-@media (max-width: 1000px) {
-
-  .content-grid {
-    grid-template-columns: 1fr;
-  }
-
-}
-
 @media (max-width: 800px) {
-
-  .sidebar {
-    width: 70px;
+  .recharge-layout {
+    grid-template-columns: 1fr;
+    max-width: 540px;
   }
 
-  .logo-text,
-  .menu-item span {
-    display: none;
+  .summary-card {
+    order: -1;
   }
-
-  .logo {
-    justify-content: center;
-
-    padding: 0;
-  }
-
-  .menu-item {
-    justify-content: center;
-
-    padding: 0 !important;
-  }
-
-  .main-content {
-    width: calc(100% - 70px);
-
-    margin-left: 70px;
-  }
-
-  .content-grid {
-    padding: 25px;
-  }
-
-  .topbar {
-    padding: 0 25px;
-  }
-
-  .balance-mini {
-    display: none;
-  }
-
-  .user-profile-link {
-    display: none;
-  }
-
 }
 
-@media (max-width: 550px) {
-
-  .content-grid {
-    padding: 20px;
+@media (max-width: 520px) {
+  .recharge-layout {
+    padding: 16px;
   }
 
-  .topbar {
-    padding: 0 20px;
-  }
-
-  .topbar h1 {
-    font-size: 20px;
+  .recharge-card,
+  .summary-card {
+    padding: 20px 16px;
   }
 
   .amount-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
   }
 
-  .amount-option span {
-    min-width: 60px;
+  .amount-option:last-child {
+    grid-column: 1 / -1;
   }
-
 }

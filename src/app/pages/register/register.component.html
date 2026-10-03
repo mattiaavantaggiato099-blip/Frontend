@@ -48,32 +48,62 @@
         />
       </div>
 
+      <!-- Password -->
       <div class="form-group">
         <label for="password">
           Password
         </label>
 
-        <input
-          id="password"
-          type="password"
-          formControlName="password"
-          placeholder="Inserisci una password"
-          autocomplete="new-password"
-        />
+        <div class="password-input-wrapper">
+          <input
+            id="password"
+            [type]="showPassword ? 'text' : 'password'"
+            formControlName="password"
+            placeholder="Inserisci una password"
+            autocomplete="new-password"
+          />
+          <button
+            type="button"
+            class="toggle-password"
+            (click)="showPassword = !showPassword"
+            title="{{ showPassword ? 'Nascondi password' : 'Mostra password' }}"
+          >
+            <i
+              class="la"
+              [class.la-eye]="!showPassword"
+              [class.la-eye-slash]="showPassword"
+            ></i>
+          </button>
+        </div>
       </div>
 
+      <!-- Conferma password -->
       <div class="form-group">
         <label for="confermaPassword">
           Conferma password
         </label>
 
-        <input
-          id="confermaPassword"
-          type="password"
-          formControlName="confermaPassword"
-          placeholder="Ripeti la password"
-          autocomplete="new-password"
-        />
+        <div class="password-input-wrapper">
+          <input
+            id="confermaPassword"
+            [type]="showPasswordConferma ? 'text' : 'password'"
+            formControlName="confermaPassword"
+            placeholder="Ripeti la password"
+            autocomplete="new-password"
+          />
+          <button
+            type="button"
+            class="toggle-password"
+            (click)="showPasswordConferma = !showPasswordConferma"
+            title="{{ showPasswordConferma ? 'Nascondi password' : 'Mostra password' }}"
+          >
+            <i
+              class="la"
+              [class.la-eye]="!showPasswordConferma"
+              [class.la-eye-slash]="showPasswordConferma"
+            ></i>
+          </button>
+        </div>
       </div>
 
       @if (errorMessage()) {

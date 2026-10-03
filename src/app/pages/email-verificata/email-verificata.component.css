@@ -1,0 +1,82 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
+  background: #f4f7fb;
+}
+
+.verification-card {
+  width: 420px;
+  max-width: 100%;
+  padding: 38px 35px;
+  box-sizing: border-box;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #e1e8ef;
+  border-radius: 12px;
+  box-shadow: 0 5px 18px rgba(15, 50, 90, 0.12);
+}
+
+.success-icon {
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #e6f8ef;
+  color: #008d71;
+  font-size: 38px;
+}
+
+h1 {
+  margin: 0 0 14px;
+  color: #152d4b;
+  font-size: 26px;
+}
+
+p {
+  margin: 0 0 28px;
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+button {
+  width: 100%;
+  height: 44px;
+  border: none;
+  border-radius: 8px;
+  background: #0965ad;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #07558f;
+}
+
+button i {
+  margin-left: 7px;
+  font-size: 17px;
+  vertical-align: middle;
+}
+
+.redirect-message {
+  display: block;
+  margin-top: 18px;
+  color: #94a3b8;
+  font-size: 13px;
+}

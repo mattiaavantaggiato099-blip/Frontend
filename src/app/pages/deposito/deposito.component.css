@@ -507,4 +507,40 @@
   .summary-row strong {
     text-align: left;
   }
+
+
+/* =========================
+   MESSAGGI DI ESITO
+========================= */
+
+.esito {
+  margin-bottom: 19px;
+  padding: 12px 14px;
+
+  border-radius: 8px;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.esito-ok {
+  border: 1px solid #b7e1c4;
+  background: #edf9f1;
+  color: #1c6b3a;
+}
+
+.esito-errore {
+  border: 1px solid #f2c0c0;
+  background: #fdf0f0;
+  color: #a12d2d;
+}
+
+.campo-errore {
+  display: block;
+  margin-top: 6px;
+
+  color: #a12d2d;
+  font-size: 12px;
+}
+
 }

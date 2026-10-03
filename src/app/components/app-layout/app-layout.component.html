@@ -1,6 +1,32 @@
-<app-sidebar></app-sidebar>
-<app-navbar [nome]="nomeUtente" [cognome]="cognomeUtente"></app-navbar>
+<!-- Hamburger button (solo mobile) -->
+<button
+  class="hamburger-btn"
+  (click)="toggleSidebar()"
+  title="Apri/chiudi menu"
+  type="button"
+>
+  <i class="las la-bars"></i>
+</button>
 
+<!-- Overlay scuro -->
+<div
+  class="sidebar-overlay"
+  [class.visible]="sidebarOpen()"
+  (click)="closeSidebar()"
+></div>
+
+<!-- Sidebar -->
+<app-sidebar
+  [class.open]="sidebarOpen()"
+></app-sidebar>
+
+<!-- Navbar -->
+<app-navbar
+  [nome]="nome()"
+  [cognome]="cognome()"
+></app-navbar>
+
+<!-- Contenuto principale -->
 <main class="main-content">
   <router-outlet></router-outlet>
 </main>
