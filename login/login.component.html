@@ -1,0 +1,237 @@
+<div class="login-page">
+
+  <!-- =========================
+       PARTE SINISTRA
+  ========================== -->
+
+  <section class="intro-section">
+
+
+<div class="intro-content">
+
+<br><br><br><br><br> 
+
+  <div class="intro-text">
+
+    <span class="eyebrow">
+      IL TUO CONTO, SEMPLICEMENTE
+    </span>
+
+    <h2>
+      Tutto sotto controllo.<br />
+      In un unico posto.
+    </h2>
+
+    <p>
+      Gestisci il tuo conto corrente, controlla i movimenti
+      e tieni sotto controllo le tue operazioni in modo
+      semplice, veloce e sicuro.
+    </p>
+
+  </div>
+
+  <div class="features">
+
+    <div class="feature">
+      <div class="feature-icon">✓</div>
+
+      <div>
+        <strong>Conto sempre sotto controllo</strong>
+        <span>Visualizza saldo e movimenti in qualsiasi momento.</span>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">↗</div>
+
+      <div>
+        <strong>Operazioni semplici</strong>
+        <span>Gestisci bonifici, ricariche e altre operazioni.</span>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">▣</div>
+
+      <div>
+        <strong>Informazioni chiare</strong>
+        <span>Tutto ciò che ti serve, organizzato in modo intuitivo.</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="intro-footer">
+  <span>Gestione Conti Correnti</span>
+  <span>•</span>
+  <span>Accesso sicuro</span>
+</div>
+
+
+  </section>
+
+  <!-- =========================
+       PARTE DESTRA
+  ========================== -->
+
+  <section class="login-section">
+
+
+<div class="login-container">
+
+  <div class="mobile-brand">
+    <div class="brand-icon">
+      €
+    </div>
+
+    <span>Gestione Conti</span>
+  </div>
+
+  <div class="login-header">
+
+    <span class="login-label">
+      AREA RISERVATA
+    </span>
+
+    <h1>Accedi al tuo conto</h1>
+
+    <p>
+      Inserisci le tue credenziali per continuare.
+    </p>
+
+  </div>
+
+
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="login()"
+  >
+
+    <!-- EMAIL -->
+    <div class="form-group">
+
+      <label for="email">
+        Indirizzo email
+      </label>
+
+      <div class="input-wrapper">
+
+        <span class="input-icon">
+          @
+        </span>
+
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="nome@esempio.it"
+          autocomplete="email"
+        />
+
+      </div>
+
+      @if (
+        loginForm.get('email')?.touched &&
+        loginForm.get('email')?.invalid
+      ) {
+
+        <small class="field-error">
+          Inserisci un indirizzo email valido.
+        </small>
+
+      }
+
+    </div>
+
+
+    <!-- PASSWORD -->
+    <div class="form-group">
+
+      <label for="password">
+        Password
+      </label>
+
+      <div class="input-wrapper">
+
+        <span class="input-icon">
+          •••
+        </span>
+
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          placeholder="Inserisci la tua password"
+          autocomplete="current-password"
+        />
+
+      </div>
+
+      @if (
+        loginForm.get('password')?.touched &&
+        loginForm.get('password')?.invalid
+      ) {
+
+        <small class="field-error">
+          La password è obbligatoria.
+        </small>
+
+      }
+
+    </div>
+
+
+    <!-- ERRORE -->
+    @if (errorMessage()) {
+
+      <div class="alert error">
+        <span class="alert-icon">!</span>
+
+        <span>
+          {{ errorMessage() }}
+        </span>
+      </div>
+
+    }
+
+
+    <!-- BOTTONE -->
+    <button
+      type="submit"
+      [disabled]="loginForm.invalid"
+    >
+      <span>Accedi al conto</span>
+      <span class="button-arrow">→</span>
+    </button>
+
+  </form>
+
+
+  <!-- REGISTRAZIONE -->
+  <div class="register-link">
+
+    <span>Non hai ancora un account?</span>
+
+    <a routerLink="/registrazione">
+      Registrati
+    </a>
+
+  </div>
+
+
+  <div class="security-note">
+    <span class="security-icon">✓</span>
+
+    <span>
+      I tuoi dati sono protetti e trattati in modo sicuro.
+    </span>
+  </div>
+
+</div>
+
+
+  </section>
+
+</div>

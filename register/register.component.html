@@ -1,0 +1,361 @@
+<div class="register-page">
+
+  <!-- =========================
+       PARTE SINISTRA
+  ========================== -->
+
+  <section class="intro-section">
+
+
+<div class="intro-content">
+
+  <div class="intro-text">
+
+    <span class="eyebrow">
+      INIZIA DA QUI
+    </span>
+
+    <h2>
+      Il tuo conto.<br />
+      La tua gestione.
+    </h2>
+
+    <p>
+      Crea il tuo account e accedi a tutti gli strumenti
+      necessari per gestire il tuo conto corrente in modo
+      semplice, chiaro e sicuro.
+    </p>
+
+  </div>
+
+
+  <div class="features">
+
+    <div class="feature">
+
+      <div class="feature-icon">
+        ✓
+      </div>
+
+      <div>
+        <strong>Registrazione semplice</strong>
+        <span>
+          Bastano pochi dati per creare il tuo account.
+        </span>
+      </div>
+
+    </div>
+
+
+    <div class="feature">
+
+      <div class="feature-icon">
+        →
+      </div>
+
+      <div>
+        <strong>Accesso immediato</strong>
+        <span>
+          Dopo la registrazione potrai accedere al tuo conto.
+        </span>
+      </div>
+
+    </div>
+
+
+    <div class="feature">
+
+      <div class="feature-icon">
+        ✓
+      </div>
+
+      <div>
+        <strong>Maggiore sicurezza</strong>
+        <span>
+          Le tue credenziali vengono utilizzate per proteggere
+          il tuo accesso.
+        </span>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="intro-footer">
+
+  <span>Gestione Conti Correnti</span>
+
+  <span>•</span>
+
+  <span>Registrazione sicura</span>
+
+</div>
+
+
+  </section>
+
+  <!-- =========================
+       PARTE DESTRA
+  ========================== -->
+
+  <section class="register-section">
+
+
+<div class="register-container">
+
+
+  <!-- BRAND MOBILE -->
+
+  <div class="mobile-brand">
+
+    <div class="brand-icon">
+      €
+    </div>
+
+    <span>
+      Gestione Conti
+    </span>
+
+  </div>
+
+
+  <!-- HEADER -->
+
+  <div class="register-header">
+
+    <span class="register-label">
+      NUOVO ACCOUNT
+    </span>
+
+    <h1>
+      Crea il tuo account
+    </h1>
+
+    <p>
+      Inserisci i tuoi dati per iniziare.
+    </p>
+
+  </div>
+
+
+  <!-- FORM -->
+
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="register()"
+  >
+
+
+    <!-- NOME + COGNOME -->
+
+    <div class="name-row">
+
+      <div class="form-group">
+
+        <label for="nome">
+          Nome
+        </label>
+
+        <input
+          id="nome"
+          type="text"
+          formControlName="nome"
+          placeholder="Il tuo nome"
+          autocomplete="given-name"
+        />
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="cognome">
+          Cognome
+        </label>
+
+        <input
+          id="cognome"
+          type="text"
+          formControlName="cognome"
+          placeholder="Il tuo cognome"
+          autocomplete="family-name"
+        />
+
+      </div>
+
+    </div>
+
+
+    <!-- EMAIL -->
+
+    <div class="form-group">
+
+      <label for="email">
+        Indirizzo email
+      </label>
+
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="nome@esempio.it"
+        autocomplete="email"
+      />
+
+    </div>
+
+
+    <!-- PASSWORD -->
+
+    <div class="form-group">
+
+      <label for="password">
+        Password
+      </label>
+
+      <div class="password-input-wrapper">
+
+        <input
+          id="password"
+          [type]="showPassword ? 'text' : 'password'"
+          formControlName="password"
+          placeholder="Inserisci una password"
+          autocomplete="new-password"
+        />
+
+        <button
+          type="button"
+          class="toggle-password"
+          (click)="showPassword = !showPassword"
+          title="{{ showPassword ? 'Nascondi password' : 'Mostra password' }}"
+        >
+
+          <i
+            class="la"
+            [class.la-eye]="!showPassword"
+            [class.la-eye-slash]="showPassword"
+          ></i>
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- CONFERMA PASSWORD -->
+
+    <div class="form-group">
+
+      <label for="confermaPassword">
+        Conferma password
+      </label>
+
+      <div class="password-input-wrapper">
+
+        <input
+          id="confermaPassword"
+          [type]="showPasswordConferma ? 'text' : 'password'"
+          formControlName="confermaPassword"
+          placeholder="Ripeti la password"
+          autocomplete="new-password"
+        />
+
+        <button
+          type="button"
+          class="toggle-password"
+          (click)="showPasswordConferma = !showPasswordConferma"
+          title="{{ showPasswordConferma ? 'Nascondi password' : 'Mostra password' }}"
+        >
+
+          <i
+            class="la"
+            [class.la-eye]="!showPasswordConferma"
+            [class.la-eye-slash]="showPasswordConferma"
+          ></i>
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- ERRORE -->
+
+    @if (errorMessage()) {
+
+      <div class="alert error">
+
+        <span class="alert-icon">
+          !
+        </span>
+
+        <span>
+          {{ errorMessage() }}
+        </span>
+
+      </div>
+
+    }
+
+
+    <!-- BOTTONE -->
+
+    <button
+      type="submit"
+      class="register-button"
+      [disabled]="registerForm.invalid"
+    >
+
+      <span>
+        Crea account
+      </span>
+
+      <span class="button-arrow">
+        →
+      </span>
+
+    </button>
+
+  </form>
+
+
+  <!-- LOGIN -->
+
+  <div class="login-link">
+
+    <span>
+      Hai già un account?
+    </span>
+
+    <a routerLink="/login">
+      Accedi
+    </a>
+
+  </div>
+
+
+  <!-- SICUREZZA -->
+
+  <div class="security-note">
+
+    <span class="security-icon">
+      ✓
+    </span>
+
+    <span>
+      I tuoi dati sono protetti e trattati in modo sicuro.
+    </span>
+
+  </div>
+
+</div>
+
+
+  </section>
+
+</div>
